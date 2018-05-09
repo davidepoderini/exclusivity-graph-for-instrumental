@@ -1,5 +1,97 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+
+\newcommand{\avg}[1]{\langle#1\rangle}
+\title{Experimental demonstration of the relationship between CHSH and Instrumental inequalities}
 \begin{document}
-(Type your content here.)
+\maketitle
+
+\section*{Instrumental and CHSH}
+The so-called ``Instrumental'' causal structure, depicted in [fig], is a widely studied
+structure both for its simplicity and commonness.
+It can be described by four random variables $\Lambda, X, A, B$ where $X$ and
+$\Lambda$ are independent of the others and $B$ depends on $X$ only through $A$,
+as schematically described in fig.[dag].
+
+The consequences of these causal relations on the distributions of the four
+variables have been throughly studied in previous works [Pearl, Bonet].
+Suppose that $X, A, B$ can take $l,m,n$ different values and 
+call $P(a_i b_j | x_k)$ the probability that $A$ and $B$ take values $a_i$
+and $b_j$ respectively, given that $X$ takes value $x_k$.
+Bonet [Bonet] pointed out that the polytope of allowed
+correlation is characterized not only by the \emph{Pearl's inequalities}:
+\begin{equation}
+    \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1
+    \label{eq:pearl_ineq}
+\end{equation}
+for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$.
+For example for $(l,m,n) = (3,2,2)$ the inequality:
+\begin{equation}
+    P(a_1 b_1 | x_1) + P(a_2 b_2 | x_1) + 
+    P(a_1 b_2 | x_2) + P(a_1 b_2 | x_2) + 
+    P(a_2 b_1 | x_3) \le 2
+    \label{eq:bonet_ineq}
+\end{equation}
+must also be satisfied, along with other similar inequalities.
+
+These inequalities are closely related to the one presented in [Rafael]:
+\begin{equation}
+a    
+    \label{eq:rafael_ineq}
+\end{equation}
+which, as was recently proved experimentally in [Rafael], admits a quantum violation
+of $3.79 \pm 0.013$.
+As one can expect, with the same data we can also violate inequality
+\eqref{bonet_ineq} with a value of $2.159$.
+
+A similar analisys can be done in the CHSH scenario, depicted in fig.[chsh],
+where the variables all have two possible outcomes.
+Here instead we have the notorious inequality:
+\begin{equation}
+    \avg{A_1, B_1} + \avg{A_1, B_2} + \avg{A_2, B_1} - \avg{A_2, B_2} \le 2
+    \label{eq:chsh_ineq}
+\end{equation}
+
+As was pointed out in [Wolfe] these two scenarios (CHSH and the Instrumental)
+are somewhat related, and indeed, in a sense, the two quantum violations can be
+seen as a consequence of one another.
+To see this we must can think of the Instrumental scenario as a restricted CHSH,
+where we postselect in the case of $Y = A$, and we augment the variable $X$ with
+an additional value $x_3$ as described in [Wolfe].
+From this analisis the maximum quantum violation would be $(3 + \sqrt{2})/2$.
+
+This can be verified experimentally provided we have an apparatus capable of
+reproducing the causal structure depicted in fig [], i.e. a CHSH scenario
+where $X$ can take 3 possible values, as the apparatus presented in [Rafael].
+Taking advantage of this we can violate all three inequalities [refs] with the same set of
+data:
+\begin{enumerate}
+    \item To violate the Instrumental inequalities we postselect in the case
+        $Y = A$, obtaining values $ $ and $ $ for \eqref{eq:rafael_ineq} and
+        \eqref{bonet_ineq} respectively.
+    \item To violate the CHSH inequality we just ignore the case $X = x_3$,
+        obtaining the value $2.619 \pm 0.005$.
+\end{enumerate}
+
+\section*{Instrumental and contextuality}
+Interestingly the inequality \eqref{eq:bonet_ineq} can also be obtained using
+the methods presented in [Cabello].
+Indeed, following [Cabello], the exclusivity structure of the events in
+\eqref{eq:bonet_ineq}, form a $C_5$ cyclic graph, i.e. a pentagon, so that the
+classical limit would be $2$.
+In this framework \eqref{eq:bonet_ineq} is analogous to the KCBS contextual
+inequality.
+Nonetheless the quantum limit for the KCBS is $\sqrt{2}$ [Cabello], different
+from the limit expected for the Bonet inequality found in [Wolfe].
+This is probably due to the fact that the KCBS limit is attained with a
+particular configuration of projectors in 3D space, while in the
+Instrumental scenario the only possible projectors are necessarly tensor product of
+projectors in two 2D space.
+It would be interesting to see if the same limit $\sqrt{5}$ can be obtained in the
+Instrumental scenario, maybe in a generalized context where $X$ is not
+tricothomic, and if the other inequalities for the Instrumental scenario
+presented in [Bonet] can be obtained as contextual inequalities.
+\end{document}
+
 \end{document}
