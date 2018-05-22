@@ -18,12 +18,12 @@
     \qquad
     \parbox{.4\textwidth}{
         \includegraphics[width=.4\textwidth]{images/chshdag.pdf}
-        \caption{The DAG representing a general Instrumental scenario.}
+        \caption{The DAG representing the CHSH scenario.}
         \label{fig:chshdag}
     }
 \end{figure}
 
-The so-called ``Instrumental'' causal structure is a widely studied
+The Instrumental causal structure is a widely studied
 structure both for its simplicity and commonness.
 It can be described by four random variables $\Lambda, X, A, B$ where $X$ and
 $\Lambda$ are independent of the others and $B$ depends on $X$ only through $A$,
@@ -36,20 +36,20 @@ Suppose that $X, A, B$ can take $l,m,n$ different values and
 call $P(a_i b_j | x_k)$ the probability that $A$ and $B$ take values $a_i$
 and $b_j$ respectively, given that $X$ takes value $x_k$.
 Bonet \cite{bonet2001} pointed out that the polytope of allowed
-correlation is characterized not only by the \emph{Pearl's inequalities}:
+correlation is bounded (not tightly) by the \emph{Pearl's inequalities}:
 \begin{equation}
     \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1
     \label{eq:pearl_ineq}
 \end{equation}
 for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$.
-For example for $(l,m,n) = (3,2,2)$ the inequality:
+For instance for $(l,m,n) = (3,2,2)$ the following inequality must also be satisfied:
 \begin{equation}
     P(a_1 b_1 | x_1) + P(a_2 b_2 | x_1) + 
     P(a_1 b_1 | x_2) + P(a_2 b_1 | x_2) + 
     P(a_1 b_2 | x_3) \le 2
     \label{eq:bonet_ineq}
 \end{equation}
-must also be satisfied, along with other similar inequalities.
+along with other similar inequalities.
 
 These inequalities are closely related to the one presented in \cite{chaves2018}:
 \begin{equation}
@@ -57,27 +57,26 @@ These inequalities are closely related to the one presented in \cite{chaves2018}
     2\avg{AB}_{x_3} \le 3  
     \label{eq:rafael_ineq}
 \end{equation}
-which, as was recently experimentally violated in the same work, and admits a
-quantum violation of $3.79 \pm 0.013$.
+which was experimentally violated in the same work, with a value of $3.79 \pm 0.013$.
 As one can expect, with the same data we can also violate inequality
-\eqref{eq:bonet_ineq} with a value of $2.159$.
+\eqref{eq:bonet_ineq} with a value of $2.159 \pm 0.005$.
 
-A similar analisys can be done in the CHSH scenario, depicted in
+A similar analysis can be done in the CHSH scenario, depicted in
 fig.~\ref{fig:chshdag},
-where the variables all have two possible outcomes.
-Here instead we have the notorious inequality:
+where all the variables are dichotomic.
+Hence we have the notorious inequality:
 \begin{equation}
     \avg{A_1B_1} + \avg{A_1B_2} + \avg{A_2B_1} - \avg{A_2B_2} \le 2
     \label{eq:chsh_ineq}
 \end{equation}
 
 As was pointed out in \cite{himbeeck2018} these two scenarios (CHSH and the Instrumental)
-are somewhat related, and indeed, in a sense, the two quantum violations can be
+are related: the two quantum violations can be
 seen as a consequence of one another.
-To see this we must can think of the Instrumental scenario as a restricted CHSH,
+Indeed if we think of the Instrumental scenario as a restricted CHSH,
 where we postselect in the case of $Y = A$, and we augment the variable $X$ with
 an additional value $x_3$ as described in \cite{himbeeck2018}.
-From this analisis the maximum quantum violation would be $(3 + \sqrt{2})/2$.
+From this analysis the maximum quantum violation is $(3 + \sqrt{2})/2$.
 
 \begin{figure}[h]
     \centering
@@ -94,7 +93,7 @@ Taking advantage of this we can violate all three inequalities
 data:
 \begin{enumerate}
     \item To violate the Instrumental inequalities we postselect in the case
-        $Y = A$, obtaining values $3.79 \pm 0.013$ and $2.159$ for \eqref{eq:rafael_ineq} and
+        $Y = A$, obtaining values $3.787 \pm 0.013$ and $2.159 \pm 0.005$ for \eqref{eq:rafael_ineq} and
         \eqref{eq:bonet_ineq} respectively.
     \item To violate the CHSH inequality we just ignore the case $X = x_3$,
         obtaining the value $2.619 \pm 0.005$.
