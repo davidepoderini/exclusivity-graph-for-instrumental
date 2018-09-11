@@ -6,11 +6,22 @@
 
 \begin{document}
 \title{Exclusivity graph approach to Instrumental inequalities}
+
+
+
+
 \author{Davide Poderini}
+\author{Iris Agresti}
+\author{Gonzalo Carvacho}
+\author{Fabio Sciarrino}
 \affiliation{Dipartimento di Fisica, Sapienza Universit\`{a} di Roma,
 Piazzale Aldo Moro 5, I-00185 Roma, Italy}
+
+\author{Rafael Chaves}
+\author{...}
+\affiliation{International Institute of Physics, Federal University of Rio Grande do Norte, 59078-970, P. O. Box 1613, Natal, Brazil}
 \begin{abstract}
-    \ldots
+    abstract
 \end{abstract}
 
 \maketitle
@@ -34,17 +45,17 @@ Piazzale Aldo Moro 5, I-00185 Roma, Italy}
 The Instrumental causal structure is a widely studied
 structure both for its simplicity and commonness.
 It can be described by four random variables $\Lambda, X, A, B$ where $X$ and
-$\Lambda$ are independent of the others and $B$ depends on $X$ only through $A$,
-as graphically depicted in fig.~\ref{fig:instdag}.
+$\Lambda$ are independent from the others while $B$ depends on $X$ only via the node $A$,
+as graphically depicted in Fig.~\ref{fig:instdag}.
 
 The consequences of these causal relations on the distributions of the four
 variables have been throughly studied in previous works \cite{pearl1995,
 bonet2001}.
-Suppose that $X, A, B$ can take $l,m,n$ different values and 
-call $P(a_i b_j | x_k)$ the probability that $A$ and $B$ take values $a_i$
-and $b_j$ respectively, given that $X$ takes value $x_k$.
-It is known that such a system must respect the following inequalities,
-called \emph{Pearl's inequalities} \cite{pearl1995}:
+Suppose that $X, A, B$ take $l,m,n$ different values and 
+call $P(a_i b_j | x_k)$ the probability that $A$ and $B$ take, respectively, values $a_i$
+and $b_j$, given that $X$ reads $x_k$.
+Such system respects the following inequalities,
+named \emph{Pearl's inequalities} \cite{pearl1995}:
 \begin{equation}
     \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1
     \label{eq:pearl_ineq}
@@ -64,32 +75,32 @@ along with other similar inequalities obtained by permuting the labels of
 $a_i,b_j$ and $x_k$.
 
 
-These inequalities are closely related to the one presented in \cite{chaves2018}:
+These inequalities are closely related to the one introduced in \cite{chaves2018}:
 \begin{equation}
     -\avg{B}_{x_1} + 2 \avg{B}_{x_2} + \avg{A}_{x_1} - \avg{AB}_{x_1} +
     2\avg{AB}_{x_3} \le 3  
     \label{eq:rafael_ineq}
 \end{equation}
-which was experimentally violated in the same work, with a value of $3.79 \pm 0.013$.
-As one can expect, with the same data we can also violate inequality
+which was experimentally violated in the same work, with a value of $3.790 \pm 0.013$.
+As one can expect, with the same data we also violates inequality
 \eqref{eq:bonet_ineq} with a value of $2.159 \pm 0.005$.
 
-A similar analysis can be done in the CHSH scenario, depicted in
-fig.~\ref{fig:chshdag},
+A similar analysis can be carried out for the CHSH scenario, depicted in
+Fig.~\ref{fig:chshdag},
 where all the variables are dichotomic.
-Hence we have the notorious inequality:
+Here we have the notorious CHSH inequality:
 \begin{equation}
     \avg{A_1B_1} + \avg{A_1B_2} + \avg{A_2B_1} - \avg{A_2B_2} \le 2
     \label{eq:chsh_ineq}
 \end{equation}
 
-As was pointed out in \cite{himbeeck2018} these two scenarios (CHSH and the Instrumental)
+As pointed out in \cite{himbeeck2018} these two scenarios (CHSH and the Instrumental)
 are related: the two quantum violations can be
 seen as a consequence of one another.
-Indeed if we think of the Instrumental scenario as a restricted CHSH,
-where we postselect in the case of $Y = A$, and we augment the variable $X$ with
-an additional value $x_3$ as described in \cite{himbeeck2018}.
-From this analysis the maximum quantum violation is $(3 + \sqrt{2})/2$.
+Indeed the Instrumental scenario can interpreted as a restricted CHSH,
+where one post-selects the case of $Y = A$ and the variable $X$ is augmented with
+an additional value $x_3$, as described in \cite{himbeeck2018}.
+From this analysis the maximum quantum violation is found to be $(3 + \sqrt{2})/2$.
 
 \begin{figure}[h]
     \centering
@@ -97,35 +108,39 @@ From this analysis the maximum quantum violation is $(3 + \sqrt{2})/2$.
     \caption{A generalization of the CHSH DAG.}
     \label{fig:genchshdag}
 \end{figure}
-This can be verified experimentally provided we have an apparatus capable of
+This relation can be verified experimentally provided we have an apparatus capable of
 reproducing the causal structure depicted in fig.~\ref{fig:genchshdag} i.e. a CHSH scenario
 where $X$ can take 3 possible values, as the apparatus presented in
 \cite{chaves2018}.
-Taking advantage of this we can violate all three inequalities
+
+We have carried out this experimental test in order to violate the three inequalities
 \eqref{eq:bonet_ineq}, \eqref{eq:rafael_ineq} and \eqref{eq:chsh_ineq} with the same set of
 data:
 \begin{enumerate}
-    \item To violate the Instrumental inequalities we postselect in the case
-        $Y = A$, obtaining values $3.787 \pm 0.013$ and $2.159 \pm 0.005$ for \eqref{eq:rafael_ineq} and
+    \item To violate the Instrumental inequalities we postselect the case
+        $Y = A$. We obtained the result $3.787 \pm 0.013$ and $2.159 \pm 0.005$ for \eqref{eq:rafael_ineq} and
         \eqref{eq:bonet_ineq} respectively.
+        
     \item To violate the CHSH inequality we just ignore the case $X = x_3$,
         obtaining the value $2.619 \pm 0.005$.
 \end{enumerate}
 
 \section*{Instrumental and exclusivity graphs}
+
+The exclusivity graph method was primarily developed to study
+non-contextual inequalities and obtain their quantum violation
+\cite{cabello2014}. 
+In this formalism every possible event, i.e. every possible set of outcomes and
+settings, is associated to a vertex in a (undirected) graph.
+Two vertices are then connected by an edge if and only if they are exclusive,
+i.e. if exists a measurement that can distinguish between them. 
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=.8\columnwidth]{images/instrumental_c5.pdf}
     \caption{The exclusivity graph of the bonet inequality.}
     \label{fig:bonetexc}
 \end{figure}
-The exclusivity graph method was primarly developed to study
-non-contextual inequalities and obtain their quantum violation
-\cite{cabello2014}. % TODO altre
-In this formalism every possible event, i.e. every possible set of outcomes and
-settings, is associated to a vertex in a (undirected) graph.
-Two vertices are then connected by an edge if and only if they are exclusive,
-i.e. if exists a measurement that can distinguish between them. % TODO espandi
 
 Interestingly many known results about the instrumental scenario, including the
 inequality \eqref{eq:bonet_ineq}, can also be obtained using this formalism.
@@ -133,7 +148,7 @@ Restricting for the moment to the case of of dichotomic observables ($n=m=2$),
 we label as $p(ab|x)$ with $a, b \in \mathcal{A} = \mathcal{B} = \{0,1\}$ and $x \in
 \mathcal{X} = \{0,\ldots,l\}$, the probability of having outcomes $a$ and $b$ with setting $x$. 
 To obtain the exclusivity structure of the events in the instrumental scenario
-we follow \cite{bonet2001}, and we say that two events $ab|x$ and $a'b'|x'$ are \emph{not} exclusive
+we follow the approach by \cite{bonet2001}, and we say that two events $ab|x$ and $a'b'|x'$ are \emph{not} exclusive
 if there exists two functions $f:\mathcal{X} \rightarrow \mathcal{A}$ and
 $g:\mathcal{A} \rightarrow \mathcal{B}$ such that:
 \begin{align}
@@ -159,13 +174,14 @@ that there is no quantum violation in the case of $l=2$, since the corresponding
 exclusivity graph (and its complement) does not contain any odd cyclic graph
 with more than $5$ vertices.  
 
-For $l\ge3$ instead we see that there is a violation for the inequality \eqref{eq:bonet_ineq}, 
+For $l\ge3$ instead we see that there is a violation for the inequality \eqref{eq:bonet_ineq},
 since it forms a $C_5$ cyclic graph, i.e. the pentagon depicted in
 fig.~\ref{fig:bonetexc}, so that the classical limit would be $2$.
 In this framework \eqref{eq:bonet_ineq} is analogous to the KCBS contextual
 inequality.
-We must notice that the quantum limit for the KCBS is $\sqrt{5}$, different
-from the limit expected for the Bonet inequality found in \cite{himbeeck2018}.
+Clearly in this case the quantum limit is different from the one for the standard KCBS
+inequality $\sqrt{5}$, since we are in a bipartite scenario.
+Using the methods in \cite{rabelo2014}, we find that the limit in this case is $(3+\sqrt{2})/2$.
 
 \begin{thebibliography}{}
     \bibitem{pearl1995} J.Pearl, {\em On the testability of causal models with
@@ -182,10 +198,13 @@ from the limit expected for the Bonet inequality found in \cite{himbeeck2018}.
      \bibitem{himbeeck2018} T.Van Himbeeck, J.B. Brask, S.Pironio, R.Ramanathan, A.B.Sainz, E. Wolfe, 
         {\em Quantum violations in the Instrumental scenario and their relations to the Bell scenario},
         arXiv preprint arXiv:1804.04119 (2018).
-         (2014). . 
+         (2014).
      \bibitem{cabello2014} A.Cabello, S.Severini, A.Winter,
          {\em Graph-theoretic approach to quantum correlations}, 
          Physical review letters, 112(4), 040401 (2014).
+     \bibitem{rabelo2014} Rabelo, R., Duarte, C., López-Tarrida, A. J., Cunha, M. T., Cabello, A. (2014). {\em Multigraph approach to quantum non-locality.} Journal of Physics A: Mathematical and Theoretical, 47(42), 424021.
+     \bibitem{kcbs2008} Klyachko, A. A., Can, M. A., Binicioğlu, S., Shumovsky, A. S. (2008). {\em Simple test for hidden variables in spin-1 systems.} Physical review letters, 101(2), 020403.
+     
 %\bibitem{} , {\em },  ().
 \end{thebibliography}
 
