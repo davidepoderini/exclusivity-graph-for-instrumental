@@ -7,6 +7,13 @@
     prl]{revtex4-1}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
+\usepackage[babel]{csquotes}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{braket}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, graphics, setspace}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\avg}[1]{\langle#1\rangle}
 \newcommand{\et}{\;\mathrm{and}\;}
@@ -35,13 +42,13 @@ Piazzale Aldo Moro 5, I-00185 Roma, Italy}
 \maketitle
 \section*{Introduction}
 The existence of causal relationships between events is one of the basic
-principle that makes scientific investigation possible.
-Nonetheless extracting informations about these relationships only from
+principles that makes scientific investigation possible.
+Nonetheless, extracting informations about these relationships only from
 experimental observations is not always feasible and can be a tricky task.
 In this context causal models are a indispensable tool to formalize causal
 assumptions and to produce falsifiable statements causal relations. %cite Pearl
 
-A causal model is tipically represented by a directed acyclic graph (DAG), where
+A causal model is typically represented by a Directed Acyclic Graph (DAG), where
 the nodes represent observed events, which are described by random variables,
 and the edges the cause-effect relationship between them.
 From some causal DAGs it is possible to derive constraints on the statistical
@@ -52,11 +59,11 @@ It is known, since Bell theorem, that quantum mechanics allows for statistical %
 behavior which are impossible to reproduce in a classical context, so it is
 reasonable to suppose that the constraints derived from classical causal
 assumptions could be violated by quantum systems.
-Indeed Bell experiment can be modelled using a causal DAG, as shown in
+Indeed Bell experiment can be modeled using a causal DAG, as shown in
 fig~\ref{fig:chshdag}, and the Bell inequality obtained as a consequence of causal
 assumptions.
 More recently it has been proved and experimentally demonstrated that the
-well-known ``instrumental'' causal structure (see fig.~\ref{fig:instdag})
+well-known ``instrumental'' causal structure (see Fig.~\ref{fig:instdag})
 posses classical constraints that are violated by quantum mechanics. %cite 
 
 \ldots
@@ -65,7 +72,7 @@ posses classical constraints that are violated by quantum mechanics. %cite
     \centering
     \parbox{.9\columnwidth}{
         \includegraphics[width=.7\columnwidth]{images/instdag.pdf}
-        \caption{The DAG representing a general Instrumental scenario.}
+        \caption{\textcolor{blue}{ma se levamo quelle cose che stanno per dire input e ooutput nelle immagine? tipo lasiare la struttura pulita, magari il resto possiamo dirlo nella caption?} The DAG representing a general Instrumental scenario.}
         \label{fig:instdag}
     }
 
@@ -78,6 +85,15 @@ posses classical constraints that are violated by quantum mechanics. %cite
 \end{figure}
 
 \section*{Instrumental causal structure}
+
+
+\textcolor{blue}{Gonz proposta: Among all the possible causal structures, a particular interest has been devoted to the \textit{Instrumental causal structure} (see Fig.\ref{fig:instdag}) introduced by Pearl[] in the 90's with applications ranging from econometrics[] to clinical trial[]. One of the most important properties of instrumental variables is the fact that allow us to bound causal relations between variables solely from observational data. Like in the Bell tests where the inequalities allow us to test local-realism for a particular distribution, instrumental inequalities test whether we have a valid instrument.}\\
+\textcolor{blue}{Recently has been experimentally proved that instrumental inequalities are also violated when considering quantum resources \cite{chaves2018}, thus opening several venues for future research such as device-independent cryptography [], random number generation[] and basically any application that until now has been linked with the Bell scenario.}\\
+
+\textcolor{blue}{In light of the importance regarding the instrumental causal structure, we are interested in ...from the contextual point of view in order to better address the question of whether a ....could be possible.
+Let us consider the instrumental structure depicted in Fig.\ref{fig:instdag} where X corresponds to the instrument, A and B the variables for which we are interested to bound the causal relation and $\lambda$ our quantum resource. If we allow the classical variables X, A, B to take the values $l,m,n$ respectively the Bayesian probability distribution for the i(j)-esimo outcome of A(B) given x reads $P(a_i,b_j|x_k)$ }
+
+
 The Instrumental causal structure is a widely studied
 structure both for its simplicity and commonness.
 It can be described by four random variables $\Lambda, X, A, B$ where $X$ and
@@ -232,9 +248,9 @@ methods can be applied to obtain inequalities with their respective quantum and
 classical bounds.
 
 \subsection{The Instrumental exclusivity graph}
-\begin{figure*}[h]
+\begin{figure*}[t]
     \centering
-    \includegraphics[width=.9\textwidth]{images/instrumental_exgraph.pdf}
+    \includegraphics[width=.7\textwidth]{images/instrumental_exgraph.pdf}
     \caption{The exclusivity graph for the instrumental scenario for $l=2,3,4,5$
     from top left to bottom right. In the figure the bold lines represent
     cliques.}
@@ -286,7 +302,7 @@ obtain in a bipartite scenario.
 To find a tight bound we must apply other methods to our graph, like the ones in
 \cite{rabelo2014}, using which we find a value of $(3+\sqrt{2})/2$.
 
-It can be easily proved (see Appendix) that no other odd anticycle beside
+It can be easily proved (see Methods) that no other odd anticycle beside
 $C_5$ is present for any $l$, so from this point of view, we can say that any
 quantum violation for a general $l22$ instrumental scenario has essentially the
 same origin: it stems from the non classicality of the $C_5$ graph.
@@ -339,7 +355,7 @@ Using the definition \eqref{eq:lovasztheta} and \eqref{eq:alphastab}, and
 remembering that $\STAB(G)$ is a convex hull of a finite number of
 characteristic labellings we can rewirte the previous maximization as:
 \begin{align}
-    \Delta &= \min \{I_y : y \, \text{is a maximal stable labelling}\} \quad \text{where}
+    \Delta &= \min \{I_y : y \, \text{is a maximal stable labelling}\}
     \label{eq:maximize_w_delta}\\
     I_y &= \max_{\substack{w \in [0,1]^n\\x \in \TH(G)}} \{w\cdot (x - y)\}
     \label{eq:maximize_w_I}
@@ -351,9 +367,9 @@ stable set in $G$ which are $\sim 3^{n/3}$ in the worst case.
 Also to enumerate all the maximal independent sets we used the Tomita version of
 the Bron–Kerbosch algorithm which has the same worst case complexity. % cite
 
-\appendix
-\section{There are no cycles $C_7$ for $n \ge 7$ in the $d22$ instrumental scenario.}
-
+\section{Methods}
+\subsection{There are no cycles $C_n$ with $n \ge 7$ in the $d22$ instrumental scenario.}
+\label{sec:c5only_proof}
 Here we prove that there cannot be a odd antihole with more than $5$ vertices in
 the exclusivity graph associated to an instrumental scenario of the type $d22$.
 
@@ -361,12 +377,20 @@ Remind that, from the exclusivity conditions \eqref{eq:non-exclsivity_conditions
 given two events $ab|x$ and $a'b'|x'$, they are connected by edge if one of
 these two conditions is true:
 \begin{enumerate}
-    \item $x=x'$.
-    \item $a=a'$ and $b \neq b'$.
+    \item $x=x'$.\label{en:rule1}
+    \item $a=a'$ and $b \neq b'$.\label{en:rule2}
 \end{enumerate}
-
-\ldots
-
+Suppose we have a cycle $C_n$ with $n \ge 7$, as in fig.~\ref{fig:cycle_graph_proof},
+and consider node $1$ which correspond to an event which we can arbitrarily identify
+with $00|0$.
+Among its neighbors $2$ and $n$, one will necessarily need to satisfy rule 
+\ref{en:rule2} (they cannot both satisfy rule \ref{en:rule1} or 
+the three nodes would be a clique).
+So without loss of generality we can assign the event $01|1$ to $2$.
+Since nodes $4,5,6,7$ must not satisfy rule \ref{en:rule2} with both $1$ and $2$ 
+they must have $a = 1$, and since $4$ must be independent of $7$ and $6$, and $7$ of $5$
+we have that they all need to have the same $b$, but this is impossible if they have to be
+connected like in figure.
 
 \begin{thebibliography}{}
     \bibitem{pearl1995} J.Pearl, {\em On the testability of causal models with
@@ -394,43 +418,3 @@ these two conditions is true:
 \end{thebibliography}
 
 \end{document}
-
-A similar analysis can be carried out for the CHSH scenario, depicted in
-Fig.~\ref{fig:chshdag},
-where all the variables are dichotomic.
-Here we have the notorious CHSH inequality:
-\begin{equation}
-    \avg{A_1B_1} + \avg{A_1B_2} + \avg{A_2B_1} - \avg{A_2B_2} \le 2
-    \label{eq:chsh_ineq}
-\end{equation}
-
-As pointed out in \cite{himbeeck2018} these two scenarios (CHSH and the Instrumental)
-are related: the two quantum violations can be
-seen as a consequence of one another.
-Indeed the Instrumental scenario can interpreted as a restricted CHSH,
-where one post-selects the case of $Y = A$ and the variable $X$ is augmented with
-an additional value $x_3$, as described in \cite{himbeeck2018}.
-From this analysis the maximum quantum violation is found to be $(3 + \sqrt{2})/2$.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=.7\columnwidth]{images/genchshdag.pdf}
-    \caption{A generalization of the CHSH DAG.}
-    \label{fig:genchshdag}
-\end{figure}
-This relation can be verified experimentally provided we have an apparatus capable of
-reproducing the causal structure depicted in fig.~\ref{fig:genchshdag} i.e. a CHSH scenario
-where $X$ can take 3 possible values, as the apparatus presented in
-\cite{chaves2018}.
-
-We have carried out this experimental test in order to violate the three inequalities
-\eqref{eq:bonet_ineq}, \eqref{eq:rafael_ineq} and \eqref{eq:chsh_ineq} with the same set of
-data:
-\begin{enumerate}
-    \item To violate the Instrumental inequalities we postselect the case
-        $Y = A$. We obtained the result $3.787 \pm 0.013$ and $2.159 \pm 0.005$ for \eqref{eq:rafael_ineq} and
-        \eqref{eq:bonet_ineq} respectively.
-        
-    \item To violate the CHSH inequality we just ignore the case $X = x_3$,
-        obtaining the value $2.619 \pm 0.005$.
-\end{enumerate}
