@@ -35,9 +35,9 @@ Piazzale Aldo Moro 5, I-00185 Roma, Italy}
 \author{...}
 \affiliation{International Institute of Physics, Federal University of Rio Grande do Norte, 59078-970, P. O. Box 1613, Natal, Brazil}
 
-%\begin{abstract}
-%    
-%\end{abstract}
+\begin{abstract}
+   \textcolor{blue}{Instrumental tests have been widely used to derive causal relations between variables even in presence of unobserved latent factors, thus providing a powerful tool for different sciences ranging from xxx to xxx. Recently, much interest have been dedicated to the instrumental scenario since admits quantum violations with fewer resources respect to the Bell analogue, this property can be exploited to (drastically?) improve our current capacities to process information. Dire qualcosa della contextuality. Here, we present the instrumental inequality under a contextual approach, showing that the geometry of correlations within this framework allow us to find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
+\end{abstract}
 
 \maketitle
 \section*{Introduction}
@@ -91,8 +91,14 @@ posses classical constraints that are violated by quantum mechanics. %cite
 \textcolor{blue}{Recently has been experimentally proved that instrumental inequalities are also violated when considering quantum resources \cite{chaves2018}, thus opening several venues for future research such as device-independent cryptography [], random number generation[] and basically any application that until now has been linked with the Bell scenario.}\\
 
 \textcolor{blue}{In light of the importance regarding the instrumental causal structure, we are interested in ...from the contextual point of view in order to better address the question of whether a ....could be possible.
-Let us consider the instrumental structure depicted in Fig.\ref{fig:instdag} where X corresponds to the instrument, A and B the variables for which we are interested to bound the causal relation and $\lambda$ our quantum resource. If we allow the classical variables X, A, B to take the values $l,m,n$ respectively the Bayesian probability distribution for the i(j)-esimo outcome of A(B) given $x_k$ reads $P(a_i,b_j|x_k)$. From a classical perspective (and under some considerations even quantum) the upper-bound for the probability distribution}
+Let us consider the instrumental structure depicted in Fig.\ref{fig:instdag} where X corresponds to the instrument, A and B the variables for which we are interested to bound the causal relation and $\lambda$ our quantum resource. If we allow the classical variables X, A, B to take the values $l,m,n$ respectively the Bayesian probability distribution for the i(j)-esimo outcome of A(B) given $x_k$ reads $P(a_i,b_j|x_k)$. Pearl showed that the inequality bounding the probability distribution under the assumption of the instrumental structure is the following: }
 
+\textcolor{blue}{\begin{equation} 
+   max_{i=1,...,m} \sum_{j=0}^{n} max_{k=1,...,l} P(a_i b_j|x_{k(i,j)}) \le 1
+    \label{eq:pearl_ineq}
+\end{equation}}
+
+\textcolor{red}{Davide, ho messo i "max" perche mi la ricordo cosi, ma tocca controllare i index. Non so se avevi levato a posta per il tuo approach boh}.\\ \textcolor{blue}{In 2001 Bonet extended the results of Pearl by deriving another instrumental inequality with a higher bound if the instrumental variable X takes three values instead of two, hence probing that the polytope of correlations is not tightly bounded by Pearl's inequalities.  }
 
 The Instrumental causal structure is a widely studied
 structure both for its simplicity and commonness.
@@ -251,7 +257,7 @@ classical bounds.
 \begin{figure*}[t]
     \centering
     \includegraphics[width=.7\textwidth]{images/instrumental_exgraph.pdf}
-    \caption{The exclusivity graph for the instrumental scenario for $l=2,3,4,5$
+    \caption{\textcolor{blue}{Davide, sicuramente ante delle figure andrano nel SI, ma puoi comunque sistemare gia la disposizione, perchè utilizanno troppo spazio, non sono segnalate con a,b,c,d etc. Magari potresti scrivere la caption per quelle che sai gia che andranno nel main text.} The exclusivity graph for the instrumental scenario for $l=2,3,4,5$
     from top left to bottom right. In the figure the bold lines represent
     cliques.}
     \label{fig:instrumental_exgraphs}
@@ -398,6 +404,13 @@ Since nodes $4,5,6,7$ must not satisfy rule \ref{en:rule2} with both $1$ and $2$
 they must have $a = 1$, and since $4$ must be independent of $7$ and $6$, and $7$ of $5$
 we have that they all need to have the same $b$, but this is impossible if they have to be
 connected like in figure.
+
+\textcolor{blue}{
+\section{Acknowledgments}
+We acknowledge support from John Templeton Foundation via the grant Q-CAUSAL n$^{\circ}$61084 (the opinions expressed in this publication are those of the authors and do not necessarily reflect the views of the John Templeton
+Foundation)}
+
+
 
 \begin{thebibliography}{}
     \bibitem{pearl1995} J.Pearl, {\em On the testability of causal models with
