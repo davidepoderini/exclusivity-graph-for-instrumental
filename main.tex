@@ -388,16 +388,19 @@ these two conditions is true:
     \item $a=a'$ and $b \neq b'$.\label{en:rule2}
 \end{enumerate}
 Suppose we have a cycle $C_n$ with $n \ge 7$, as in fig.~\ref{fig:cycle_graph_proof},
-and consider node $1$ which correspond to an event which we can arbitrarily identify
+and consider node $2$ which correspond to an event which we can arbitrarily identify
 with $00|0$.
-Among its neighbors $2$ and $n$, one will necessarily need to satisfy rule 
+Among its neighbors $1$ and $3$, one will necessarily need to satisfy rule 
 \ref{en:rule2} (they cannot both satisfy rule \ref{en:rule1} or 
 the three nodes would be a clique).
-So without loss of generality we can assign the event $01|1$ to $2$.
-Since nodes $4,5,6,7$ must not satisfy rule \ref{en:rule2} with both $1$ and $2$ 
-they must have $a = 1$, and since $4$ must be independent of $7$ and $6$, and $7$ of $5$
-we have that they all need to have the same $b$, but this is impossible if they have to be
-connected like in figure.
+So without loss of generality we can assign the event $01|1$ to $3$.
+Since nodes $5,6,7$ must not satisfy rule \ref{en:rule2} with both $2$ and $3$ 
+they must have $a = 1$.
+Moreover $7$ and $5$ must have the same $b$, different from $6$.
+In the same way $1$ must not satisfy rule \ref{en:rule2} with $6,5$ and $3$, so it
+needs to have $a=0$ and $b=1$.
+But now, since we only have values $\{0,1\}$ for $a$, we cannot avoid $4$ 
+to be linked to one of the nodes $1,2,6,7$.
 
 \begin{thebibliography}{}
     \bibitem{pearl1995} J.Pearl, {\em On the testability of causal models with
