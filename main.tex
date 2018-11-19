@@ -7,12 +7,12 @@
     prl]{revtex4-1}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
-\usepackage[babel]{csquotes}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{braket}
-\usepackage{graphicx}
-\usepackage{amsmath, amssymb, graphics, setspace}
+%\usepackage[babel]{csquotes}
+%\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{braket}
+%\usepackage{graphicx}
+%\usepackage{amsmath, amssymb, graphics, setspace}
 \usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\avg}[1]{\langle#1\rangle}
@@ -36,7 +36,16 @@ Piazzale Aldo Moro 5, I-00185 Roma, Italy}
 \affiliation{International Institute of Physics, Federal University of Rio Grande do Norte, 59078-970, P. O. Box 1613, Natal, Brazil}
 
 \begin{abstract}
-   \textcolor{blue}{Instrumental tests have been widely used to derive causal relations between variables even in presence of unobserved latent factors, thus providing a powerful tool for different sciences ranging from xxx to xxx. Recently, much interest have been dedicated to the instrumental scenario since admits quantum violations with fewer resources respect to the Bell analogue, this property can be exploited to (drastically?) improve our current capacities to process information. Dire qualcosa della contextuality. Here, we present the instrumental inequality under a contextual approach, showing that the geometry of correlations within this framework allow us to find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
+   \textcolor{blue}{Instrumental tests have been widely used to derive causal
+   relations between variables even in presence of unobserved latent factors,
+   thus providing a powerful tool for different sciences ranging from xxx to
+   xxx. Recently, much interest have been dedicated to the instrumental scenario
+   since admits quantum violations with fewer resources respect to the Bell
+   analogue, this property can be exploited to (drastically?) improve our
+   current capacities to process information. Dire qualcosa della contextuality.
+   Here, we present the instrumental inequality under a contextual approach,
+   showing that the geometry of correlations within this framework allow us to
+   find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
 \end{abstract}
 
 \maketitle
@@ -46,83 +55,93 @@ principles that makes scientific investigation possible.
 Nonetheless, extracting informations about these relationships only from
 experimental observations is not always feasible and can be a tricky task.
 In this context causal models are a indispensable tool to formalize causal
-assumptions and to produce falsifiable statements causal relations. %cite Pearl
+assumptions and to produce falsifiable statements causal relations. 
 
 A causal model is typically represented by a Directed Acyclic Graph (DAG), where
 the nodes represent observed events, which are described by random variables,
 and the edges the cause-effect relationship between them.
 From some causal DAGs it is possible to derive constraints on the statistical
 distribution of the variables which allow one to reject or accept a causal
-assumption. %cite Pearl, Bonet, etc
+assumption\cite{pearlbook}.
 
 It is known, since Bell theorem, that quantum mechanics allows for statistical %cite
 behavior which are impossible to reproduce in a classical context, so it is
 reasonable to suppose that the constraints derived from classical causal
 assumptions could be violated by quantum systems.
 Indeed Bell experiment can be modeled using a causal DAG, as shown in
-fig~\ref{fig:chshdag}, and the Bell inequality obtained as a consequence of causal
+Fig~\ref{fig:chshinstdag}-b, and the Bell inequality obtained as a consequence of causal
 assumptions.
-More recently it has been proved and experimentally demonstrated that the
-well-known ``instrumental'' causal structure (see Fig.~\ref{fig:instdag})
-posses classical constraints that are violated by quantum mechanics. %cite 
+More recently it has been proved and experimentally demonstrated\cite{chaves2018} that the
+well-known ``instrumental'' causal structure (see Fig.~\ref{fig:chshinstdag}-a)
+posses classical constraints that are violated by quantum mechanics.
 
 \ldots
 
 \begin{figure}[h]
     \centering
-    \parbox{.9\columnwidth}{
-        \includegraphics[width=.7\columnwidth]{images/instdag.pdf}
-        \caption{\textcolor{blue}{ma se levamo quelle cose che stanno per dire input e ooutput nelle immagine? tipo lasiare la struttura pulita, magari il resto possiamo dirlo nella caption?} The DAG representing a general Instrumental scenario.}
-        \label{fig:instdag}
-    }
+    \includegraphics[width=.8\columnwidth]{images/chsh_inst_dag.pdf}
+        \caption{\textcolor{blue}{ma se levamo quelle cose che stanno per dire
+        input e ooutput nelle immagine? tipo lasiare la struttura pulita, magari
+    il resto possiamo dirlo nella caption?} 
+    \textcolor{green}{Si puó fare ma mi servirebbe qualcosa che ricordi il fatto
+    che questa é una generica instrumental con $l$ valori per $X$, $m$ per $A$ e
+$n$ per b, lo metto nella caption?}
+    \textbf{a)} The DAG representing a general Instrumental scenario.
+    \textbf{b)} The DAG of the CHSH scenario.
+}
+    \label{fig:chshinstdag}
 
-    \bigskip
-    \parbox{.9\columnwidth}{
-        \includegraphics[width=.8\columnwidth]{images/chshdag.pdf}
-        \caption{\textcolor{blue}{Davide non è piu conveniente mettere le 2 dags come 1 figura con a e b?} The DAG representing the CHSH scenario.}
-        \label{fig:chshdag}
-    }
 \end{figure}
 
 \section*{Instrumental causal structure}
 
 
-\textcolor{blue}{Gonz proposta: Among all the possible causal structures, a particular interest has been devoted to the \textit{Instrumental causal structure} (see Fig.\ref{fig:instdag}) introduced by Pearl[] in the 90's with applications ranging from econometrics[] to clinical trial[]. One of the most important properties of instrumental variables is the fact that allow us to bound causal relations between variables solely from observational data. Like in the Bell tests where the inequalities allow us to test local-realism for a particular distribution, instrumental inequalities test whether we have a valid instrument.}\\
-\textcolor{blue}{Recently has been experimentally proved that instrumental inequalities are also violated when considering quantum resources \cite{chaves2018}, thus opening several venues for future research such as device-independent cryptography [], random number generation[] and basically any application that until now has been linked with the Bell scenario.}\\
+Among all the possible causal structures, a
+particular interest has been devoted to the \textit{Instrumental causal
+structure} (see Fig.\ref{fig:chshinstdag}-a) introduced by Pearl\cite{pearl1995}
+in the 90's with applications ranging from econometrics[] to clinical trial[]. 
+One of the most important properties of instrumental variables is the fact that
+allow us to bound causal relations between variables solely from observational
+data. 
+Like in the Bell tests where the inequalities allow us to test local-realism for
+a particular distribution, instrumental inequalities test whether we have a
+valid instrument.
+Recently has been experimentally proved that instrumental inequalities are also
+violated when considering quantum resources \cite{chaves2018}, thus opening
+several venues for future research such as device-independent cryptography [],
+random number generation[] and basically any application that until now has been
+linked with the Bell scenario.
+In light of the importance regarding the instrumental causal structure, we are
+interested in exploring new techniques in order to better address the question
+of whether we can obtain a quantum violation, and what is the optimal test
+constrained on given experimental data.  
 
-\textcolor{blue}{In light of the importance regarding the instrumental causal structure, we are interested in ...from the contextual point of view in order to better address the question of whether a ....could be possible.
-Let us consider the instrumental structure depicted in Fig.\ref{fig:instdag} where X corresponds to the instrument, A and B the variables for which we are interested to bound the causal relation and $\lambda$ our quantum resource. If we allow the classical variables X, A, B to take the values $l,m,n$ respectively the Bayesian probability distribution for the i(j)-esimo outcome of A(B) given $x_k$ reads $P(a_i,b_j|x_k)$. Pearl showed that the inequality bounding the probability distribution under the assumption of the instrumental structure is the following: }
+Let us consider the instrumental structure depicted in Fig.\ref{fig:instdag}
+where X corresponds to the instrument, A and B the variables for which we are
+interested to bound the causal relation and $\Lambda$ our quantum resource. 
+If we allow the classical variables X, A, B to take the values $l,m,n$
+respectively the Bayesian probability distribution for the i(j)-th outcome of
+A(B) given $x_k$ reads $P(a_i,b_j|x_k)$. 
+Pearl showed that, under the assumption of the instrumental structure, exist the
+following inequalities bounding the probability distribution:
 
-\textcolor{blue}{\begin{equation} 
-   max_{i=1,...,m} \sum_{j=0}^{n} max_{k=1,...,l} P(a_i b_j|x_{k(i,j)}) \le 1
-    \label{eq:pearl_ineq}
-\end{equation}}
-
-\textcolor{red}{Davide, ho messo i "max" perche mi la ricordo cosi, ma tocca controllare i index. Non so se avevi levato a posta per il tuo approach boh}.\\ \textcolor{blue}{In 2001 Bonet extended the results of Pearl by deriving another instrumental inequality with a higher bound if the instrumental variable X takes three values instead of two, hence probing that the polytope of correlations is not tightly bounded by Pearl's inequalities.  }
-
-The Instrumental causal structure is a widely studied
-structure both for its simplicity and commonness.
-It can be described by four random variables $\Lambda, X, A, B$ where $X$ and
-$\Lambda$ are independent from the others while $B$ depends on $X$ only via the node $A$,
-as graphically depicted in Fig.~\ref{fig:instdag}.
-
-The consequences of these causal relations on the distributions of the four
-variables have been throughly studied in previous works \cite{pearl1995,
-bonet2001}.
-Suppose that $X, A, B$ take $l,m,n$ different values and 
-call $P(a_i b_j | x_k)$ the probability that $A$ and $B$ take, respectively, values $a_i$
-and $b_j$, given that $X$ reads $x_k$.
-Such system respects the following inequalities,
-named \emph{Pearl's inequalities} \cite{pearl1995}:
 \begin{equation} 
     \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1
     \label{eq:pearl_ineq}
 \end{equation}
 for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$.
 
-In \cite{bonet2001} Bonet showed that the polytope of allowed
-correlation is not tightly bounded by \emph{Pearl's inequalities}.
-For instance for $(l,m,n) = (3,2,2)$ the following inequality must also be satisfied:
+\textcolor{red}{Davide, ho messo i "max" perche mi la ricordo cosi, ma tocca
+controllare i index. Non so se avevi levato a posta per il tuo approach boh}.
+\textcolor{green}{Si, é meglio mettere le singole disuguaglianze invece che
+quella col max, é carino perché ognuna corrisponde con gli edges del grafo di
+esclusivitá!}
+
+In 2001 Bonet \cite{bonet2001} extended the results of Pearl by deriving another
+instrumental inequality, hence proving that the polytope of correlations is
+not tightly bounded by Pearl's inequalities.
+
+For instance in the case $(l,m,n) = (3,2,2)$ the following inequality is also satisfied:
 \begin{multline}
     P(a_1 b_1 | x_1) + P(a_2 b_2 | x_1) + 
     P(a_1 b_1 | x_2) +\\+ P(a_2 b_1 | x_2) + 
@@ -131,7 +150,6 @@ For instance for $(l,m,n) = (3,2,2)$ the following inequality must also be satis
 \end{multline}
 along with other similar inequalities obtained by permuting the labels of
 $a_i,b_j$ and $x_k$.
-
 
 These inequalities are related to the one introduced in \cite{chaves2018}:
 \begin{equation}
@@ -146,14 +164,14 @@ As one can expect, with the same data it is also possible to violate inequality
 \section*{Exclusivity graph method}
 
 The exclusivity graph method was primarily developed to study
-non-contextual inequalities and obtain their quantum violation % cite something on NCI 
-\cite{cabello2014} as well as for non-locality scenarios. %cite acin
+non-contextual inequalities and obtain their quantum violation.
+\cite{cabello2014} as well as for non-locality scenarios\cite{acin2015}.
 In this formalism every possible event, i.e. every possible set of outcomes
 $a_1^,\ldots, a_n$ of measurements $A_1,\ldots,A_n$ given settings
 $x_1,\ldots,x_n$, is associated to a vertex in a (undirected) graph $G = (V, E)$.  
 Two vertices $u, v \in V$ are then connected by an edge $uv \in E$ if and only
 if they are exclusive, i.e.  if exists a measurement that can distinguish
-between them. % In this case we write $u --- v$, else $u --/-- v$.
+between them.
 
 A linear constraint can be expressed as a linear function 
 \begin{equation}
@@ -167,7 +185,8 @@ invariants: the independence number $\alpha(G, w)$ and the Lovász theta
 $\theta(G, w)$.
 
 Here we briefly introduce these concepts and their relationships, a more
-extensive and general treatment can be found in \cite{cabello2014, rabelo2014} %cite e acin
+extensive and general treatment can be found in \cite{cabello2014, rabelo2014,
+acin2015}
 
 Consider a graph $G(V,E)$ with vertex weights $w$, and $|V| = n$ .
 We call a \emph{characteristic labelling} for $U \subseteq V$ a vector $x_v \in
@@ -179,7 +198,7 @@ The independence number $\alpha(G, w)$ is defined as the maximum number of
 vertices (weighted with $w$) of an independent set of $G$.
 Is also costumary to define the set $\STAB(G)$ as the convex hull of all the
 characteristic labellings of stable sets:
-\begin{equation}
+\begin{equation} 
     \STAB(G) = \{x : x \quad \text{is a stable labelling of}\quad G \}
     \label{eq:stab}
 \end{equation}
@@ -201,9 +220,9 @@ $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
 \end{multline}
 It can be proved that this set includes all the possible quantum strategies, but
 in general is larger as it contains also the ``almost quantum correlations''
-described in .%cite acin almostq
-\footnote{As proved in \cite{} this set corresponds to the step $1+AB$ of the
-NPA hierarchy \cite{}.} %cite
+described in \cite{almostquantum2015}.
+\footnote{As proved in \cite{acin2015} this set corresponds to the step $1+AB$ of the
+NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}
 Maximizing over $\TH(G)$ gives the Lovász theta:
 \begin{equation}
     \theta(G,w) = \{w\cdot x : x \in \TH(G)\}
@@ -302,7 +321,7 @@ Analogously knowing that $\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$ we get
 $\sqrt{5}$ as an upper bound for the quantum limit.
 
 In this framework \eqref{eq:bonet_ineq} seems analogous to the KCBS contextual
-inequality. %cite
+inequality\cite{kcbs2008}.
 The difference here is that the quantum limit is not $\sqrt{5}$, which we cannot
 obtain in a bipartite scenario.
 To find a tight bound we must apply other methods to our graph, like the ones in
@@ -371,11 +390,12 @@ The maximization \eqref{eq:maximize_w_I} for each $y$ is efficient, being a
 semi-definite program, but unfortunately it has to be run for each maximal
 stable set in $G$ which are $\sim 3^{n/3}$ in the worst case.
 Also to enumerate all the maximal independent sets we used the Tomita version of
-the Bron–Kerbosch algorithm which has the same worst case complexity. % cite
+the Bron–Kerbosch algorithm which has the same worst case
+complexity\cite{tomita2006}.
 
 \section{Methods}
 \subsection{There are no cycles $C_n$ with $n \ge 7$ in the $d22$ instrumental scenario.}
-\label{sec:c5only_proof}
+%\label{sec:c5only_proof}
 Here we prove that there cannot be a odd antihole with more than $5$ vertices in
 the exclusivity graph associated to an instrumental scenario of the type $d22$.
 
@@ -386,7 +406,7 @@ the exclusivity graph associated to an instrumental scenario of the type $d22$.
     in the $d22$ scenario.}
     \label{fig:cycle_graph_proof}
 \end{figure}
-Remind that, from the exclusivity conditions \eqref{eq:non-exclsivity_conditions},
+Remind that, from the exclusivity conditions \eqref{eq:non-exclsivity_condition},
 given two events $ab|x$ and $a'b'|x'$, they are connected by edge if one of
 these two conditions is true:
 \begin{enumerate}
@@ -408,35 +428,50 @@ needs to have $a=0$ and $b=1$.
 But now, since we only have values $\{0,1\}$ for $a$, we cannot avoid $4$ 
 to be linked to one of the nodes $1,2,6,7$.
 
-\textcolor{blue}{
 \section{Acknowledgments}
 We acknowledge support from John Templeton Foundation via the grant Q-CAUSAL n$^{\circ}$61084 (the opinions expressed in this publication are those of the authors and do not necessarily reflect the views of the John Templeton
-Foundation)}
-
-
+Foundation)
+\textcolor{green}{Gli acknowlegements? Ma non era un report? :D}
 
 \begin{thebibliography}{}
-    \bibitem{pearl1995} J.Pearl, {\em On the testability of causal models with
-        latent and instrumental variables}, 
+    \bibitem{pearlbook} J. Pearl, 
+        {\em Causality: models, reasoning, and inference.}
+        Cambridge University Press, (2000).
+    \bibitem{pearl1995} J. Pearl, 
+        {\em On the testability of causal models with latent and instrumental variables}, 
         Proceedings of the Eleventh conference on Uncertainty in artificial
         intelligence. Morgan Kaufmann Publishers Inc. (1995).
-    \bibitem{bonet2001} B.Bonet, {\em Instrumentality tests revisited},
+    \bibitem{bonet2001} B. Bonet, {\em Instrumentality tests revisited},
         Proceedings of the Seventeenth conference on Uncertainty in artificial
         intelligence. Morgan Kaufmann Publishers Inc. (2001).
-    \bibitem{chaves2018} R.Chaves, G.Carvacho, I.Agresti, V.Di Giulio, L.Aolita,
-        S.Giacomini, F.Sciarrino, 
+    \bibitem{chaves2018} R. Chaves, G. Carvacho, I. Agresti, V. Di Giulio, L. Aolita,
+        S. Giacomini, F. Sciarrino, 
         {\em Quantum violation of an instrumental test}, 
         Nature Physics 14.3 291 (2018).
-     \bibitem{himbeeck2018} T.Van Himbeeck, J.B. Brask, S.Pironio, R.Ramanathan, A.B.Sainz, E. Wolfe, 
+     \bibitem{himbeeck2018} T. Van Himbeeck, J. B. Brask, S. Pironio, R. Ramanathan, A. B. Sainz, E. Wolfe, 
         {\em Quantum violations in the Instrumental scenario and their relations to the Bell scenario},
         arXiv preprint arXiv:1804.04119 (2018).
-         (2014).
-     \bibitem{cabello2014} A.Cabello, S.Severini, A.Winter,
+     \bibitem{cabello2014} A. Cabello, S. Severini, A. Winter,
          {\em Graph-theoretic approach to quantum correlations}, 
          Physical review letters, 112(4), 040401 (2014).
-     \bibitem{rabelo2014} Rabelo, R., Duarte, C., López-Tarrida, A. J., Cunha, M. T., Cabello, A. (2014). {\em Multigraph approach to quantum non-locality.} Journal of Physics A: Mathematical and Theoretical, 47(42), 424021.
-     \bibitem{kcbs2008} Klyachko, A. A., Can, M. A., Binicioğlu, S., Shumovsky, A. S. (2008). {\em Simple test for hidden variables in spin-1 systems.} Physical review letters, 101(2), 020403.
-     
+     \bibitem{rabelo2014} R. Rabelo, C. Duarte, A. J.  López-Tarrida, M. T. Cunha, A. Cabello, A. 
+         {\em Multigraph approach to quantum non-locality},
+         Journal of Physics A: Mathematical and Theoretical, 47(42), 424021
+         (2014).
+     \bibitem{kcbs2008} A. A. Klyachko, M. A. Can, S. Binicioğlu, A. S. Shumovsky.
+         {\em Simple test for hidden variables in spin-1 systems.}
+         Physical review letters, 101(2), 020403 (2008).
+     \bibitem{almostquatum2015} M. Navascués, Y. Guryanova, M. J. Hoban, \& A. Acín, 
+         {\em Almost quantum correlations.}
+         Nature Communications 6, (2015).
+     \bibitem{npa2008} M. Navascués, S. Pironio, \& A Acín, 
+         {\em A convergent hierarchy of semidefinite programs characterizing the
+         set of quantum correlations.}
+         New Journal of Physics 10, 073013 (2008).
+     \bibitem{tomita2006} E. Tomita, A. Tanaka, \& H. Takahashi,
+         {\em The worst-case time complexity for generating all maximal cliques
+         and computational experiments.} 
+         Theoretical Computer Science 363, 28–42 (2006).
 %\bibitem{} , {\em },  ().
 \end{thebibliography}
 
