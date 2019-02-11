@@ -1,18 +1,14 @@
-\documentclass[
-    nofootinbin,
-    floatfix,
-    amsfonts,
-    twocolumn, 
-    aps, 
-    prl]{revtex4-1}
+% Sample LaTeX file for creating a paper in the Morgan Kaufmannn two
+% column, 8 1/2 by 11 inch proceedings format.
+
+\documentclass[letterpaper]{article}
+\usepackage{uai2019}
+\usepackage[margin=1in]{geometry}
+
+% Set the typeface to Times Roman
+\usepackage{times}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
-%\usepackage[babel]{csquotes}
-%\usepackage{amsmath}
-%\usepackage{amsfonts}
-%\usepackage{braket}
-%\usepackage{graphicx}
-%\usepackage{amsmath, amssymb, graphics, setspace}
 \usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\mean}[1]{\left\langle #1 \right\rangle}
@@ -22,23 +18,29 @@
 \newcommand{\STAB}{\mathrm{STAB}}
 \renewcommand{\TH}{\mathrm{TH}}
 
-\begin{document}
 \title{Exclusivity graph approach to Instrumental inequalities}
 
-\author{Davide Poderini}
-\author{Iris Agresti}
-\author{Gonzalo Carvacho}
-\author{Fabio Sciarrino}
-\affiliation{Dipartimento di Fisica, Sapienza Universit\`{a} di Roma,
-Piazzale Aldo Moro 5, I-00185 Roma, Italy}
+%\author{Davide Poderini}
+%\author{Iris Agresti}
+%\author{Gonzalo Carvacho}
+%\author{Fabio Sciarrino}
+%\affiliation{Dipartimento di Fisica, Sapienza Universit\`{a} di Roma,
+%Piazzale Aldo Moro 5, I-00185 Roma, Italy}
+%
+%\author{Rafael Chaves}
+%\author{...}
+%\affiliation{International Institute of Physics, Federal University of Rio %Grande do Norte, 59070-405 Natal, Brazil}
+%\affiliation{School of Science and Technology, Federal University of Rio %Grande do Norte, 59078-970 Natal, Brazil}
 
-\author{Rafael Chaves}
-\author{...}
-\affiliation{International Institute of Physics, Federal University of Rio Grande do Norte, 59070-405 Natal, Brazil}
-\affiliation{School of Science and Technology, Federal University of Rio Grande do Norte, 59078-970 Natal, Brazil}
+\author{} % LEAVE BLANK FOR ORIGINAL SUBMISSION.
+          % UAI  reviewing is double-blind.
+
+\begin{document}
+
+\maketitle
 
 \begin{abstract}
-   \textcolor{blue}{Instrumental tests have been widely used to derive causal
+\textcolor{blue}{Instrumental tests have been widely used to derive causal
    relations between variables even in presence of unobserved latent factors,
    thus providing a powerful tool for different sciences ranging from xxx to
    xxx. Recently, much interest have been dedicated to the instrumental scenario
@@ -49,8 +51,6 @@ Piazzale Aldo Moro 5, I-00185 Roma, Italy}
    showing that the geometry of correlations within this framework allow us to
    find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
 \end{abstract}
-
-\maketitle
 \section*{Introduction}
 Inferring  whether a variable $A$ is the cause of another variable $B$ is at the core of causal inference. However, unless interventions are available \cite{pearlbook}, one can cannot exclude that observed correlations between $A$ and $B$ are due to a latent common factor, thus hindering any causal conclusions. To cope with that, instrumental variables (IV) have been introduced \cite{}. Under the assumption that they are independent of any latent common factors, IV can be used to put non-trivial bounds on the causal effect between $A$ and $B$. To this aim, first, one has to guarantee that an appropriate instrument (fulling a set of causal constraints) has been employed, precisely the goal of the so-called instrumental tests \cite{}. Their violation, at least in classical physics, is an unambiguous proof that some of the causal assumptions underlying the instrumental causal structure are not fulfilled, that is, one should identify and use another instrumental variable.
 
@@ -81,12 +81,14 @@ The paper is organized as follows....
 \begin{figure}[h]
     \centering
     \includegraphics[width=.8\columnwidth]{images/chsh_inst_dag.pdf}
-        \caption{\textcolor{blue}{ma se levamo quelle cose che stanno per dire
-        input e ooutput nelle immagine? tipo lasiare la struttura pulita, magari
-    il resto possiamo dirlo nella caption?} 
-    \textcolor{green}{Si puó fare ma mi servirebbe qualcosa che ricordi il fatto
-    che questa é una generica instrumental con $l$ valori per $X$, $m$ per $A$ e
-$n$ per b, lo metto nella caption?}
+        \caption{
+    %    \textcolor{blue}{ma se levamo quelle cose che stanno per dire
+    %    input e ooutput nelle immagine? tipo lasiare la struttura pulita, %magari
+    %il resto possiamo dirlo nella caption?} 
+    %\textcolor{green}{Si puó fare ma mi servirebbe qualcosa che ricordi il %fatto
+    %che questa é una generica instrumental con $l$ valori per $X$, $m$ per %$A$ e
+    %$n$ per b, lo metto nella caption?
+    %}
     \textbf{a)} The DAG representing a general Instrumental scenario.
     \textbf{b)} The DAG of the CHSH scenario.
 }
@@ -146,12 +148,6 @@ Clearly, however, to draw any causal conclusions, first it is necessary to certi
     \label{eq:pearl_ineq}
 \end{equation}
 for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$ where $p(a=i,b=j\vert x=k)=p(a_i,b_j|x_k)$.
-
-\textcolor{red}{Davide, ho messo i "max" perche mi la ricordo cosi, ma tocca
-controllare i index. Non so se avevi levato a posta per il tuo approach boh}.
-\textcolor{green}{Si, é meglio mettere le singole disuguaglianze invece che
-quella col max, é carino perché ognuna corrisponde con gli edges del grafo di
-esclusivitá!}
 
 Extending these results, Bonet \cite{bonet2001} provided a 
 general geometric framework for the derivation of instrumental inequalities. Instrumental correlations define a convex set, a polytope described by finitely many extremal points, or alternatively by a finite number of facets, the non-trivial of which are precisely instrumental inequalities. In particular, considering the case $(l,m,n) = (3,2,2)$ it was proven that there are two inequivalent classes of instrumental inequalities (those not obtained from each other by permuting the labels of $a_i,b_j$ and $x_k$). One class corresponding to Pearl's inequality \eqref{} and the other given by
@@ -257,7 +253,10 @@ classical bounds.
 \begin{figure*}[t]
     \centering
     \includegraphics[width=.7\textwidth]{images/instrumental_exgraph.pdf}
-    \caption{\textcolor{blue}{Davide, sicuramente tante delle figure andrano nel SI, ma puoi comunque sistemare gia la disposizione, perchè utilizanno troppo spazio, non sono segnalate con a,b,c,d etc. Magari potresti scrivere la caption per quelle che sai gia che andranno nel main text.} The exclusivity graph for the instrumental scenario for $l=2,3,4,5$
+    \caption{
+    
+    %\textcolor{blue}{Davide, sicuramente tante delle figure andrano nel SI, ma puoi comunque %sistemare gia la disposizione, perchè utilizanno troppo spazio, non sono segnalate con %a,b,c,d etc. Magari potresti scrivere la caption per quelle che sai gia che andranno nel %main text.}
+    The exclusivity graph for the instrumental scenario for $l=2,3,4,5$
     from top left to bottom right. In the figure the bold lines represent
     cliques.}
     \label{fig:instrumental_exgraphs}
@@ -389,14 +388,17 @@ Also to enumerate all the maximal independent sets we used the Tomita version of
 the Bron–Kerbosch algorithm which has the same worst case
 complexity\cite{tomita2006}.
 
-\section{Discussion}
+\section*{Discussion}
 
 \textcolor{red}{[Can we add an example with more outcomes?]}
 
 
-\section{Acknowledgments}
+\subsubsection*{Acknowledgements}
 We acknowledge support from John Templeton Foundation via the grant Q-CAUSAL n$^{\circ}$61084 (the opinions expressed in this publication are those of the authors and do not necessarily  the views of the John Templeton
 Foundation). RC acknowledges the Brazilian ministries MEC and MCTIC, funding agency CNPq (PQ grants No. 307172/2017-1 and No 406574/2018-9 and INCT-IQ) and the Serrapilheira Institute (grant number Serra-1708-15763).
+
+
+\subsubsection*{References}
 
 \begin{thebibliography}{}
     \bibitem{pearlbook} J. Pearl, 
@@ -439,5 +441,78 @@ Foundation). RC acknowledges the Brazilian ministries MEC and MCTIC, funding age
          Theoretical Computer Science 363, 28–42 (2006).
 %\bibitem{} , {\em },  ().
 \end{thebibliography}
+
+%\begin{figure}[h]
+%\vspace{1in}
+%\caption{Sample Figure Caption}
+%\end{figure}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\documentclass[
+    nofootinbin,
+    floatfix,
+    amsfonts,
+    twocolumn, 
+    aps, 
+    prl]{revtex4-1}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
+
+\newcommand{\mean}[1]{\left\langle #1 \right\rangle}
+\newcommand{\avg}[1]{\langle#1\rangle}
+\newcommand{\et}{\;\mathrm{and}\;}
+\newcommand{\Real}{\mathbb{R}}
+\newcommand{\STAB}{\mathrm{STAB}}
+\renewcommand{\TH}{\mathrm{TH}}
+
+\begin{document}
+\title{Exclusivity graph approach to Instrumental inequalities}
+
+\author{Davide Poderini}
+\author{Iris Agresti}
+\author{Gonzalo Carvacho}
+\author{Fabio Sciarrino}
+\affiliation{Dipartimento di Fisica, Sapienza Universit\`{a} di Roma,
+Piazzale Aldo Moro 5, I-00185 Roma, Italy}
+
+\author{Rafael Chaves}
+\author{...}
+\affiliation{International Institute of Physics, Federal University of Rio Grande do Norte, 59070-405 Natal, Brazil}
+\affiliation{School of Science and Technology, Federal University of Rio Grande do Norte, 59078-970 Natal, Brazil}
+
+\begin{abstract}
+   \textcolor{blue}{Instrumental tests have been widely used to derive causal
+   relations between variables even in presence of unobserved latent factors,
+   thus providing a powerful tool for different sciences ranging from xxx to
+   xxx. Recently, much interest have been dedicated to the instrumental scenario
+   since admits quantum violations with fewer resources respect to the Bell
+   analogue, this property can be exploited to (drastically?) improve our
+   current capacities to process information. Dire qualcosa della contextuality.
+   Here, we present the instrumental inequality under a contextual approach,
+   showing that the geometry of correlations within this framework allow us to
+   find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
+\end{abstract}
+
+\maketitle
+
 
 \end{document}
