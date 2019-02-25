@@ -52,16 +52,13 @@
    find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
 \end{abstract}
 \section*{Introduction}
-Inferring  whether a variable $A$ is the cause of another variable $B$ is at the core of causal inference. However, unless interventions are available \cite{pearlbook}, one can cannot exclude that observed correlations between $A$ and $B$ are due to a latent common factor, thus hindering any causal conclusions. To cope with that, instrumental variables (IV) have been introduced \cite{}. Under the assumption that they are independent of any latent common factors, IV can be used to put non-trivial bounds on the causal effect between $A$ and $B$. To this aim, first, one has to guarantee that an appropriate instrument (fulling a set of causal constraints) has been employed, precisely the goal of the so-called instrumental tests \cite{}. Their violation, at least in classical physics, is an unambiguous proof that some of the causal assumptions underlying the instrumental causal structure are not fulfilled, that is, one should identify and use another instrumental variable.
+Inferring  whether a variable $A$ is the cause of another variable $B$ is at the core of causal inference. However, unless interventions are available \cite{pearlbook}, one can cannot exclude that observed correlations between $A$ and $B$ are due to a latent common factor, thus hindering any causal conclusions. To cope with that, instrumental variables (IV) have been introduced \cite{pearl1995, bonet2001}. Under the assumption that they are independent of any latent common factors, IV can be used to put non-trivial bounds on the causal effect between $A$ and $B$. To this aim, first, one has to guarantee that an appropriate instrument (fulling a set of causal constraints) has been employed, precisely the goal of the so-called instrumental tests \cite{pearl1995, bonet2001}. Their violation, at least in classical physics, is an unambiguous proof that some of the causal assumptions underlying the instrumental causal structure are not fulfilled, that is, one should identify and use another instrumental variable.
 
-The first instrumental tests have been introduced by Pearl \cite{pearl1995}, in the form of inequalities providing a necessary condition for a given observed probability distribution to be compatible with the instrumental causal structure. Following that, Bonet \cite{} introduced a general framework, showing that the instrumental correlations define a polytope, a convex set from which the non-trivial boundaries are precisely the instrumental inequalities. Bonet's framework allow for a the derivation of new inequalities as well as proving general results, for instance, the fact that if variable $A$ is continuous, no instrumental test exists. However, two main drawbacks are presented. First, the systematic derivation of new inequalities quickly becomes unfeasible as the variables cardinalities increase. Second, as recently shown, in quantum physics, violations of the instrumental tests are possible even though the whole process is indeed subjected to an instrumental causal structure \cite{}. In the quantum case, instrumentality violations witness the presence of quantum entanglement at the latent factor and prove an stronger form of quantum non-locality as compared to the famous Bell's theorem \cite{}. As a consequence, typical bounds on the causal influence of $A$ into $B$ have to be reevaluated and reinterpreted in the presence of quantum effects \cite{}.
+The first instrumental tests have been introduced by Pearl \cite{pearl1995}, in the form of inequalities providing a necessary condition for a given observed probability distribution to be compatible with the instrumental causal structure. Following that, Bonet \cite{bonet2001} introduced a general framework, showing that the instrumental correlations define a polytope, a convex set from which the non-trivial boundaries are precisely the instrumental inequalities. Bonet's framework allows for a the derivation of new inequalities as well as proving general results, for instance, the fact that if variable $A$ is continuous, no instrumental test exists. However, two main drawbacks are presented. First, the systematic derivation of new inequalities quickly becomes unfeasible as the variables' cardinality increases. Second, as recently shown, in quantum physics, violations of the instrumental tests are possible even though the whole process is indeed subjected to an instrumental causal structure \cite{chaves2018, himbeeck2018}. In the quantum case, instrumentality violations witness the presence of quantum entanglement as the latent factor and prove a stronger form of quantum non-locality as compared to the famous Bell's theorem \cite{chaves2018}. As a consequence, typical bounds on the causal influence of $A$ into $B$ have to be reevaluated and reinterpreted in the presence of quantum effects \cite{}.
 
-Our aim in this paper is to provide a novel and complementary framework to the analysis of instrumental tests and that to a certain extent address the two drawbacks mentioned above. It is based on a graph theoretical approach introduced in the foundations of quantum physics to analyze the possible correlations obtained in quantum experiments \cite{}. \textcolor{red}{[Make a list of the results we obtain...]}
+Our aim in this paper is to provide a novel and complementary framework to the analysis of instrumental tests and that addresses the two drawbacks mentioned above. The proposed method is based on a graph theoretical approach introduced in the foundations of quantum physics to analyze the possible correlations obtained in quantum experiments \cite{}. \textcolor{red}{[Make a list of the results we obtain...]}
 
-The paper is organized as follows....
-
-
-
+The paper is organized as follows: firstly we provide an introduction about the instrumental scenario, both from a classical perspective, as well as its quantum violation, and about the exclusivity approach. Then, we show a possible application of the exclusivity approach to the field of causal inference. Indeed, it is possible to exploit these graphs in order to obtain inequality constraints, as we show in particular for the instrumental scenario, in the case where the two parties can respectively choose among four and three three-outcome measurements.
 %The existence of causal relationships between events is one of the basic principles that makes scientific investigation possible. Nonetheless, extracting informations about these relationships only from experimental observations is not always feasible and can be a tricky task. In this context causal models are a indispensable tool to formalize causal assumptions and to produce falsifiable statements causal relations. 
 
 
@@ -76,7 +73,7 @@ The paper is organized as follows....
 %well-known ``instrumental'' causal structure (see Fig.~\ref{fig:chshinstdag}-a)
 %posses classical constraints that are violated by quantum mechanics.
 
-\ldots
+%\ldots
 
 \begin{figure}[h]
     \centering
@@ -103,14 +100,14 @@ It has become standard to represent causal relations via directed acyclic graphs
 \begin{equation}
 p(x_1,\dots,x_n)= \prod_{i=1}^{n} p(x_i \vert pa_i).    
 \end{equation}
-Importantly, a DAG typically imply non-trivial constraints over the probability distributions that are compatible with it. That is, simply from observational data and without the need of interventions, one can test whether or not some observed correlations are compatible with some causal hypothesis.
+Importantly, a DAG typically implies non-trivial constraints over the probability distributions that are compatible with it. That is, simply from observational data and without the need of interventions, one can test whether some observed correlations are incompatible with some causal hypothesis.
 
 %and the edges the cause-effect relationship between them.
 %From some causal DAGs it is possible to derive constraints on the statistical
 %distribution of the variables which allow one to reject or accept a causal
 %assumption\cite{pearlbook}.
 
-Within this context, an important DAG is that corresponding to an instrumental variable (see Fig.\ref{fig:chshinstdag}-a). Following the Markov decomposition, any empirical data encoded in the probability distribution $p(a,b \vert x)$ and compatible with the instrumental causal structure can be decomposed as
+Within this context, an important DAG is that corresponding to the instrumental scena (see Fig.\ref{fig:chshinstdag}-a). Following the Markov decomposition, any empirical data encoded in the probability distribution $p(a,b \vert x)$ and compatible with the instrumental causal structure can be decomposed as
 \begin{equation}
 p(a,b \vert x) = \sum_{\lambda} p(a\vert x,\lambda) p(b\vert a,\lambda)p(\lambda).
 \end{equation}
@@ -142,7 +139,7 @@ The instrumental variable has been originally introduced to estimate parameters 
 %where X corresponds to the instrument, A and B the variables for which we are
 %interested to bound the causal relation and $\Lambda$ our %quantum resource. 
 
-Clearly, however, to draw any causal conclusions, first it is necessary to certify that one has a valid instrument. This is achieve achieved via instrumental inequalities, first introduced by Pearl \cite{}. If we allow the variables $X$, $A$, $B$ to take the values in the range  $x=1,\dots,l$, $a=1,\dots,m$ and $b=1,\dots,n$ Pearl showed that the instrumental causal structure implies that 
+Clearly, however, to draw any causal conclusions, first it is necessary to certify that one has a valid instrument. This is achieved via instrumental inequalities, first introduced by Pearl \cite{}. If we allow the variables $X$, $A$, $B$ to take the values in the range  $x=1,\dots,l$, $a=1,\dots,m$ and $b=1,\dots,n$ Pearl showed that the instrumental causal structure implies that 
 \begin{equation} 
     \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1,
     \label{eq:pearl_ineq}
@@ -158,8 +155,8 @@ general geometric framework for the derivation of instrumental inequalities. Ins
     \label{eq:bonet_ineq}
 \end{multline}
 
-All these conclusions and results, however, rely on a classical description of causal and effect relations, that since Bell's theorem \cite{} we know do not apply to the world governed by quantum mechanics. This has motivated the question of whether many of the cornerstones in causal inference have to reevaluated or reinterpreted in the presence of quantum effects \cite{}. Indeed, as recently shown \cite{chaves2018}, violations of the instrumental tests are possible even though the causal constraints underlying the instrumental scenario are fulfilled. As shown in the experimental implementation of the instrumental test \cite{}, this is possible due to the presence of quantum entanglement acting as latent common ancestor. Considering a entangled sources of photons, an alternative version of Bonet's inequality (written in terms of expectation values) has been tested, implying a violation of the inequality \eqref{eq:bonet_ineq} with a 
-value of $2.159 \pm 0.005$. 
+All these conclusions and results, however, rely on a classical description of causal and effect relations, that since Bell's theorem \cite{} we know do not apply to the world governed by quantum mechanics. This has motivated the question of whether many of the cornerstones in causal inference have to reevaluated or reinterpreted in the presence of quantum effects \cite{}. Indeed, as recently shown \cite{chaves2018}, violations of the instrumental tests are possible even though the causal constraints underlying the instrumental scenario are fulfilled. As shown in the experimental implementation of the instrumental test \cite{}, this is possible due to the presence of quantum entanglement acting as latent common ancestor. Considering an entangled sources of photons, an alternative version of Bonet's inequality (written in terms of expectation values, upper bounded by 3, in the classical realm) has been tested, implying a violation of the inequality \eqref{eq:bonet_ineq} with a 
+value of $3.258 \pm 0.020$. 
 
 Altogether, this shows the necessity of a new unifying framework, not only considering what are the classical instrumental correlations but as well the ones achievable if the underlying latent factor might have a quantum origin. In the following we will achieve that by proposing a graph-theoretical approach to the analysis of instrumental inequalities.
 
@@ -302,12 +299,19 @@ same origin: it stems from the non classicality of the $C_5$ graph. \textcolor{r
 
 This does not mean that different inequalities cannot be devised by clever choices of vertices and weights. \textcolor{red}{[]Is there any algorithm for that? Or is really trial and error? I'm confused by the method... are you combining the two graphs to construct a single inequality?]}
 For example the inequality for the $422$ scenario presented in \textcolor{red}{[This inequality looks strange... is that right? Can we write it in terms of probabilities?]}
+%\cite{rand_internal_report}
+%\begin{equation}
+ %   \avg{AB}_1 -  \avg{AB}_2 + \avg{B}_0 - \avg{B}_3 \le 2
+  %  \label{eq:422_ineq}
+%\end{equation}
+\begin{align*}
+&p(00|10)-p(01|10)-p(10|11)+p(11|11)\\
+&-p(00|20)+p(01|20)+p(10|21)-p(11|21)+\\
+&p(00|00)-p(01|00)+p(10|01)-p(11|01)\\
+&-p(00|30)+p(01|30)-p(10|31)+p(11|31) \le 2
+\end{align*}
 
-\cite{rand_internal_report}
-\begin{equation}
-    \avg{AB}_1 -  \avg{AB}_2 + \avg{B}_0 - \avg{B}_3 \le 2
-    \label{eq:422_ineq}
-\end{equation}
+
 correponds to the two sets of events whose
 exclusivity graphs are depicted in fig.~\ref{fig:422_exgraph}.
 The maximum classical value for both, given by the independence number of the
@@ -360,34 +364,34 @@ Moreover $7$ and $5$ must have the same $b$, different from $6$. In the same way
 needs to have $a=0$ and $b=1$. At this point, since we only have values $\{0,1\}$ for $a$, we cannot avoid node $4$ to be linked to one of the nodes $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
 
 
-\section{Finding optimal instrumental inequalities}
-The presence of an odd cycle graph guarantees only that $\STAB(G) \subset
-\TH(G)$, but does not say anything on the values of $\theta(G)$ and $\alpha(G)$.
-Nonetheless, if that condition is satisfied there must be some optimal choice of
-weights $w$ for which we can obtain a maximum quantum violation.
-Formally if $n$ is the number of nodes of $G$, we want to find the maximum:
-\begin{equation}
-    \max_{w \in [0,1]^n} \{\theta(G,w) - \alpha(G,w)\}
-    \label{eq:maxonw}
-\end{equation}
-
-Using the definition \eqref{eq:lovasztheta} and \eqref{eq:alphastab}, and
-remembering that $\STAB(G)$ is a convex hull of a finite number of
-characteristic labellings we can rewirte the previous maximization as:
-\begin{align}
-    \Delta &= \min \{I_y : y \, \text{is a maximal stable labelling}\}
-    \label{eq:maximize_w_delta}\\
-    I_y &= \max_{\substack{w \in [0,1]^n\\x \in \TH(G)}} \{w\cdot (x - y)\}
-    \label{eq:maximize_w_I}
-\end{align}
-
-The maximization \eqref{eq:maximize_w_I} for each $y$ is efficient, being a
-semi-definite program, but unfortunately it has to be run for each maximal
-stable set in $G$ which are $\sim 3^{n/3}$ in the worst case.
-Also to enumerate all the maximal independent sets we used the Tomita version of
-the Bron–Kerbosch algorithm which has the same worst case
-complexity\cite{tomita2006}.
-
+%\section{Finding optimal instrumental inequalities}
+%The presence of an odd cycle graph guarantees only that $\STAB(G) \subset
+%\TH(G)$, but does not say anything on the %values of $\theta(G)$ and $\alpha(G)$.
+%Nonetheless, if that condition is %satisfied there must be some optimal %choice of
+%weights $w$ for which we can obtain a %maximum quantum violation.
+%Formally if $n$ is the number of nodes of %$G$, we want to find the maximum:
+%\begin{equation}
+%    \max_{w \in [0,1]^n} \{\theta(G,w) - %\alpha(G,w)\}
+%    \label{eq:maxonw}
+%\end{equation}
+%
+%Using the definition \eqref{eq:lovasztheta} and \eqref{eq:alphastab}, and
+%remembering that $\STAB(G)$ is a convex %hull of a finite number of
+%characteristic labellings we can rewirte %the previous maximization as:
+%\begin{align}
+%    \Delta &= \min \{I_y : y \, \text{is a %maximal stable labelling}\}
+%    \label{eq:maximize_w_delta}\\
+%    I_y &= \max_{\substack{w \in %[0,1]^n\\x \in \TH(G)}} \{w\cdot (x - %y)\}
+%    \label{eq:maximize_w_I}
+%\end{align}
+%
+%The maximization \eqref{eq:maximize_w_I} %for each $y$ is efficient, being a
+%semi-definite program, but unfortunately %it has to be run for each maximal
+%stable set in $G$ which are $\sim 3^{n/3}$ %in the worst case.
+%Also to enumerate all the maximal %independent sets we used the Tomita %version of
+%the Bron–Kerbosch algorithm which has the %same worst case
+%complexity\cite{tomita2006}.
+%
 \section*{Discussion}
 
 \textcolor{red}{[Can we add an example with more outcomes?]}
@@ -398,7 +402,7 @@ We acknowledge support from John Templeton Foundation via the grant Q-CAUSAL n$^
 Foundation). RC acknowledges the Brazilian ministries MEC and MCTIC, funding agency CNPq (PQ grants No. 307172/2017-1 and No 406574/2018-9 and INCT-IQ) and the Serrapilheira Institute (grant number Serra-1708-15763).
 
 
-\subsubsection*{References}
+
 
 \begin{thebibliography}{}
     \bibitem{pearlbook} J. Pearl, 
