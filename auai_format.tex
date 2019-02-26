@@ -9,6 +9,7 @@
 \usepackage{times}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
+\usepackage{amsfonts}
 \usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\mean}[1]{\left\langle #1 \right\rangle}
@@ -51,6 +52,7 @@
    showing that the geometry of correlations within this framework allow us to
    find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
 \end{abstract}
+
 \section*{Introduction}
 Inferring  whether a variable $A$ is the cause of another variable $B$ is at the
 core of causal inference. However, unless interventions are available
@@ -91,12 +93,12 @@ Our aim in this paper is to provide a novel and complementary framework to the
 analysis of instrumental tests and that addresses the two drawbacks mentioned
 above. The proposed method is based on a graph theoretical approach introduced
 in the foundations of quantum physics to analyze the possible correlations
-obtained in quantum experiments \cite{}. 
-% TODO
-% Riotteniamo le pearl e le bonet
-% Troviamo una classe di bonet-like (cicli n)
-\textcolor{red}{[Make a list of the
-results we obtain...]}
+obtained in quantum experiments \cite{}. % cabello severini and winter
+This method allow us to reproduce the classical results by Bonet and to
+straightforwardly generalize them in the quantum scenario. 
+It also offer an easy way to check for the presence of gap between the
+quantum and classical case, for any causal scenario involving a single latent
+variable.
 
 The paper is organized as follows: firstly we provide an introduction about the
 instrumental scenario, both from a classical perspective, as well as its quantum
@@ -106,37 +108,15 @@ Indeed, it is possible to exploit these graphs in order to obtain inequality
 constraints, as we show in particular for the instrumental scenario, in the case
 where the two parties can respectively choose among four and three three-outcome
 measurements.
-%The existence of causal relationships between events is one of the basic principles that makes scientific investigation possible. Nonetheless, extracting informations about these relationships only from experimental observations is not always feasible and can be a tricky task. In this context causal models are a indispensable tool to formalize causal assumptions and to produce falsifiable statements causal relations. 
-
-
-%It is known, since Bell theorem, that quantum mechanics allows for statistical %cite
-%behavior which are impossible to reproduce in a classical context, so it is
-%reasonable to suppose that the constraints derived from classical causal
-%assumptions could be violated by quantum systems.
-%Indeed Bell experiment can be modeled using a causal DAG, as shown in
-%Fig~\ref{fig:chshinstdag}-b, and the Bell inequality obtained as a consequence of causal
-%assumptions.
-%More recently it has been proved and experimentally demonstrated\cite{chaves2018} that the
-%well-known ``instrumental'' causal structure (see Fig.~\ref{fig:chshinstdag}-a)
-%posses classical constraints that are violated by quantum mechanics.
-
-%\ldots
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.8\columnwidth]{images/chsh_inst_dag.pdf}
         \caption{
-    %    \textcolor{blue}{ma se levamo quelle cose che stanno per dire
-    %    input e ooutput nelle immagine? tipo lasiare la struttura pulita, %magari
-    %il resto possiamo dirlo nella caption?} 
-    %\textcolor{green}{Si puó fare ma mi servirebbe qualcosa che ricordi il %fatto
-    %che questa é una generica instrumental con $l$ valori per $X$, $m$ per %$A$ e
-    %$n$ per b, lo metto nella caption?
-    %}
-    \textbf{a)} The Directed Acyclic Graph (DAG) representing a general
+    \textbf{a)} The directed acyclic graph (DAG) representing a general
     Instrumental scenario, with $l$ possible values for the random variable $X$
     and $m,n$ possible outcomes for $A$ and $B$ respectively
-    \textbf{b)} The Directed Acyclic Graph (DAG) of the CHSH scenario where all the
+    \textbf{b)} The directed acyclic graph (DAG) of the CHSH scenario where all the
     variables $X,Y,A$ and $B$ can only take two possible values.
 }
     \label{fig:chshinstdag}
@@ -152,10 +132,9 @@ A set of variables  $\left( X_1,\dots, X_n \right)$ form a Bayesian network with
 respect to the graph if every variable $X_i$ can be expressed as a function of
 its parents $PA_i$ and potentially an unobserved noise term $U_i$, such that
 $U_i$ are jointly independent. This implies that the probability distribution of
-such variables should have a Markov decomposition \footnote{Uppercase letters
-    label variables and lowercase label the values taken by them, for instance,
-    $p(X_i =x_i
-, X_j = x_j) ≡ p(x_i, x_j)$.}
+such variables should have a Markov decomposition 
+\footnote{Uppercase letters label variables and lowercase label the values taken
+by them, for instance, $p(X_i =x_i, X_j = x_j) \equiv p(x_i, x_j)$.}
 \begin{equation}
 p(x_1,\dots,x_n)= \prod_{i=1}^{n} p(x_i \vert pa_i).    
 \end{equation}
@@ -169,13 +148,34 @@ some observed correlations are incompatible with some causal hypothesis.
 %distribution of the variables which allow one to reject or accept a causal
 %assumption\cite{pearlbook}.
 
-Within this context, an important DAG is that corresponding to the instrumental scena (see Fig.\ref{fig:chshinstdag}-a). Following the Markov decomposition, any empirical data encoded in the probability distribution $p(a,b \vert x)$ and compatible with the instrumental causal structure can be decomposed as
+Within this context, an important DAG is that corresponding to the instrumental
+scenario (see Fig.\ref{fig:chshinstdag}-a). Following the Markov decomposition, any
+empirical data encoded in the probability distribution $p(a,b \vert x)$ and
+compatible with the instrumental causal structure can be decomposed as
 \begin{equation}
 p(a,b \vert x) = \sum_{\lambda} p(a\vert x,\lambda) p(b\vert a,\lambda)p(\lambda).
 \end{equation}
-Two causal assumptions are employed to arrive at the decomposition above. First, the assumption that $p(x,\lambda)=p(x)p(\lambda)$ implying the independence of the instrument and the common ancestor. Second, the assumption that even though $X$ and $B$ can be correlated, all these correlations are mediated by $A$. In other terms, there is no direct causal influence between $X$ and $B$ and  $p(b\vert x,a,\lambda)=p(b\vert a,\lambda)$.
+Two causal assumptions are employed to arrive at the decomposition above. First,
+the assumption that $p(x,\lambda)=p(x)p(\lambda)$ implying the independence of
+the instrument and the common ancestor. Second, the assumption that even though
+$X$ and $B$ can be correlated, all these correlations are mediated by $A$. In
+other terms, there is no direct causal influence between $X$ and $B$ and
+$p(b\vert x,a,\lambda)=p(b\vert a,\lambda)$.
 
-The instrumental variable has been originally introduced to estimate parameters in econometric models of supply and demand \cite{} and since then have found a wide range of applications in various other fields \cite{}. To illustrate its power, consider that variables $A$ and $B$ are related by a simple structural equation $B=\gamma A +\Lambda$, where $\Lambda$ may represent a latent common factor. By assumption, the instrumental variable $X$ should be independent of $\Lambda$, thus implying that the causal strength can be estimated as $\gamma= \mathrm{Cov}(X,B)/\mathrm{Cov}(X,A)$ where $\mathrm{Cov}(X,A)= \mean{X,A} - \mean{X}\mean{A}$ is the covariance between $X$ and $A$. Strikingly, one can estimate the causal strength even without any information about the latent factor $\Lambda$. More generally and without assumptions about the functional dependence among the variables, the empirical data encoded in the probability distribution $p(a,b \vert x)$ can also be used to bound different quantifiers of causality between $A$ and $B$ \cite{}.
+The instrumental variable has been originally introduced to estimate parameters
+in econometric models of supply and demand \cite{} and since then have found a
+wide range of applications in various other fields \cite{}. To illustrate its
+power, consider that variables $A$ and $B$ are related by a simple structural
+equation $B=\gamma A +\Lambda$, where $\Lambda$ may represent a latent common
+factor. By assumption, the instrumental variable $X$ should be independent of
+$\Lambda$, thus implying that the causal strength can be estimated as $\gamma=
+\mathrm{Cov}(X,B)/\mathrm{Cov}(X,A)$ where $\mathrm{Cov}(X,A)= \mean{X,A} -
+\mean{X}\mean{A}$ is the covariance between $X$ and $A$. Strikingly, one can
+estimate the causal strength even without any information about the latent
+factor $\Lambda$. More generally and without assumptions about the functional
+dependence among the variables, the empirical data encoded in the probability
+distribution $p(a,b \vert x)$ can also be used to bound different quantifiers of
+causality between $A$ and $B$ \cite{}.
 
 %Among all the possible causal structures, a
 %particular interest has been devoted to the %\textit{Instrumental causal
@@ -201,7 +201,11 @@ The instrumental variable has been originally introduced to estimate parameters 
 %where X corresponds to the instrument, A and B the variables for which we are
 %interested to bound the causal relation and $\Lambda$ our %quantum resource. 
 
-Clearly, however, to draw any causal conclusions, first it is necessary to certify that one has a valid instrument. This is achieved via instrumental inequalities, first introduced by Pearl \cite{}. If we allow the variables $X$, $A$, $B$ to take the values in the range  $x=1,\dots,l$, $a=1,\dots,m$ and $b=1,\dots,n$ Pearl showed that the instrumental causal structure implies that 
+Clearly, however, to draw any causal conclusions, first it is necessary to
+certify that one has a valid instrument. This is achieved via instrumental
+inequalities, first introduced by Pearl \cite{}. If we allow the variables $X$,
+$A$, $B$ to take the values in the range  $x=1,\dots,l$, $a=1,\dots,m$ and
+$b=1,\dots,n$ Pearl showed that the instrumental causal structure implies that 
 \begin{equation} 
     \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1,
     \label{eq:pearl_ineq}
@@ -209,7 +213,14 @@ Clearly, however, to draw any causal conclusions, first it is necessary to certi
 for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$ where $p(a=i,b=j\vert x=k)=p(a_i,b_j|x_k)$.
 
 Extending these results, Bonet \cite{bonet2001} provided a 
-general geometric framework for the derivation of instrumental inequalities. Instrumental correlations define a convex set, a polytope described by finitely many extremal points, or alternatively by a finite number of facets, the non-trivial of which are precisely instrumental inequalities. In particular, considering the case $(l,m,n) = (3,2,2)$ it was proven that there are two inequivalent classes of instrumental inequalities (those not obtained from each other by permuting the labels of $a_i,b_j$ and $x_k$). One class corresponding to Pearl's inequality \eqref{} and the other given by
+general geometric framework for the derivation of instrumental inequalities.
+Instrumental correlations define a convex set, a polytope described by finitely
+many extremal points, or alternatively by a finite number of facets, the
+non-trivial of which are precisely instrumental inequalities. In particular,
+considering the case $(l,m,n) = (3,2,2)$ it was proven that there are two
+inequivalent classes of instrumental inequalities (those not obtained from each
+other by permuting the labels of $a_i,b_j$ and $x_k$). One class corresponding
+to Pearl's inequality \eqref{eq:pearl_ineq} and the other given by
 \begin{multline}
     P(a_1 b_1 | x_1) + P(a_2 b_2 | x_1) + 
     P(a_1 b_1 | x_2) +\\+ P(a_2 b_1 | x_2) + 
@@ -217,10 +228,26 @@ general geometric framework for the derivation of instrumental inequalities. Ins
     \label{eq:bonet_ineq}
 \end{multline}
 
-All these conclusions and results, however, rely on a classical description of causal and effect relations, that since Bell's theorem \cite{} we know do not apply to the world governed by quantum mechanics. This has motivated the question of whether many of the cornerstones in causal inference have to reevaluated or reinterpreted in the presence of quantum effects \cite{}. Indeed, as recently shown \cite{chaves2018}, violations of the instrumental tests are possible even though the causal constraints underlying the instrumental scenario are fulfilled. As shown in the experimental implementation of the instrumental test \cite{}, this is possible due to the presence of quantum entanglement acting as latent common ancestor. Considering an entangled sources of photons, an alternative version of Bonet's inequality (written in terms of expectation values, upper bounded by 3, in the classical realm) has been tested, implying a violation of the inequality \eqref{eq:bonet_ineq} with a 
+All these conclusions and results, however, rely on a classical description of
+causal and effect relations, that since Bell's theorem \cite{} we know do not
+apply to the world governed by quantum mechanics. This has motivated the
+question of whether many of the cornerstones in causal inference have to
+reevaluated or reinterpreted in the presence of quantum effects \cite{}. Indeed,
+as recently shown \cite{chaves2018}, violations of the instrumental tests are
+possible even though the causal constraints underlying the instrumental scenario
+are fulfilled. As shown in the experimental implementation of the instrumental
+test \cite{}, this is possible due to the presence of quantum entanglement
+acting as latent common ancestor. Considering an entangled sources of photons,
+an alternative version of Bonet's inequality (written in terms of expectation
+values, upper bounded by 3, in the classical realm) has been tested, implying a
+violation of the inequality \eqref{eq:bonet_ineq} with a 
 value of $3.258 \pm 0.020$. 
 
-Altogether, this shows the necessity of a new unifying framework, not only considering what are the classical instrumental correlations but as well the ones achievable if the underlying latent factor might have a quantum origin. In the following we will achieve that by proposing a graph-theoretical approach to the analysis of instrumental inequalities.
+Altogether, this shows the necessity of a new unifying framework, not only
+considering what are the classical instrumental correlations but as well the
+ones achievable if the underlying latent factor might have a quantum origin. In
+the following we will achieve that by proposing a graph-theoretical approach to
+the analysis of instrumental inequalities.
 
 %\begin{equation}
 %    -\avg{B}_{x_1} + 2 \avg{B}_{x_2} + %\avg{A}_{x_1} - \avg{AB}_{x_1} +
@@ -259,33 +286,45 @@ Using this definition the independence number becomes:
 From these definitions we can see that $\alpha(G,w)$ corresponds to the classical bound of the inequality, since it is exactly the maximum over the convex set defined by all the deterministic strategies respecting the exclusivity constraints.
 
 We now call an \emph{orthonormal labelling} of dimension $d$ a map
-$a_v:V\rightarrow\Real^d$ such that $a_v \cdot a_u = 0$ for all $uv \in E$ and
+$a_v:V \rightarrow \Real^d$ such that $a_v \cdot a_u = 0$ for all $uv \in E$ and
 $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
 \begin{multline}
     \TH(G) = \{x: x_v = a_v^1 \, \text{where $a_v$ is an} \\ \text{orthonormal labelling of $G$}\}
     \label{eq:thbody}
 \end{multline}
-It can be proved that this set includes all correlations permitted by quantum theory \footnote{As proved in \cite{acin2015} this set corresponds to the level $1+AB$ of the
-NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, but in general is larger as it contains correlations beyond those achieved by quantum mechanics \cite{almostquantum2015}.
+It can be proved that this set includes all correlations permitted by quantum
+theory \footnote{As proved in \cite{acin2015} this set corresponds to the level
+$1+AB$ of the NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, % cite also almost-quantum correlations. 
+but in general is larger as it contains correlations beyond those achieved by quantum
+mechanics \cite{almostquantum2015}.
 Maximizing over $\TH(G)$ gives the Lovász theta:
 \begin{equation}
     \theta(G,w) = \{w\cdot x : x \in \TH(G)\}
     \label{eq:lovasztheta}
 \end{equation}
 which upper-bounds the maximum quantum value.
-
-This approach provides a useful condition to check if a given graph $G$ admits a quantum violation. Indeed it can be proven that $\TH(G) = \STAB(G)$ if and only if $G$ does not contain a cycle $C_n$ with $n \ge 5$ and odd, or its complement as an induced subgraph. This follows directly from the so called ``sandwich theorem'' and the ``strong
-perfect graph theorem'' \cite{knuth}.
+% EXPAND? when the almost quantum is = quantum
+This approach provides a useful condition to check if a given graph $G$ admits a
+quantum violation. Indeed it can be proven that $\TH(G) = \STAB(G)$ if and only
+if $G$ does not contain a cycle $C_n$ with $n \ge 5$ and odd, or its complement
+as an induced subgraph. This follows directly from the so called ``sandwich
+theorem'' and the ``strong perfect graph theorem'' \cite{knuth}.
+% EXPAND: some words on these 2 theorems
 
 \section{Exclusivity graph method applied to causal models}
 Next we show how the techniques presented in the previous section can be employed to analyze
 a broad class of causal models. Consider a DAG as in fig~\ref{fig:onelambda}, with
-$k$ observable variables $A_k$ with potential causal arrows among them, $l$ instruments $X_l$ with no incoming edges, and a single unobservable latent variable $\Lambda$ acting as a potential common factor for all $A_k$ (but not to $X_l$).
+$k$ observable variables $A_k$ with potential causal arrows among them, $l$
+instruments $X_l$ with no incoming edges, and a single unobservable latent
+variable $\Lambda$ acting as a potential common factor for all $A_k$ (but not to
+$X_l$).
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.9\columnwidth]{images/onelambda.pdf}
-    \caption{A broad class of causal structures with $k$ observable variables, $l$ instruments and a single latent     variable.}
+    \caption{A represetantion of the class of causal structures to which our
+    method can be applied.
+    Those arewith $k$ observable variables, $l$ instruments and a single latent     variable.}
     \label{fig:onelambda}
 \end{figure}
 
@@ -294,7 +333,7 @@ A \emph{non-exclusivity} graph can be associated with such a DAG
 as follows:
 \begin{itemize}
     \item Nodes are associated to events like $a | x$, where $a = (a_1,\ldots,a_k)$ and  $x = (x_1,\ldots,x_l)$.
-    \item Two nodes $a | x$, and $a' | x'$ are linked by an edge if and only if 
+    \item Two nodes $a | x $, and $a' | x'$ are linked by an edge if and only if 
         \begin{enumerate}
             \item for all $i,j \in \{1,\ldots,k\}$ if $A_i\,
                 \rightarrow\, A_j$ then $\exists g_{ij} : g_{ij}(a_i) = a_j
@@ -305,7 +344,10 @@ as follows:
         \end{enumerate}
 \end{itemize}
 
-As we will show next, considering the particular case of the instrumental scenario \cite{}, one can apply the graph-theoretical methods delineated before to the complement of this graph, $G=\bar{H}$, and its subgraphs. This allows to obtain instrumental inequalities and their respective quantum and
+As we will show next, considering the particular case of the instrumental
+scenario \cite{}, one can apply the graph-theoretical methods delineated before
+to the complement of this graph, $G=\bar{H}$, and its subgraphs. This allows to
+obtain instrumental inequalities and their respective quantum and
 classical bounds.
 
 \subsection{The Instrumental exclusivity graph}
@@ -313,40 +355,65 @@ classical bounds.
     \centering
     \includegraphics[width=.7\textwidth]{images/instrumental_exgraph.pdf}
     \caption{
-    
-    %\textcolor{blue}{Davide, sicuramente tante delle figure andrano nel SI, ma puoi comunque %sistemare gia la disposizione, perchè utilizanno troppo spazio, non sono segnalate con %a,b,c,d etc. Magari potresti scrivere la caption per quelle che sai gia che andranno nel %main text.}
-    The exclusivity graph for the instrumental scenario for $l=2,3,4,5$
-    from top left to bottom right. In the figure the bold lines represent
-    cliques.}
+    The exclusivity graph for the instrumental scenario $l22$ with $l=2,3,4,5$
+    respectively from top left to bottom right. 
+    To simplify the representation cliques are represented with the bold lines
+    in the figure.}
     \label{fig:instrumental_exgraphs}
 \end{figure*}
 
 %Many known results about the instrumental scenario, including the inequality
 %\eqref{eq:bonet_ineq}, can also be obtained using this formalism.
 
-Without loss of generality we will restrict our attention to the case of dichotomic observables ($n = m = 2$), considering $p(ab|x)$ with $a, b \in \mathcal{A} = \mathcal{B} = \{0,1\}$ and $x \in
-\mathcal{X} = \{0,\ldots,l\}$, the probability of having outcomes $a$ and $b$ with the instrument assuming the value $x$. As detailed above, the non-exclusivity graph for the instrumental scenario is obtained by linking two events $ab|x$ and $a'b'|x'$ if there exists two functions $f:\mathcal{X} \rightarrow \mathcal{A}$ and $g:\mathcal{A} \rightarrow
+Without loss of generality we will restrict our attention to the case of
+dichotomic observables ($n = m = 2$), considering $p(ab|x)$ with $a, b \in
+\mathcal{A} = \mathcal{B} = \{0,1\}$ and $x \in
+\mathcal{X} = \{0,\ldots,l\}$, the probability of having outcomes $a$ and $b$
+with the instrument assuming the value $x$. As detailed above, the
+non-exclusivity graph for the instrumental scenario is obtained by linking two
+events $ab|x$ and $a'b'|x'$ if there exists two functions $f:\mathcal{X}
+\rightarrow \mathcal{A}$ and $g:\mathcal{A} \rightarrow
 \mathcal{B}$ such that:
 \begin{eqnarray}
    & &  a = f(x) \quad\text{and}\quad a'=f(x')\\ \nonumber
 & & b = g(a) \quad\text{and}\quad b'=g(a')
     \label{eq:non_exclusivity_condition}
 \end{eqnarray}
-As shown in figure \ref{fig:instrumental_exgraphs}, we construct the exclusivity graphs for various $l$ and use the graph-theory methods described earlier to obtain the classical and quantum bounds for several inequalities in the instrumental scenario. 
+As shown in figure \ref{fig:instrumental_exgraphs}, we construct the exclusivity
+graphs for various $l$ and use the graph-theory methods described earlier to
+obtain the classical and quantum bounds for several inequalities in the
+instrumental scenario. 
 
-First, consider the case $l=2$, for which Pearl's inequality (???) defines the only instrumental inequality. It has been shown that this inequality does not have a quantum violation \cite{}. For that, general probabilistic Bayesian networks, including classical and quantum causal models as particular cases, had to be introduced. In contrast, in our method it is straightforward not only to derive the classical bound to Pearl's inequality \textcolor{red}{[Give more details about that]} but also show that there is no quantum violation of the inequality. This follows immediately from the fact that the corresponding exclusivity graph (and its complement) does not contain any odd cyclic graph with more than $5$ vertices, a necessary condition for any quantum violation.  
+First, consider the case $l=2$, for which Pearl's inequality (???) defines the
+only instrumental inequality. It has been shown that this inequality does not
+have a quantum violation \cite{}. For that, general probabilistic Bayesian
+networks, including classical and quantum causal models as particular cases, had
+to be introduced. In contrast, in our method it is straightforward not only to
+derive the classical bound to Pearl's inequality 
+%TODO: [Give more details about that 
+but also show that there is no quantum violation of the
+inequality. This follows immediately from the fact that the corresponding
+exclusivity graph (and its complement) does not contain any odd cyclic graph
+with more than $5$ vertices, a necessary condition for any quantum violation.  
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=.8\columnwidth]{images/instrumental_c5.pdf}
-    \caption{The exclusivity graph of the bonet inequality.}
+    \caption{The exclusivity graph of the bonet inequality, as an induced
+    subgraph of complete one of the $322$ instrumental scenario.}
     \label{fig:bonetexc}
 \end{figure}
 
 For $l\ge3$ we see that there might be a quantum violation, since the associated graph has as a subset a $C_5$ cyclic graph, i.e. the pentagon depicted in
 fig.~\ref{fig:bonetexc} that is exactly the Bonet's inequality \eqref{eq:bonet_ineq}.
-For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and $\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$. For $n=5$ it follows directly the gap between the classical and quantum theories, since the classical limit is given by $\alpha(C_5)=2$ and the quantum one given by $\theta(C_5)=\sqrt{5}$.
-\textcolor{red}{I'm a bit confused... the maximum quantum violation of the Bonet's inequality is $\sqrt{5}$ or $(3+\sqrt{2})/2$? Explain this a bit better...}
+For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and
+$\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$. For $n=5$ it follows directly the
+gap between the classical and quantum theories, since the classical limit is
+given by $\alpha(C_5)=2$ and the quantum one given by $\theta(C_5)=\sqrt{5}$.
+%\textcolor{red}{I'm a bit confused... the maximum quantum violation of the
+%Bonet's inequality is $\sqrt{5}$ or $(3+\sqrt{2})/2$? Explain this a bit
+%better...}
+% EXPAND: how to get the quantum bound.
 
 In this framework \eqref{eq:bonet_ineq} seems analogous to the KCBS contextual
 inequality\cite{kcbs2008}.
@@ -356,23 +423,31 @@ To find a tight bound we must apply other methods to our graph, like the ones in
 \cite{rabelo2014}, using which we find a value of $(3+\sqrt{2})/2$.
 
 As it will be shown below, no other odd anticycle besides
-$C_5$ is present for any $l$, that is, if we increase the cardinality of the instrumental variable. From this point of view, we can say that any quantum violation for a general $l22$ instrumental scenario has essentially the
-same origin: it stems from the non classicality of the $C_5$ graph. \textcolor{red}{[]Can we say that? What about the other kind of inequality discussed below?]}
+$C_5$ is present for any $l$, that is, if we increase the cardinality of the
+instrumental variable. 
+%From this point of view, we can say that any quantum violation for a general
+%$l22$ instrumental scenario has essentially the same origin: it stems from the
+%non classicality of the $C_5$ graph. 
+%\textcolor{red}{[]Can we say that? What about the other kind of inequality discussed below?]}
 
-This does not mean that different inequalities cannot be devised by clever choices of vertices and weights. \textcolor{red}{[]Is there any algorithm for that? Or is really trial and error? I'm confused by the method... are you combining the two graphs to construct a single inequality?]}
-For example the inequality for the $422$ scenario presented in \textcolor{red}{[This inequality looks strange... is that right? Can we write it in terms of probabilities?]}
-%\cite{rand_internal_report}
+This does not mean that different inequalities cannot be devised by clever
+choices of vertices and weights. 
+%\textcolor{red}{[]Is there any algorithm for
+%that? Or is really trial and error? I'm confused by the method... are you
+%combining the two graphs to construct a single inequality?]}
+For example for the $422$ scenario  we can find the inequality.
 %\begin{equation}
  %   \avg{AB}_1 -  \avg{AB}_2 + \avg{B}_0 - \avg{B}_3 \le 2
   %  \label{eq:422_ineq}
 %\end{equation}
-\begin{align}
-&p(00|10)-p(01|10)-p(10|11)+p(11|11)\\
-&-p(00|20)+p(01|20)+p(10|21)-p(11|21)+ \nonumber \\
-&p(00|00)-p(01|00)+p(10|01)-p(11|01) \nonumber \\
-&-p(00|30)+p(01|30)-p(10|31)+p(11|31) \le 2 \nonumber
-\end{align}
-
+\begin{multline}
+    p(00|10) + p(11|11) + p(01|20) + p(10|21) +\\
+    + p(00|00) + p(10|01) + p(01|30) + p(11|31) +\\
+    - p(01|10) - p(10|11) - p(00|20) - p(11|21) +\\
+    - p(01|00) - p(11|01) - p(00|30) - p(10|31)
+    \le 2
+    \label{eq:422_ineq}
+\end{multline}
 
 correponds to the two sets of events whose
 exclusivity graphs are depicted in fig.~\ref{fig:422_exgraph}.
@@ -393,37 +468,13 @@ non-classicality of the $C_5$ graph.
 
     \bigskip
     \parbox{.9\columnwidth}{
-        \includegraphics[width=.8\columnwidth]{images/chsh_exgraph.pdf}
-        \caption{The exclusivity graphs for the the CHSH scenario.}
+        \includegraphics[width=\columnwidth]{images/gclmp_graphs.pdf}
+        \caption{The exclusivity graphs for the the CHSH inequality in the Bell
+        scenario.}
         \label{fig:chsh_exgraph}
     }
 \end{figure}
 
-\subsection{There are no cycles $C_n$ with $n \ge 7$ in the $d22$ instrumental scenario.}
-%\label{sec:c5only_proof}
-In the following we prove that there cannot be a odd anticycle with more than $5$ vertices in the exclusivity graph associated to an instrumental scenario of the type $d22$.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=.6\columnwidth]{images/cycle_proof.pdf}
-    \caption{Proof of the impossibility of having cycles with $7$ nodes or more
-    in the $d22$ scenario.}
-    \label{fig:cycle_graph_proof}
-\end{figure}
-
-From the exclusivity conditions \eqref{eq:non-exclsivity_condition},
-given two events $ab|x$ and $a'b'|x'$, they are connected by edge if one of these two conditions is true:
-\begin{enumerate}
-    \item $x=x'$.\label{en:rule1}
-    \item $a=a'$ and $b \neq b'$.\label{en:rule2}
-\end{enumerate}
-Suppose we have a cycle $C_n$ with $n \ge 7$, as in fig.~\ref{fig:cycle_graph_proof},
-and consider that node $2$ in this graph corresponds to an event which we can arbitrarily identify as $00|0$.
-Among its neighbors $1$ and $3$, one will necessarily need to satisfy rule \ref{en:rule2} (they cannot both satisfy rule \ref{en:rule1} or the three nodes would be a clique \textcolor{red}{Explain what is a clique}).
-So without loss of generality we can assign the event $01|1$ to $3$.
-Since nodes $5,6,7$ must not satisfy rule \ref{en:rule2} with both $2$ and $3$, then they must have $a = 1$.
-Moreover $7$ and $5$ must have the same $b$, different from $6$. In the same way $1$ must not satisfy rule \ref{en:rule2} with $6,5$ and $3$, so it
-needs to have $a=0$ and $b=1$. At this point, since we only have values $\{0,1\}$ for $a$, we cannot avoid node $4$ to be linked to one of the nodes $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
 
 
 %\section{Finding optimal instrumental inequalities}
@@ -460,11 +511,46 @@ needs to have $a=0$ and $b=1$. At this point, since we only have values $\{0,1\}
 
 
 \subsubsection*{Acknowledgements}
-We acknowledge support from John Templeton Foundation via the grant Q-CAUSAL n$^{\circ}$61084 (the opinions expressed in this publication are those of the authors and do not necessarily  the views of the John Templeton
-Foundation). RC acknowledges the Brazilian ministries MEC and MCTIC, funding agency CNPq (PQ grants No. 307172/2017-1 and No 406574/2018-9 and INCT-IQ) and the Serrapilheira Institute (grant number Serra-1708-15763).
+We acknowledge support from John Templeton Foundation via the grant Q-CAUSAL
+n$^{\circ}$61084 (the opinions expressed in this publication are those of the
+    authors and do not necessarily  the views of the John Templeton
+Foundation). RC acknowledges the Brazilian ministries MEC and MCTIC, funding
+agency CNPq (PQ grants No. 307172/2017-1 and No 406574/2018-9 and INCT-IQ) and
+the Serrapilheira Institute (grant number Serra-1708-15763).
 
+\section*{Methods}
+\subsection*{There are no cycles $C_n$ with $n \ge 7$ in the $d22$ instrumental scenario.}
+%\label{sec:c5only_proof}
+In the following we prove that there cannot be a odd anticycle with more than
+$5$ vertices in the exclusivity graph associated to an instrumental scenario of
+the type $d22$.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.6\columnwidth]{images/cycle_proof.pdf}
+    \caption{Proof of the impossibility of having cycles with $7$ nodes or more
+    in the $d22$ scenario.}
+    \label{fig:cycle_graph_proof}
+\end{figure}
 
+From the exclusivity conditions \eqref{eq:non_exclusivity_condition},
+given two events $ab|x$ and $a'b'|x'$, they are connected by edge if one of these two conditions is true:
+\begin{enumerate}
+    \item $x=x'$.\label{en:rule1}
+    \item $a=a'$ and $b \neq b'$.\label{en:rule2}
+\end{enumerate}
+Suppose we have a cycle $C_n$ with $n \ge 7$, as in fig.~\ref{fig:cycle_graph_proof},
+and consider that node $2$ in this graph corresponds to an event which we can arbitrarily identify as $00|0$.
+Among its neighbors $1$ and $3$, one will necessarily need to satisfy rule
+\ref{en:rule2} (they cannot both satisfy rule \ref{en:rule1} or the three nodes
+would be a clique 
+%TODO: Explain what is a clique.
+So without loss of generality we can assign the event $01|1$ to $3$.
+Since nodes $5,6,7$ must not satisfy rule \ref{en:rule2} with both $2$ and $3$, then they must have $a = 1$.
+Moreover $7$ and $5$ must have the same $b$, different from $6$. In the same way $1$ must not satisfy rule \ref{en:rule2} with $6,5$ and $3$, so it
+needs to have $a=0$ and $b=1$. At this point, since we only have values
+$\{0,1\}$ for $a$, we cannot avoid node $4$ to be linked to one of the nodes
+$1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
 
 \begin{thebibliography}{}
     \bibitem{pearlbook} J. Pearl, 
