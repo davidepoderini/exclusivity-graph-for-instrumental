@@ -486,10 +486,11 @@ $C_5$ is present for any $l$, that is, if we increase the cardinality of the
 instrumental variable.
 The first $7$-cycle appears as soon as we get to $n=m=3$ and $l=4$.
 This Bonet-like inequality for the instrumental scenario can be written as:
-\begin{equation}
-    P(00|2) + P(02|3) + P(00|0) + P(12|0) + P(10|1) + P(21|1) + P(22|2) \le 3 
+\begin{multline}
+    P(00|2) + P(02|3) + P(00|0) + P(12|0) + \\
+    + P(10|1) + P(21|1) + P(22|2) \le 3 
     \label{eq:c7_instrumental433}
-\end{equation}
+\end{multline}
 Applying the method cited above for this inequality gives a quantum upper bound
 of $q = 3.4142$ at the second order of the NPA hierarchy, which indicates the
 possibility of a quantum violation.
@@ -507,25 +508,26 @@ For example in the $422$ scenario we can find by inspection the inequalities:
   %  \label{eq:422_ineq}
 %\end{equation}
 \begin{align}
-    &P(01|2) + &P(11|2) + P(10|3) + P(01|3) + \\
-    &&+ P(00|0) + P(10|0) + P(11|1) + P(00|1) \le 3 \\
-    &P(10|1) + &P(11|0) + P(01|0) + P(00|3) +\\
-    &&+ P(11|3) + P(10|2) + P(00|2) + P(01|1) \le 3
+    &P(01|2) + P(11|2) + P(10|3) + P(01|3) + \nonumber \\
+    &+ P(00|0) + P(10|0) + P(11|1) + P(00|1) \le 3 \\
+    &P(10|1) + P(11|0) + P(01|0) + P(00|3) + \nonumber \\
+    &+ P(11|3) + P(10|2) + P(00|2) + P(01|1) \le 3
     \label{eq:422_ineq}
 \end{align}
 These inequalities are interesting, since they are represented by the same
 exclusivity graph of the notorious CHSH inequality for the Bell scenario (see
 Fig.~\ref{fig:422_exgraph}):
 \begin{align}
-    &P(00|10) + &P(11|11) + P(01|20) + P(10|21) + \\
-    &&+ P(00|00) + P(10|01) + P(01|30) + P(11|31) \le 3 \\
-    &P(01|10) - &P(10|11) + P(00|20) + P(11|21) +\\
-    &&- P(01|00) + P(11|01) + P(00|30) + P(10|31) \le 3
-    \label{eq:422_ineq}
+    &P(00|10) + P(11|11) + P(01|20) + P(10|21) + \nonumber \\
+    &+ P(00|00) + P(10|01) + P(01|30) + P(11|31) \le 3 \\
+    &P(01|10) - P(10|11) + P(00|20) + P(11|21) +\nonumber \\
+    &- P(01|00) + P(11|01) + P(00|30) + P(10|31) \le 3
+    \label{eq:chsh_ineq}
 \end{align}
 
 A well known generalization of the CHSH inequality are the so called GCLMP
 \cite{} inequalities.
+
 
 %The maximum classical value for both, given by the independence number of the
 %graphs, is $3$, while their minimum is $1$, which gives the maximum value of $2$
@@ -626,7 +628,7 @@ as shown in Fig.~\ref{fig:instrumental_multigraph}.
     \caption{Edge colored exclusivity graph representation of the Bonet
         inequality. Exclusivity constraints for the party $A$ and $B$ are
     represented by dotted red lines and dashed blue lines respectively.}
-    \label{fig:2mn_nocycle_proof}
+    \label{fig:instrumental_multigraph}
 \end{figure}
 Applying the technique described above to this scenario yields a quantum
 bound of $2.2071$, compatible with the known value for the quantum bound of
@@ -639,7 +641,7 @@ with $l=2$ possible settings for the instrumental variable $X$.
 This reduces to proving that there are no odd $n$-cycles nor $n$-anticycles as induced
 subgraphs in the corresponding exclusivity graph, with $n\ge5$.
 To see this we can notice that any such graph is composed by two cliques (see
-for example Fig.~\ref{fig:2mn_no_cycle_proof}), corresponding to the events with $x=0$ and
+for example Fig.~\ref{fig:2mn_nocycle_proof}), corresponding to the events with $x=0$ and
 $x=1$.
 \begin{figure}[h]
     \centering
