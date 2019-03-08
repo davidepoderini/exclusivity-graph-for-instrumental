@@ -502,7 +502,7 @@ and $11$-cycles for $l=7, m=4$.
 While cycles are the simplest inequalities showing quantum violation, our method
 can also be employed for the analisys of different inequalities, that can be 
 devised by clever choices of vertices and weights. 
-For example in the $422$ scenario we can find by inspection the inequalities:
+For example in the instrumental scenario $(l,m,n) = (4,2,2)$ we can find by inspection the inequalities:
 %\begin{equation}
  %   \avg{AB}_1 -  \avg{AB}_2 + \avg{B}_0 - \avg{B}_3 \le 2
   %  \label{eq:422_ineq}
@@ -526,8 +526,41 @@ Fig.~\ref{fig:422_exgraph}):
 \end{align}
 
 A well known generalization of the CHSH inequality are the so called GCLMP
-\cite{} inequalities.
+\cite{} inequalities, which are defined for any Bell scenario with 2 settings
+for $X$ and $Y$ and $d$ outputs for $A$ and $B$, and can be written as:
+\begin{gather}
+    I_d^{\mathrm{CGLMP}} = \sum_{k=0}^{d-1} (d-1-k) S_k \le 3 (d-1)\\
+    \text{where} \quad S_k = P(b+k,b|00) + P(a, a+k+1|10) + P(b+k, b | 11) +
+    P(a, a+k | 01)
+    \label{eq:GCLMP}
+\end{gather}
+where the sums $a+k, a+k+1$ and $b+k$ are modulo $d$.
+Using the exclusivity graph method we can find that actually each of the $S_k$ is
+classicaly constrained by $\alpha(G_k) = 3$.
+This can be show in general.
+Indeed the graphs $G_k$ relative to the $k$ all share the
+same structure, represented in Fig.~\ref{fig:gclmp_general} there are four
+cliques, one for each setting $x,y \in {0,1}$, and any vertex in each clique is
+connected to every other vertex in the adiacent clique, except for one.
+For example $b+k,b|00$ is connected to any node belonging to the $(0,1)$ and the
+$(1,0)$ cliques, except for $a,a+k|01$ and $a',a'+k+1|10$ where $b+k = a$ and
+$a'+k+1 = b$.
+It is easy then to convince that any maximal independent set cannot contain more
+than $3$ vertices.
+A summary of $S_k$ inequalities and their quantum bounds is shown in Table~\ref{tab:gclmps}.
+\begin{table}
+    \centering
+    \begin{tabular}{ccc}
+        <++>
+    \end{tabular}
+    \caption{<+Caption text+>}
+    \label{tab:gclmps}
+\end{table}<++>
 
+Interestingly, except for the case $(l,m,n) = (4,2,2)$, inequalities with the
+same structure do not seem to arise in the instrumental case, which suggests
+that the apparent similarity between the two scenarios, Bell and the
+instrumental, only arises at for specific number of inputs and outputs. 
 
 %The maximum classical value for both, given by the independence number of the
 %graphs, is $3$, while their minimum is $1$, which gives the maximum value of $2$
@@ -538,18 +571,11 @@ A well known generalization of the CHSH inequality are the so called GCLMP
 
 \begin{figure}[b]
     \centering
-    \parbox{.9\columnwidth}{
-        \includegraphics[width=\columnwidth]{images/422_exgraph.pdf}
-        \caption{The exclusivity graph for the $422$ Instrumental scenario.}
-        \label{fig:422_exgraph}
-    }
-
-    \bigskip
-    \parbox{.9\columnwidth}{
         \includegraphics[width=\columnwidth]{images/gclmp_graphs.pdf}
-        \caption{The exclusivity graphs for the the CHSH inequality in the Bell
-        scenario.}
-        \label{fig:chsh_exgraph}
+        \caption{Exclusivity graphs for the the inequality \eqref{eq:chsh_ineq} in the Bell
+        scenario (in red) and inequality \eqref{eq:422_ineq} in the instrumental
+    scenario (in green).}
+        \label{fig:422_exgraph}
     }
 \end{figure}
 
