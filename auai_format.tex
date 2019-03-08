@@ -529,18 +529,19 @@ A well known generalization of the CHSH inequality are the so called GCLMP
 \cite{} inequalities, which are defined for any Bell scenario with 2 settings
 for $X$ and $Y$ and $d$ outputs for $A$ and $B$, and can be written as:
 \begin{gather}
-    I_d^{\mathrm{CGLMP}} = \sum_{k=0}^{d-1} (d-1-k) S_k \le 3 (d-1)\\
-    \text{where} \quad S_k = P(b+k,b|00) + P(a, a+k+1|10) + P(b+k, b | 11) +
+    I_d^{\mathrm{CGLMP}} = \sum_{k=0}^{d-1} (d-1-k) S^d_k \le 3 (d-1)\\
+    \text{where} \quad S^d_k = P(b+k,b|00) + P(a, a+k+1|10) + P(b+k, b | 11) +
     P(a, a+k | 01)
     \label{eq:GCLMP}
 \end{gather}
 where the sums $a+k, a+k+1$ and $b+k$ are modulo $d$.
-Using the exclusivity graph method we can find that actually each of the $S_k$ is
-classicaly constrained by $\alpha(G_k) = 3$.
-This can be show in general.
-Indeed the graphs $G_k$ relative to the $k$ all share the
-same structure, represented in Fig.~\ref{fig:gclmp_general} there are four
-cliques, one for each setting $x,y \in {0,1}$, and any vertex in each clique is
+Using the exclusivity graph method we can find that actually each of the $S^d_k$ is
+classicaly constrained by $\alpha(G^d_k) = 3$.
+It can be shown that this is true in general.
+Indeed the graphs $G^d_k$ relative to the $k$ all share the
+same structure:
+%represented in Fig.~\ref{fig:gclmp_general},
+there are four cliques, one for each setting $x,y \in {0,1}$, and any vertex in each clique is
 connected to every other vertex in the adiacent clique, except for one.
 For example $b+k,b|00$ is connected to any node belonging to the $(0,1)$ and the
 $(1,0)$ cliques, except for $a,a+k|01$ and $a',a'+k+1|10$ where $b+k = a$ and
@@ -551,11 +552,15 @@ A summary of $S_k$ inequalities and their quantum bounds is shown in Table~\ref{
 \begin{table}
     \centering
     \begin{tabular}{ccc}
-        <++>
+        
+        $d$ & $k$ & $\theta$ & NPA \\
+        &&&
     \end{tabular}
-    \caption{<+Caption text+>}
+    \caption{The above table shows the Lov\'asz theta, and the NPA bound
+(computed up to the second order) of the inequalities $S^d_k$ for some values
+of $k$ and $d$.}
     \label{tab:gclmps}
-\end{table}<++>
+\end{table}
 
 Interestingly, except for the case $(l,m,n) = (4,2,2)$, inequalities with the
 same structure do not seem to arise in the instrumental case, which suggests
