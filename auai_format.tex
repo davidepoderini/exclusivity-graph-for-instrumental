@@ -1,6 +1,3 @@
-% Sample LaTeX file for creating a paper in the Morgan Kaufmannn two
-% column, 8 1/2 by 11 inch proceedings format.
-
 \documentclass[letterpaper]{article}
 \usepackage{uai2019}
 \usepackage[margin=1in]{geometry}
@@ -29,7 +26,6 @@
 %Piazzale Aldo Moro 5, I-00185 Roma, Italy}
 %
 %\author{Rafael Chaves}
-%\author{...}
 %\affiliation{International Institute of Physics, Federal University of Rio %Grande do Norte, 59070-405 Natal, Brazil}
 %\affiliation{School of Science and Technology, Federal University of Rio %Grande do Norte, 59078-970 Natal, Brazil}
 
@@ -41,29 +37,34 @@
 \maketitle
 
 \begin{abstract}
-\textcolor{blue}{Instrumental tests have been widely used to derive causal
-   relations between variables even in presence of unobserved latent factors,
-   thus providing a powerful tool for different sciences ranging from xxx to
-   xxx. Recently, much interest have been dedicated to the instrumental scenario
-   since admits quantum violations with fewer resources respect to the Bell
-   analogue, this property can be exploited to (drastically?) improve our
-   current capacities to process information. Dire qualcosa della contextuality.
-   Here, we present the instrumental inequality under a contextual approach,
-   showing that the geometry of correlations within this framework allow us to
-   find optimal xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  }  
+Instrumental variables allow the estimation of cause and effect relations even
+in presence of unobserved latent factors, thus providing a powerful tool for any
+science wherein causal inference plays an important role. More recently, the
+instrumental scenario has also attracted increasing attention in quantum
+physics, since it is related to the seminal Bell's theorem and in fact allows
+the detection of even stronger quantum effects, thus enhancing our current
+capabilities to process information and becoming a valuable tool in quantum
+cryptography. In this work, we further explore this bridge between causality and
+quantum theory and apply a technique, originally developed in the field of
+quantum foundations, to express the constraints implied by causal relations in
+the language of graph theory. This new approach can be applied to any causal
+model containing a latent variable. Here, by focusing on the instrumental
+scenario, it allows us to easily reproduce known results as well as obtain new
+ones and gain new insights on the connections and differences between the
+instrumental and the Bell scenarios. 
 \end{abstract}
 
 \section*{Introduction}
 Inferring  whether a variable $A$ is the cause of another variable $B$ is at the
 core of causal inference. However, unless interventions are available
-\cite{pearlbook}, one can cannot exclude that observed correlations between $A$
+\cite{pearlbook}, one can cannot exclude that observed correlations between $A$ % TODO check ref
 and $B$ are due to a latent common factor, thus hindering any causal
 conclusions. To cope with that, instrumental variables (IV) have been introduced
 \cite{pearl1995, bonet2001}. Under the assumption that they are independent of
 any latent common factors, IV can be used to put non-trivial bounds on the
 causal effect between $A$ and $B$. To this aim, first, one has to guarantee that
 an appropriate instrument (fulling a set of causal constraints) has been
-employed, precisely the goal of the so-called instrumental tests
+employed, which is precisely the goal of the so-called instrumental tests
 \cite{pearl1995, bonet2001}. Their violation, at least in classical physics, is
 an unambiguous proof that some of the causal assumptions underlying the
 instrumental causal structure are not fulfilled, that is, one should identify
@@ -84,16 +85,16 @@ in quantum physics, violations of the instrumental tests are possible even
 though the whole process is indeed subjected to an instrumental causal structure
 \cite{chaves2018, himbeeck2018}. In the quantum case, instrumentality violations
 witness the presence of quantum entanglement as the latent factor and prove a
-stronger form of quantum non-locality as compared to the famous Bell's theorem
+stronger form of quantum non-locality compared to the famous Bell's theorem
 \cite{chaves2018}. As a consequence, typical bounds on the causal influence of
 $A$ into $B$ have to be reevaluated and reinterpreted in the presence of quantum
-effects \cite{}.
+effects \cite{}.%TODO ref
 
 Our aim in this paper is to provide a novel and complementary framework to the
 analysis of instrumental tests and that addresses the two drawbacks mentioned
 above. The proposed method is based on a graph theoretical approach introduced
 in the foundations of quantum physics to analyze the possible correlations
-obtained in quantum experiments \cite{}. % cabello severini and winter
+obtained in quantum experiments \cite{}. % TODO cabello severini and winter
 This method allow us to reproduce the classical results by Bonet and to
 straightforwardly generalize them in the quantum scenario. 
 It also offer an easy way to check for the presence of gap between the
@@ -113,10 +114,11 @@ measurements.
     \centering
     \includegraphics[width=.8\columnwidth]{images/chsh_inst_dag.pdf}
         \caption{
-    \textbf{a)} The directed acyclic graph (DAG) representing a general
+    Directed acyclic graph (DAG) representation for
+    \textbf{a)} a general
     Instrumental scenario, with $l$ possible values for the random variable $X$
-    and $m,n$ possible outcomes for $A$ and $B$ respectively
-    \textbf{b)} The directed acyclic graph (DAG) of the CHSH scenario where all the
+    and $m,n$ possible outcomes for $A$ and $B$ respectively, and for
+    \textbf{b)} the CHSH scenario where all the
     variables $X,Y,A$ and $B$ can only take two possible values.
 }
     \label{fig:chshinstdag}
@@ -259,12 +261,29 @@ the analysis of instrumental inequalities.
 
 \section*{The exclusivity graph approach}
 
-The graph-theoretical approach we propose here, was initially developed to the study of non-contextual inequalities \cite{cabello2014} as well as Bell non-locality scenarios \cite{acin2015} and obtain their quantum violation. In this formalism, every possible event, i.e. every possible set of measurement outcomes $a_1^,\ldots, a_n$ corresponding to given measurement settings $x_1,\ldots,x_n$ (each of which can be understood as an instrument), is associated to a vertex in a (undirected) graph $G = (V, E)$. Two vertices $u, v \in V$ are then connected by an edge $uv \in E$ if and only if they are exclusive, i.e.  if exists a measurement/instrument that can distinguish between them. Any linear constraint (like the instrumental inequalities) can be expressed defining a linear function 
+The graph-theoretical approach we propose here, was initially developed for the
+study of non-contextual inequalities \cite{cabello2014} as well as Bell
+non-locality scenarios \cite{acin2015}. 
+In this formalism, every possible event, i.e. every possible set of measurement
+outcomes $a_1^,\ldots, a_n$ corresponding to given measurement settings
+$x_1,\ldots,x_n$ (each of which can be understood as an instrument), is
+associated to a vertex in a (undirected) graph $G = (V, E)$. Two vertices $u, v
+\in V$ are then connected by an edge $uv \in E$ if and only if they are
+exclusive, i.e.  if exists a measurement/instrument that can distinguish between
+them. Any linear constraint (like the instrumental inequalities) can be
+expressed defining a linear function
 \begin{equation}
     I_w(p) = \sum_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}
 w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}} p(a_1,\ldots,a_n|x_1,\ldots,x_n)
 \end{equation}
-on the probabilities of possible events. This linear function can be represented by the weighted exclusivity graph $G$. Nicely, as it will be discussed below, bounds for the maximum values for $ I_w(p)$ achievable in classical and quantum physical theories can be related to well-known graph invariants \cite{}, the independence number $\alpha(G, w)$ and the Lovász theta $\theta(G, w)$, respectively. In the following, we will briefly introduce these concepts and their interconnections, a more extensive and detailed account can be found in \cite{cabello2014, rabelo2014,acin2015}
+on the probabilities of possible events. This linear function can be represented
+by the weighted exclusivity graph $G$. Nicely, as it will be discussed below,
+bounds for the maximum values for $ I_w(p)$ achievable in classical and quantum
+physical theories can be related to well-known graph invariants \cite{}, the
+independence number $\alpha(G, w)$ and the Lovász theta $\theta(G, w)$,
+respectively. In the following, we will briefly introduce these concepts and
+their interconnections, a more extensive and detailed account can be found in
+\cite{cabello2014, rabelo2014,acin2015}
 
 Consider a graph $G(V,E)$ with vertex weights $w$, and $|V| = n$ .
 We call a \emph{characteristic labelling} for $U \subseteq V$ a vector $x_v \in
@@ -272,7 +291,9 @@ We call a \emph{characteristic labelling} for $U \subseteq V$ a vector $x_v \in
 
 An \emph{independent set} or \emph{stable set} is a set
 $S \subset V$ such that $uv \notin E$ for all $u,v \in S$.
-The independence number $\alpha(G, w)$ is defined as the maximum number of vertices (weighted with $w$) of an independent set of $G$. Is also customary to define the set $\STAB(G)$ as the convex hull of all the
+The independence number $\alpha(G, w)$ is defined as the maximum number of
+vertices (weighted with $w$) of an independent set of $G$. Is also customary to
+define the set $\STAB(G)$ as the convex hull of all the
 characteristic labellings of stable sets:
 \begin{equation} 
     \STAB(G) = \{x : x \quad \text{is a stable labelling of}\quad G \}.
@@ -294,12 +315,12 @@ $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
 \end{multline}
 It can be proved that this set includes all correlations permitted by quantum
 theory \footnote{As proved in \cite{acin2015} this set corresponds to the level
-$1+AB$ of the NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, % cite also almost-quantum correlations. 
+$1+AB$ of the NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, 
 but in general is larger as it contains correlations beyond those achieved by quantum
 mechanics \cite{almostquantum2015}.
 Maximizing over $\TH(G)$ gives the Lovász theta:
 \begin{equation}
-    \theta(G,w) = \{w\cdot x : x \in \TH(G)\}
+    \theta(G,w) = \max \{w\cdot x : x \in \TH(G)\}
     \label{eq:lovasztheta}
 \end{equation}
 which upper-bounds the maximum quantum value.
@@ -307,13 +328,35 @@ which upper-bounds the maximum quantum value.
 This approach provides a useful condition to check if a given graph $G$ admits a
 quantum violation. Indeed it can be proven that $\TH(G) = \STAB(G)$ if and only
 if $G$ does not contain a cycle $C_n$ with $n \ge 5$ and odd, or its complement
-as an induced subgraph. This follows directly from the so called ``sandwich
-theorem'' and the ``strong perfect graph theorem'' \cite{knuth}.
-% EXPAND: some words on these 2 theorems
+as an induced subgraph. 
+This follows directly from the notorious ``sandwich theorem''\cite{knuth, lovasz} and the ``strong
+perfect graph theorem'' \cite{spgth}.
+The first one states that the number $\theta(G)$ is always ``sandwiched''
+between the independence number of the graph $\alpha(G)$ and another quantity
+called the \emph{chromatic number} $\chi(G)$, i.e. the smaller number of colors needed
+to label the vertices such that vertices connected by and edge always have
+different colors.
+\begin{equation}
+    \alpha(G) \le \theta(G) \le \chi(G)
+    \label{eq:sandwich_th}
+\end{equation}
+When equality holds in equation \eqref{eq:sandwich_th} for a graph $G$ and all its
+induced subgraphs, $G$ is called \emph{perfect}.
+For perfect graph we can definitely exclude the existence of a quanutm
+violation, since $\alpha(G) = \theta(G)$.
+The second theorem then gives a useful condition to check if a graph is perfect
+or not.  In particular it affirms that a graph $G$ is perfect if and only if it
+does not contain a $n$-cycle graph with $n\ge5$ and odd or its complement as an
+induced subgraph.
+
+Besides signaling the presence of a possible quantum violation of classical
+constraint, induced cycle subgraphs are also experimentally interesting because
+they give the simplest inequalities (in terms of number of probabilities to
+estimate), to test this violation.
 
 \section{Exclusivity graph method applied to causal models}
 Next we show how the techniques presented in the previous section can be employed to analyze
-a broad class of causal models. Consider a DAG as in fig~\ref{fig:onelambda}, with
+a broad class of causal models. Consider the DAG depicted in fig~\ref{fig:onelambda}, with
 $k$ observable variables $A_k$ with potential causal arrows among them, $l$
 instruments $X_l$ with no incoming edges, and a single unobservable latent
 variable $\Lambda$ acting as a potential common factor for all $A_k$ (but not to
@@ -322,9 +365,9 @@ $X_l$).
 \begin{figure}[h]
     \centering
     \includegraphics[width=.9\columnwidth]{images/onelambda.pdf}
-    \caption{A represetantion of the class of causal structures to which our
-    method can be applied.
-    Those arewith $k$ observable variables, $l$ instruments and a single latent     variable.}
+    \caption{Represetantion of the class of causal structures to which our
+        method can be applied, which are those with $k$ observable variables, $l$
+        instruments and a single latent variable.}
     \label{fig:onelambda}
 \end{figure}
 
@@ -335,7 +378,7 @@ as follows:
     \item Nodes are associated to events like $a | x$, where $a = (a_1,\ldots,a_k)$ and  $x = (x_1,\ldots,x_l)$.
     \item Two nodes $a | x $, and $a' | x'$ are linked by an edge if and only if 
         \begin{enumerate}
-            \item for all $i,j \in \{1,\ldots,k\}$ if $A_i\,
+            \item for all $i,j \in \{1 ,\ldots,k\}$ if $A_i\,
                 \rightarrow\, A_j$ then $\exists g_{ij} : g_{ij}(a_i) = a_j
                 \et g_{ij}(a'_i) = a'_j$.
             \item for all $i\in \{1,\ldots,l\}$ and $j\in \{1,\ldots,k\}$ if
@@ -351,21 +394,21 @@ obtain instrumental inequalities and their respective quantum and
 classical bounds.
 
 \subsection{The Instrumental exclusivity graph}
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=.7\textwidth]{images/instrumental_exgraph.pdf}
+    \includegraphics[width=\columnwidth]{images/instrumental_exgraph.pdf}
     \caption{
     The exclusivity graph for the instrumental scenario $l22$ with $l=2,3,4,5$
     respectively from top left to bottom right. 
     To simplify the representation cliques are represented with the bold lines
     in the figure.}
     \label{fig:instrumental_exgraphs}
-\end{figure*}
+\end{figure}
 
 %Many known results about the instrumental scenario, including the inequality
 %\eqref{eq:bonet_ineq}, can also be obtained using this formalism.
 
-Without loss of generality we will restrict our attention to the case of
+As a first application we will restrict our attention to the case of
 dichotomic observables ($n = m = 2$), considering $p(ab|x)$ with $a, b \in
 \mathcal{A} = \mathcal{B} = \{0,1\}$ and $x \in
 \mathcal{X} = \{0,\ldots,l\}$, the probability of having outcomes $a$ and $b$
@@ -376,87 +419,120 @@ events $ab|x$ and $a'b'|x'$ if there exists two functions $f:\mathcal{X}
 \mathcal{B}$ such that:
 \begin{eqnarray}
    & &  a = f(x) \quad\text{and}\quad a'=f(x')\\ \nonumber
-& & b = g(a) \quad\text{and}\quad b'=g(a')
+   & & b = g(a) \quad\text{and}\quad b'=g(a')
     \label{eq:non_exclusivity_condition}
 \end{eqnarray}
-As shown in figure \ref{fig:instrumental_exgraphs}, we construct the exclusivity
-graphs for various $l$ and use the graph-theory methods described earlier to
+As shown in Fig.~\ref{fig:instrumental_exgraphs}, we construct the exclusivity
+graphs for various $l$ and use the methods described earlier to
 obtain the classical and quantum bounds for several inequalities in the
 instrumental scenario. 
 
-First, consider the case $l=2$, for which Pearl's inequality (???) defines the
-only instrumental inequality. It has been shown that this inequality does not
-have a quantum violation \cite{}. For that, general probabilistic Bayesian
-networks, including classical and quantum causal models as particular cases, had
-to be introduced. In contrast, in our method it is straightforward not only to
-derive the classical bound to Pearl's inequality 
-%TODO: [Give more details about that 
-but also show that there is no quantum violation of the
-inequality. This follows immediately from the fact that the corresponding
-exclusivity graph (and its complement) does not contain any odd cyclic graph
-with more than $5$ vertices, a necessary condition for any quantum violation.  
+First, consider the case $l=2$, for which Pearl's inequality
+\eqref{eq:pearl_ineq} defines the only instrumental inequality. It has been
+shown that this inequality does not have a quantum violation \cite{}.
+For that, general probabilistic Bayesian networks, including classical and
+quantum causal models as particular cases, had to be introduced.
+In contrast, in our method it is straightforward not only to derive the
+classical bound to Pearl's inequality but also show that there is no quantum
+violation of the inequality. 
+Indeed in the case of $l=2$ inequalities \eqref{eq:pearl_ineq} becomes:
+\begin{equation}
+    P(a0|x_1) + P(a1|x_2) \le 1 
+    \label{eq:pearl_ineq_222}
+\end{equation}
+which are just the classical constraint given by the exclusivity conditions,
+represented by the edges of the graph (see Fig.~\ref{fig:instrumental_exgraphs}.
+The fact that no quantum violation is allowed instead 
+follows immediately from the fact that the corresponding
+exclusivity graph (and its complement) does not contain any odd cycle or
+anticycle with more than $5$ vertices, which makes it a perfect graph, i.e.
+$TH(G) = STAB(G)$.
+This can be easily generalized to any number of output $n,m$ as shown in the
+methods section. In this way we can exclude the presence of any quantum
+violation for any instrumental scenario with $l=2$ and an arbitrary number of
+outputs.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=.8\columnwidth]{images/instrumental_c5.pdf}
+    \includegraphics[width=.6\columnwidth]{images/instrumental_c5.pdf}
     \caption{The exclusivity graph of the bonet inequality, as an induced
-    subgraph of complete one of the $322$ instrumental scenario.}
+    subgraph of complete one of the $322$ instrumental scenario.To
+    simplify the representation cliques are represented with the bold
+    lines in the figure.}
     \label{fig:bonetexc}
 \end{figure}
 
-For $l\ge3$ we see that there might be a quantum violation, since the associated graph has as a subset a $C_5$ cyclic graph, i.e. the pentagon depicted in
-fig.~\ref{fig:bonetexc} that is exactly the Bonet's inequality \eqref{eq:bonet_ineq}.
-For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and
+Going to $l\ge3$ we see that there might be a quantum violation, since the associated
+graph has as a subset a $C_5$ cyclic graph, i.e. the pentagon depicted in
+Fig.~\ref{fig:bonetexc} that corresponds exactly to the Bonet's inequality \eqref{eq:bonet_ineq}.
+For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and that
 $\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$. For $n=5$ it follows directly the
 gap between the classical and quantum theories, since the classical limit is
-given by $\alpha(C_5)=2$ and the quantum one given by $\theta(C_5)=\sqrt{5}$.
-%\textcolor{red}{I'm a bit confused... the maximum quantum violation of the
-%Bonet's inequality is $\sqrt{5}$ or $(3+\sqrt{2})/2$? Explain this a bit
-%better...}
-% EXPAND: how to get the quantum bound.
+given by $\alpha(C_5)=2$ and the quantum bound is given by $\theta(C_5)=\sqrt{5}$.
 
 In this framework \eqref{eq:bonet_ineq} seems analogous to the KCBS contextual
 inequality\cite{kcbs2008}.
-The difference here is that the quantum limit is not $\sqrt{5}$, which we cannot
-obtain in a bipartite scenario.
-To find a tight bound we must apply other methods to our graph, like the ones in
-\cite{rabelo2014}, using which we find a value of $(3+\sqrt{2})/2$.
+The difference here is that we are in a bipartite scenario and the real quantum
+limit is not simply given by the quantity $\theta(C_5) = \sqrt{5}$, which
+constitutes only an upper bound for the maximum achievable quantum violation.
+To find a tighter bound we can apply the methods decribed in
+\cite{rabelo2014}, based on the NPA (Navascues, Pironio, Acin) method
+\cite{npa2008}, which is summarized in the methods section, obtaining the known
+result for the maximum quantum bound of the Bonet inequality, i.e
+$(3+\sqrt{2})/2 \approx 2.2071$.
 
-As it will be shown below, no other odd anticycle besides
+As shown in the method section below, no other odd anticycle besides
 $C_5$ is present for any $l$, that is, if we increase the cardinality of the
-instrumental variable. 
-%From this point of view, we can say that any quantum violation for a general
-%$l22$ instrumental scenario has essentially the same origin: it stems from the
-%non classicality of the $C_5$ graph. 
-%\textcolor{red}{[]Can we say that? What about the other kind of inequality discussed below?]}
+instrumental variable.
+The first $7$-cycle appears as soon as we get to $n=m=3$ and $l=4$.
+This Bonet-like inequality for the instrumental scenario can be written as:
+\begin{equation}
+    P(00|2) + P(02|3) + P(00|0) + P(12|0) + P(10|1) + P(21|1) + P(22|2) \le 3 
+    \label{eq:c7_instrumental433}
+\end{equation}
+Applying the method cited above for this inequality gives a quantum upper bound
+of $q = 3.4142$ at the second order of the NPA hierarchy, which indicates the
+possibility of a quantum violation.
+Similarly numerical analisys shows that odd cycle subgraphs with higher number
+of vertices appear only if we increase the number of possible settings $l$ while
+also increasing $m$, so for example $9$-cycles start to appear for $l=6, m=3$ 
+and $11$-cycles for $l=7, m=4$.
 
-This does not mean that different inequalities cannot be devised by clever
-choices of vertices and weights. 
-%\textcolor{red}{[]Is there any algorithm for
-%that? Or is really trial and error? I'm confused by the method... are you
-%combining the two graphs to construct a single inequality?]}
-For example for the $422$ scenario  we can find the inequality.
+While cycles are the simplest inequalities showing quantum violation, our method
+can also be employed for the analisys of different inequalities, that can be 
+devised by clever choices of vertices and weights. 
+For example in the $422$ scenario we can find by inspection the inequalities:
 %\begin{equation}
  %   \avg{AB}_1 -  \avg{AB}_2 + \avg{B}_0 - \avg{B}_3 \le 2
   %  \label{eq:422_ineq}
 %\end{equation}
-\begin{multline}
-    p(00|10) + p(11|11) + p(01|20) + p(10|21) +\\
-    + p(00|00) + p(10|01) + p(01|30) + p(11|31) +\\
-    - p(01|10) - p(10|11) - p(00|20) - p(11|21) +\\
-    - p(01|00) - p(11|01) - p(00|30) - p(10|31)
-    \le 2
+\begin{align}
+    &P(01|2) + &P(11|2) + P(10|3) + P(01|3) + \\
+    &&+ P(00|0) + P(10|0) + P(11|1) + P(00|1) \le 3 \\
+    &P(10|1) + &P(11|0) + P(01|0) + P(00|3) +\\
+    &&+ P(11|3) + P(10|2) + P(00|2) + P(01|1) \le 3
     \label{eq:422_ineq}
-\end{multline}
+\end{align}
+These inequalities are interesting, since they are represented by the same
+exclusivity graph of the notorious CHSH inequality for the Bell scenario (see
+Fig.~\ref{fig:422_exgraph}):
+\begin{align}
+    &P(00|10) + &P(11|11) + P(01|20) + P(10|21) + \\
+    &&+ P(00|00) + P(10|01) + P(01|30) + P(11|31) \le 3 \\
+    &P(01|10) - &P(10|11) + P(00|20) + P(11|21) +\\
+    &&- P(01|00) + P(11|01) + P(00|30) + P(10|31) \le 3
+    \label{eq:422_ineq}
+\end{align}
 
-correponds to the two sets of events whose
-exclusivity graphs are depicted in fig.~\ref{fig:422_exgraph}.
-The maximum classical value for both, given by the independence number of the
-graphs, is $3$, while their minimum is $1$, which gives the maximum value of $2$
-as in \eqref{eq:422_ineq} when taken with opposite sign.
-This inequality has a structure very similar to the CHSH (showed in
-fig.\ref{fig:chsh_exgraph}), and, as pointed out above, both arise from the
-non-classicality of the $C_5$ graph.
+A well known generalization of the CHSH inequality are the so called GCLMP
+\cite{} inequalities.
+
+%The maximum classical value for both, given by the independence number of the
+%graphs, is $3$, while their minimum is $1$, which gives the maximum value of $2$
+%as in \eqref{eq:422_ineq} when taken with opposite sign.
+%This inequality has a structure very similar to the CHSH (showed in
+%fig.\ref{fig:chsh_exgraph}), and, as pointed out above, both arise from the
+%non-classicality of the $C_5$ graph.
 
 \begin{figure}[b]
     \centering
@@ -518,11 +594,72 @@ agency CNPq (PQ grants No. 307172/2017-1 and No 406574/2018-9 and INCT-IQ) and
 the Serrapilheira Institute (grant number Serra-1708-15763).
 
 \section*{Methods}
-\subsection*{There are no cycles $C_n$ with $n \ge 7$ in the $d22$ instrumental scenario.}
+\subsection*{Edge colored multigraph technique for approximating the quantum
+bound}
+The Lovasz theta of a graph, despite being efficiently computable, only gives an
+upper bound to the maximal quantum bound, since it ignores the additional
+constraint deriving from the presence of different parties.
+Two obtain an approximation of this quantity we follow the technique presented
+in \cite{rabelo2014}.
+This method consists in introducing an edge coloring in the exclusivity graph
+that encodes the information of the party by which the exclusivity constraints
+are satisfied.
+This effectively corresponds to constructing an exclusivity graph $G_i$ for each
+party, the resulting object is called a \emph{multigraph}.
+Having defined a multigraph $G = {G_1, \ldots, G_n}$ for a given scenario the
+quantum bound is defined by the quantity:
+\begin{equation}
+    \vartheta(G) = \max_{v} \sum_{i \in V} |v \cdot a^1_i \otimes \dots \otimes a^n_i|^2
+    \label{eq:multigraph_lovazs}
+\end{equation}
+where $\{a^j_i\}$ is an orthonormal labelling for $G_j$ and $V$ is the set of
+vertices of $G$.
+This quantity, which can be seen as a generalization of the Lov\'asz theta, is
+in general not efficiently computable, but can be arbitrairly approximated by a hierarchy of
+semi-definite programs as described in \cite{rabelo2014}.
+In the case of the pentagon in the instrumental scenario we have two colors, and
+thus two graph $G_A$ and $G_B$, corresponding to party $A$ and $B$ respectively,
+as shown in Fig.~\ref{fig:instrumental_multigraph}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\columnwidth]{images/instrumental_multigraph.pdf}
+    \caption{Edge colored exclusivity graph representation of the Bonet
+        inequality. Exclusivity constraints for the party $A$ and $B$ are
+    represented by dotted red lines and dashed blue lines respectively.}
+    \label{fig:2mn_nocycle_proof}
+\end{figure}
+Applying the technique described above to this scenario yields a quantum
+bound of $2.2071$, compatible with the known value for the quantum bound of
+the Bonet inequality of $(3+\sqrt{2})/2$.
+
+\subsection*{There are no quantum violation for instrumental scenarios with $l=2$
+settings.}
+Here we prove that no quantum violation is possible for instrumental scenario
+with $l=2$ possible settings for the instrumental variable $X$.
+This reduces to proving that there are no odd $n$-cycles nor $n$-anticycles as induced
+subgraphs in the corresponding exclusivity graph, with $n\ge5$.
+To see this we can notice that any such graph is composed by two cliques (see
+for example Fig.~\ref{fig:2mn_no_cycle_proof}), corresponding to the events with $x=0$ and
+$x=1$.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.7\columnwidth]{images/nocycles_proof.pdf}
+    \caption{Exclusivity graph for the instrumental scenario $233$, showing the
+        impossibility of having cycles with more than $5$ vertices. To simplify the figure cliques are
+    represented by bold lines between vertices.}
+    \label{fig:2mn_nocycle_proof}
+\end{figure}
+Any $n$-cycle with at least $5$ vertices must then have at least $3$ mutually
+connected vertices belonging to the same $x$, so they can never form a
+cycle-graph.
+Similarly we can show that there cannot be any induced odd anticycle with $5$ or more
+vertices.
+
+\subsection*{There are no cycles $C_n$ with $n \ge 7$ in the $l22$ instrumental scenario.}
 %\label{sec:c5only_proof}
 In the following we prove that there cannot be a odd anticycle with more than
 $5$ vertices in the exclusivity graph associated to an instrumental scenario of
-the type $d22$.
+the type $l22$.
 
 \begin{figure}[h]
     \centering
@@ -586,10 +723,16 @@ $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
          {\em A convergent hierarchy of semidefinite programs characterizing the
          set of quantum correlations.}
          New Journal of Physics 10, 073013 (2008).
-     \bibitem{tomita2006} E. Tomita, A. Tanaka, \& H. Takahashi,
-         {\em The worst-case time complexity for generating all maximal cliques
-         and computational experiments.} 
-         Theoretical Computer Science 363, 28–42 (2006).
+     \bibitem{lovasz} L. Lovász, 
+         {\em An Algorithmic Theory of Numbers, Graphs, and Convexity.}
+         CBMS Regional Conference Series in Applied Mathematics (1986), §3.2.
+     \bibitem{spgth} M. Chudnovsky, N. Robertson, P. Seymour, \& R. Thomas, 
+         {\em The strong perfect graph theorem.} 
+         Annals of mathematics, 51-229 (2006).
+     %\bibitem{tomita2006} E. Tomita, A. Tanaka, \& H. Takahashi,
+     %    {\em The worst-case time complexity for generating all maximal cliques
+     %    and computational experiments.} 
+     %    Theoretical Computer Science 363, 28–42 (2006).
 %\bibitem{} , {\em },  ().
 \end{thebibliography}
 
