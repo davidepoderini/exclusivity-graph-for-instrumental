@@ -63,8 +63,8 @@ conclusions. To cope with that, instrumental variables (IV) have been introduced
 \cite{pearl1995, bonet2001}. Under the assumption that they are independent of
 any latent common factors, IV can be used to put non-trivial bounds on the
 causal effect between $A$ and $B$. To this aim, first, one has to guarantee that
-an appropriate instrument (fulling a set of causal constraints) has been
-employed, which is precisely the goal of the so-called instrumental tests
+an appropriate instrument (fulfilling a set of causal constraints) has been
+employed, precisely the goal of the so-called instrumental tests
 \cite{pearl1995, bonet2001}. Their violation, at least in classical physics, is
 an unambiguous proof that some of the causal assumptions underlying the
 instrumental causal structure are not fulfilled, that is, one should identify
@@ -97,17 +97,17 @@ in the foundations of quantum physics to analyze the possible correlations
 obtained in quantum experiments \cite{}. % TODO cabello severini and winter
 This method allow us to reproduce the classical results by Bonet and to
 straightforwardly generalize them in the quantum scenario. 
-It also offer an easy way to check for the presence of gap between the
+It also offers an easy way to check for the presence of a gap between the
 quantum and classical case, for any causal scenario involving a single latent
 variable.
 
 The paper is organized as follows: firstly we provide an introduction about the
 instrumental scenario, both from a classical perspective, as well as its quantum
-violation, and about the exclusivity approach. Then, we show a possible
-application of the exclusivity approach to the field of causal inference.
+violations, and about the exclusivity graph approach. Then, we show a novel
+application of this approach to the field of causal inference.
 Indeed, it is possible to exploit these graphs in order to obtain inequality
 constraints, as we show in particular for the instrumental scenario, in the case
-where the two parties can respectively choose among four and three three-outcome
+where the two parties can respectively choose among four and three 3-outcome
 measurements.
 
 \begin{figure}[h]
@@ -158,15 +158,15 @@ compatible with the instrumental causal structure can be decomposed as
 p(a,b \vert x) = \sum_{\lambda} p(a\vert x,\lambda) p(b\vert a,\lambda)p(\lambda).
 \end{equation}
 Two causal assumptions are employed to arrive at the decomposition above. First,
-the assumption that $p(x,\lambda)=p(x)p(\lambda)$ implying the independence of
+the assumption that $p(x,\lambda)=p(x)p(\lambda)$, which implies the independence of
 the instrument and the common ancestor. Second, the assumption that even though
 $X$ and $B$ can be correlated, all these correlations are mediated by $A$. In
 other terms, there is no direct causal influence between $X$ and $B$ and
 $p(b\vert x,a,\lambda)=p(b\vert a,\lambda)$.
 
-The instrumental variable has been originally introduced to estimate parameters
-in econometric models of supply and demand \cite{} and since then have found a
-wide range of applications in various other fields \cite{}. To illustrate its
+The instrumental variables have been originally introduced to estimate parameters
+in econometric models of supply and demand \cite{economic} and, since then, have found a
+wide range of applications in various other fields \cite{economic2, economic3}. To illustrate its
 power, consider that variables $A$ and $B$ are related by a simple structural
 equation $B=\gamma A +\Lambda$, where $\Lambda$ may represent a latent common
 factor. By assumption, the instrumental variable $X$ should be independent of
@@ -205,7 +205,7 @@ causality between $A$ and $B$ \cite{}.
 
 Clearly, however, to draw any causal conclusions, first it is necessary to
 certify that one has a valid instrument. This is achieved via instrumental
-inequalities, first introduced by Pearl \cite{}. If we allow the variables $X$,
+inequalities, first introduced by Pearl \cite{Pearl1995}. If we allow the variables $X$,
 $A$, $B$ to take the values in the range  $x=1,\dots,l$, $a=1,\dots,m$ and
 $b=1,\dots,n$ Pearl showed that the instrumental causal structure implies that 
 \begin{equation} 
@@ -217,9 +217,9 @@ for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$ where 
 Extending these results, Bonet \cite{bonet2001} provided a 
 general geometric framework for the derivation of instrumental inequalities.
 Instrumental correlations define a convex set, a polytope described by finitely
-many extremal points, or alternatively by a finite number of facets, the
-non-trivial of which are precisely instrumental inequalities. In particular,
-considering the case $(l,m,n) = (3,2,2)$ it was proven that there are two
+many extremal points, or alternatively by a finite number of facets, among which, the
+non-trivial are precisely the instrumental inequalities. In particular,
+considering the case $(l,m,n) = (3,2,2)$, it was proven that there are two
 inequivalent classes of instrumental inequalities (those not obtained from each
 other by permuting the labels of $a_i,b_j$ and $x_k$). One class corresponding
 to Pearl's inequality \eqref{eq:pearl_ineq} and the other given by
@@ -238,7 +238,7 @@ reevaluated or reinterpreted in the presence of quantum effects \cite{}. Indeed,
 as recently shown \cite{chaves2018}, violations of the instrumental tests are
 possible even though the causal constraints underlying the instrumental scenario
 are fulfilled. As shown in the experimental implementation of the instrumental
-test \cite{}, this is possible due to the presence of quantum entanglement
+test \cite{chaves2018}, this is possible due to the presence of quantum entanglement
 acting as latent common ancestor. Considering an entangled sources of photons,
 an alternative version of Bonet's inequality (written in terms of expectation
 values, upper bounded by 3, in the classical realm) has been tested, implying a
@@ -248,8 +248,7 @@ value of $3.258 \pm 0.020$.
 Altogether, this shows the necessity of a new unifying framework, not only
 considering what are the classical instrumental correlations but as well the
 ones achievable if the underlying latent factor might have a quantum origin. In
-the following we will achieve that by proposing a graph-theoretical approach to
-the analysis of instrumental inequalities.
+the following we will achieve that by proposing a graph-theoretical approach to analyze the instrumental inequalities.
 
 %\begin{equation}
 %    -\avg{B}_{x_1} + 2 \avg{B}_{x_2} + %\avg{A}_{x_1} - \avg{AB}_{x_1} +
@@ -279,7 +278,7 @@ w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}} p(a_1,\ldots,a_n|x_1,\ldots,x_n)
 on the probabilities of possible events. This linear function can be represented
 by the weighted exclusivity graph $G$. Nicely, as it will be discussed below,
 bounds for the maximum values for $ I_w(p)$ achievable in classical and quantum
-physical theories can be related to well-known graph invariants \cite{}, the
+physical theories can be related to two well-known graph invariants \cite{}: the
 independence number $\alpha(G, w)$ and the Lovász theta $\theta(G, w)$,
 respectively. In the following, we will briefly introduce these concepts and
 their interconnections, a more extensive and detailed account can be found in
@@ -304,13 +303,13 @@ Using this definition the independence number becomes:
     \alpha(G,w) = \max\{w\cdot x: x \in \STAB(G)\}
     \label{eq:alphastab}
 \end{equation}
-From these definitions we can see that $\alpha(G,w)$ corresponds to the classical bound of the inequality, since it is exactly the maximum over the convex set defined by all the deterministic strategies respecting the exclusivity constraints.
+From these definitions, we can see that $\alpha(G,w)$ corresponds to the classical bound of the inequality, since it is exactly the maximum over the convex set defined by all the deterministic strategies respecting the exclusivity constraints.
 
 We now call an \emph{orthonormal labelling} of dimension $d$ a map
 $a_v:V \rightarrow \Real^d$ such that $a_v \cdot a_u = 0$ for all $uv \in E$ and
 $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
 \begin{multline}
-    \TH(G) = \{x: x_v = a_v^1 \, \text{where $a_v$ is an} \\ \text{orthonormal labelling of $G$}\}
+    \TH(G) = \{x: x_v = (a_v)_1 \, \text{where $a_v$ is an} \\ \text{orthonormal labelling of $G$}\}
     \label{eq:thbody}
 \end{multline}
 It can be proved that this set includes all correlations permitted by quantum
@@ -389,7 +388,7 @@ as follows:
 
 As we will show next, considering the particular case of the instrumental
 scenario \cite{}, one can apply the graph-theoretical methods delineated before
-to the complement of this graph, $G=\bar{H}$, and its subgraphs. This allows to
+to the complement of this graph, $G=\bar{G}$, and its subgraphs. This allows to
 obtain instrumental inequalities and their respective quantum and
 classical bounds.
 
@@ -414,7 +413,7 @@ dichotomic observables ($n = m = 2$), considering $p(ab|x)$ with $a, b \in
 \mathcal{X} = \{0,\ldots,l\}$, the probability of having outcomes $a$ and $b$
 with the instrument assuming the value $x$. As detailed above, the
 non-exclusivity graph for the instrumental scenario is obtained by linking two
-events $ab|x$ and $a'b'|x'$ if there exists two functions $f:\mathcal{X}
+events $ab|x$ and $a'b'|x'$ if there exist two functions $f:\mathcal{X}
 \rightarrow \mathcal{A}$ and $g:\mathcal{A} \rightarrow
 \mathcal{B}$ such that:
 \begin{eqnarray}
@@ -462,15 +461,16 @@ outputs.
     \label{fig:bonetexc}
 \end{figure}
 
-Going to $l\ge3$ we see that there might be a quantum violation, since the associated
-graph has as a subset a $C_5$ cyclic graph, i.e. the pentagon depicted in
-Fig.~\ref{fig:bonetexc} that corresponds exactly to the Bonet's inequality \eqref{eq:bonet_ineq}.
-For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and that
-$\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$. For $n=5$ it follows directly the
+Going to $l\ge3$ we see that there might be a quantum violation, since the
+associated graph has as a subset a $C_5$ cyclic graph, i.e. the pentagon
+depicted in
+fig.~\ref{fig:bonetexc} that is exactly the Bonet's inequality \eqref{eq:bonet_ineq}.
+For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and
+$\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$. For $n=5$, it follows directly the
 gap between the classical and quantum theories, since the classical limit is
 given by $\alpha(C_5)=2$ and the quantum bound is given by $\theta(C_5)=\sqrt{5}$.
 
-In this framework \eqref{eq:bonet_ineq} seems analogous to the KCBS contextual
+In this framework, Eq. \eqref{eq:bonet_ineq} seems analogous to the KCBS contextual
 inequality\cite{kcbs2008}.
 The difference here is that we are in a bipartite scenario and the real quantum
 limit is not simply given by the quantity $\theta(C_5) = \sqrt{5}$, which
@@ -705,6 +705,9 @@ $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
         Nature Physics 14.3 291 (2018).
      \bibitem{himbeeck2018} T. Van Himbeeck, J. B. Brask, S. Pironio, R. Ramanathan, A. B. Sainz, E. Wolfe, 
         {\em Quantum violations in the Instrumental scenario and their relations to the Bell scenario},
+    \bibitem{economic} P. G. Wright, \emph{The tariff on animal and vegetable oils}, The Macmillan Company, (1928).
+    \bibitem{economic2} C. W. J. Granger, \emph{Investigating causal relations by econometric models and cross-spectral methods}, Econometrica, 424 (1969).
+    \bibitem{economic3} N. Cartwright, \emph{Causal Structures in Econometrics:On the Reliability of Economic Models},Recent Economic Thought Series \textbf{42}, pp 63-89 (1995).
         arXiv preprint arXiv:1804.04119 (2018).
      \bibitem{cabello2014} A. Cabello, S. Severini, A. Winter,
          {\em Graph-theoretic approach to quantum correlations}, 
@@ -733,6 +736,30 @@ $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
      %    {\em The worst-case time complexity for generating all maximal cliques
      %    and computational experiments.} 
      %    Theoretical Computer Science 363, 28–42 (2006).
+         
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% (beta)
+
+
+%\bibitem{clinical}K. Fischer and I. R. White, \emph{Causal Inference in Clinical Trials}, Wiley-Blackwell, (2012).
+
+%\bibitem{genetic1}N. Friedman, \emph{Inferring cellular networks using probabilistic graphical models}, Science \textbf{303}, 799–805 (2004).
+
+%\bibitem{genetic2}C. R. Shalizi and A. C. Thomas, \emph{Homophily and contagion are generically confounded in observational social network studies}, Sociological methods and research \textbf{40}, 211 (2011).
+
+%\bibitem{social1}H. E. Brady, \emph{Causation and explanation in social science}, Oxford University press (2013).
+
+%\bibitem{machle}D. Barber, \emph{Bayesian reasoning and machine learning}, Cambridge University press (2012).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+         
+         
+         
+         
+         
+         
+         
 %\bibitem{} , {\em },  ().
 \end{thebibliography}
 
