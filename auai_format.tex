@@ -12,6 +12,7 @@
 
 \newcommand{\mean}[1]{\left\langle #1 \right\rangle}
 \newcommand{\avg}[1]{\langle#1\rangle}
+\newcommand{\abs}[1]{\left|#1\right|}
 \newcommand{\et}{\;\mathrm{and}\;}
 \newcommand{\Real}{\mathbb{R}}
 \newcommand{\STAB}{\mathrm{STAB}}
@@ -301,11 +302,10 @@ texts such as \cite{}.
 In quantum mechanics the \emph{state} of the system, which plays a similar role as the probability distribution for classical systems,
 is represented by a normalized vector $\Psi$ living in a given Hilbert space $\mathcal{H}$.
 Every event is then associated with a vector $\Phi_i$ in the same Hilbert space $\mathcal{H}$, and the probability associated to that
-event is computed by the \emph{Born rule}:
+event is computed using the \emph{Born rule}:
 \begin{equation}
-    p(E_i) = \abs{\Psi \cdot \Phi_i}^2 
+    p_i = \abs{\Psi \cdot \Phi_i}^2 
 \end{equation}
-...
 }
 
 We call an \emph{orthonormal labelling} of dimension $d$ a map
