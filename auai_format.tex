@@ -209,7 +209,6 @@ ones achievable if the underlying latent factor might have a quantum origin. In
 the following we will achieve that by proposing a graph-theoretical approach to analyze the instrumental inequalities.
 
 \section{The exclusivity graph approach}
-
 The graph-theoretical approach we propose here, was initially developed for the
 study of non-contextual inequalities \cite{cabello2014} as well as Bell
 non-locality scenarios \cite{acin2015}. 
@@ -262,31 +261,54 @@ $S \subset V$ such that $uv \notin E$ for all $u,v \in S$.
 The independence number $\alpha(G, w)$ is defined as the maximum number of
 vertices (weighted with $w$) of an independent set of $G$. 
 \textcolor{blue}{
-   
+ In the case of exclusivity graphs any characteristic labelling of
+ a stable set, also called a \emph{stable labelling}, represents a
+ possible deterministic assignment of probabilities which respects the
+ exclusivity constraints, i.e. such that no exclusive events can be
+ assigned probability one at the same time.
 }
-It is also customary to
-define the set $\STAB(G)$ as the convex hull of all the
-characteristic labelings of stable sets:
+It is also customary to define the set $\STAB(G)$ as the convex hull of
+all the characteristic labelings of stable sets:
 \begin{multline} 
     \STAB(G) = \chull (\{x : \\ x \quad \text{is a stable labelling of}\quad G \})
     \label{eq:stab}
 \end{multline}
 \textcolor{blue}{
-If the stable labelling represents all the possible deterministic strategies respecting the 
-exclusivity relations between events, we can think of $\STAB(G)$ as defining all the possible 
-probability assignments compatible with the exclusivity relations.
+Since stable labellings represent all the possible deterministic strategies respecting the 
+exclusivity relations, then $\STAB(G)$ effectively includes  all the possible 
+probability assignments compatible with those constraints.
 Now we can define the independence number as:
 }
 \begin{equation}
     \alpha(G,w) = \max\{w\cdot x: x \in \STAB(G)\}
     \label{eq:alphastab}
 \end{equation}
-From which, we can see that $\alpha(G,w)$ must corresponds to the
+From which, we can immediately see that $\alpha(G,w)$ must corresponds to the
 classical bound of the inequality, since it is exactly the maximum over
 the convex set defined by all the deterministic strategies respecting
 the exclusivity constraints.
+\textcolor{blue}{Moreover the bound is tight since is saturated, for example, by
+any deterministic assignment corresponding to a maximal stable set.}
 
-We now call an \emph{orthonormal labelling} of dimension $d$ a map
+\textcolor{blue}{
+In associating the set $STAB(G)$ with the space of the possible probability distributions for our graph $G$,
+we have made the implicit assumption that there exists a joint probability distribution for all of our events, 
+i.e. that even when certain settings are not chosen by the experimenter, we can still assign (counterfactually) 
+a value to their probabilities.
+This assumption, called \emph{realism}, which is always true for classical systems, is not verified in general for quantum systems.
+In the following we briefly introduce the probabilistic framework used in quantum mechanics, the interested reader can refer to classical 
+texts such as \cite{}.
+In quantum mechanics the \emph{state} of the system, which plays a similar role as the probability distribution for classical systems,
+is represented by a normalized vector $\Psi$ living in a given Hilbert space $\mathcal{H}$.
+Every event is then associated with a vector $\Phi_i$ in the same Hilbert space $\mathcal{H}$, and the probability associated to that
+event is computed by the \emph{Born rule}:
+\begin{equation}
+    p(E_i) = \abs{\Psi \cdot \Phi_i}^2 
+\end{equation}
+...
+}
+
+We call an \emph{orthonormal labelling} of dimension $d$ a map
 $a_v:V \rightarrow \Real^d$ such that $a_v \cdot a_u = 0$ for all $uv \in E$ and
 $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
 \begin{multline}
