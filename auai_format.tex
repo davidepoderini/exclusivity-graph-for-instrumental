@@ -16,6 +16,7 @@
 \newcommand{\Real}{\mathbb{R}}
 \newcommand{\STAB}{\mathrm{STAB}}
 \renewcommand{\TH}{\mathrm{TH}}
+\newcommand{\chull}{\mathrm{Conv}}
 
 \title{Exclusivity graph approach to Instrumental inequalities}
 
@@ -198,7 +199,7 @@ to Pearl's inequality \eqref{eq:pearl_ineq} and the other given by
 \end{multline}
 
 All these conclusions and results, however, rely on a classical description of
-causal and effect relations \textcolor{red}{(implicitly) invoking the realism assumption: the probabilities of a given measurement have well defined values even if such measurements are not performed. However, since Bell's theorem \cite{bell1964} we know that this do not apply to the world governed by quantum mechanics, thus implying that standard causal models, even if augmented with latent variables, are not enough to explain quantum phenomena. Bell's theorem relies on the causal structure shown in Fig. \ref{fig:chshinstdag}, similar to the instrumental one with two crucial causal differences: i) variable $A$ has no causal influence over $B$ and ii) $B$ has its own instrument $Y$ and thus the correlations are encoded in a probability distribution $p(ab \vert xy)$. This has motivated the question of whether many of the cornerstones in causal inference have to
+causal and effect relations \textcolor{red}{(implicitly) invoking the realism assumption: the probabilities of a given measurement have well defined values even if such measurements are not performed. However, since Bell's theorem \cite{bell1964} we know that this do not apply to the world governed by quantum mechanics, thus implying that standard causal models, even if augmented with latent variables, are not enough to explain quantum phenomena. Bell's theorem relies on the causal structure shown in Fig. \ref{fig:chshinstdag}, similar to the instrumental one with two crucial causal differences: i) variable $A$ has no causal influence over $B$ and ii) $B$ has its own instrument $Y$ and thus the correlations are encoded in a probability distribution $p(ab \vert xy)$. This has motivated the question of whether many of the cornerstones in causal inference have to be
 reevaluated or reinterpreted in the presence of quantum effects \cite{ried2015,Costa2016,Wolfe2016}. Indeed, as recently shown \cite{chaves2018}, violations of the instrumental tests are possible even though the causal constraints underlying the instrumental scenario are fulfilled. As shown in the experimental implementation of the instrumental
 test \cite{chaves2018}, this is possible due to the presence of quantum entanglement that precludes the explanation of the data via a latent common factor. Interestingly, every probability distribution violating the simplest possible Bell inequality, known as Clauser-Horne-Shimony-Holt (CHSH) inequality \cite{CHSH}, can after some post-processing also violate Bonet's inequality \cite{himbeeck2018}. As we will see, the graph-theoretical approach will allow us a more systematic understanding of the similarities and differences between the Bell and instrumental scenarios.} 
 
@@ -212,47 +213,78 @@ the following we will achieve that by proposing a graph-theoretical approach to 
 The graph-theoretical approach we propose here, was initially developed for the
 study of non-contextual inequalities \cite{cabello2014} as well as Bell
 non-locality scenarios \cite{acin2015}. 
-In this formalism, every possible event, i.e. every possible set of measurement
-outcomes $a_1^,\ldots, a_n$ corresponding to given measurement settings
-$x_1,\ldots,x_n$ (each of which can be understood as an instrument), is
-associated to a vertex in a (undirected) graph $G = (V, E)$. Two vertices $u, v
-\in V$ are then connected by an edge $uv \in E$ if and only if they are
-exclusive, i.e.,  if there is a measurement/instrument that can distinguish between
-them. Any linear constraint (like the instrumental inequalities) can be
+\textcolor{blue}{
+The purpose of this method is to easily obtain constraints on the probability distribution, in the same spirit of the Pearl's
+and Bonet's inequalities, for classical and quantum systems.
+In this context we select a set of random variables $A_1,\ldots,A_N$, to represents 
+the outcome of a measurement performed on our physical system,
+and another set $X_1,\ldots,X_M$, to represent a number of settings that can be chosen by
+ the experimenter, which serve the same purpose of the instrument in the IV scenario. 
+}
+In the exclusivity graph formalism, every possible event, i.e. every possible set of measurement
+outcomes $a_1,\ldots, a_N$ corresponding to given measurement settings
+$x_1,\ldots,x_M$ , is
+associated to a vertex in a (undirected) graph $G = (V, E)$. 
+Two vertices $u, v \in V$ are then connected by an edge $uv \in E$ if and only if they are
+exclusive, i.e., if there is a measurement/instrument that can distinguish between
+them. 
+\textcolor{blue}{
+Intuitively, two events are considered exclusive when they cannot happen simultaneously in the same run of
+the experiment.
+For example in the Bell scenario depicted in fig.~\ref{fig:chshinstdag} events where we get $a = 0$ or $a = 1$, while
+setting $x = 0$ for both, are exclusive, since only one of them can happen in a single run of the experiment.
+On the contrary events where we get for example $a = 0$ setting $x = 1$ and $a=1$ setting $x=0$ are not exclusive
+because these events are not realizable in the same experiment.
+In the next section we will provide a precise definition of exclusivity which will allow us to extend the concept
+to a wide range of causal models.
+}
+Any linear constraint (like the instrumental inequalities) can be
 expressed defining a linear function
 \begin{equation}
     I_w(p) = \sum_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}
 w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}} p(a_1,\ldots,a_n|x_1,\ldots,x_n)
 \end{equation}
-on the probabilities of possible events. This linear function can be represented
-by the weighted exclusivity graph $G$. Nicely, as it will be discussed below,
-bounds for the maximum values for $ I_w(p)$ achievable in classical and quantum
+on the probabilities of possible events. 
+This linear function can be embedded in an exclusivity graph by weighting the vertices in $G$ with the $w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}$. 
+Nicely, as it will be discussed below, bounds for the maximum values for $I_w(p)$ achievable in classical and quantum
 physical theories can be related to two well-known graph invariants \cite{cabello2014}: the
 independence number $\alpha(G, w)$ and the Lovász theta $\theta(G, w)$,
 respectively. In the following, we will briefly introduce these concepts and
 their interconnections, a more extensive and detailed account can be found in
 \cite{cabello2014,rabelo2014,acin2015}
 
-Consider a graph $G(V,E)$ with vertex weights $w$, and $|V| = n$ .
+Consider a graph $G(V, E)$ with vertex weights $w$, and $|V| = n$ .
 We call a \emph{characteristic labelling} for $U \subseteq V$ a vector $x_v \in
 \{0,1\}^n$ such that $x_v = 1$ if $v \in U$ and $x_v = 0$ otherwise.
 
 An \emph{independent set} or \emph{stable set} is a set
 $S \subset V$ such that $uv \notin E$ for all $u,v \in S$.
 The independence number $\alpha(G, w)$ is defined as the maximum number of
-vertices (weighted with $w$) of an independent set of $G$. It is also customary to
+vertices (weighted with $w$) of an independent set of $G$. 
+\textcolor{blue}{
+   
+}
+It is also customary to
 define the set $\STAB(G)$ as the convex hull of all the
 characteristic labelings of stable sets:
-\begin{equation} 
-    \STAB(G) = \{x : x \quad \text{is a stable labelling of}\quad G \}.
+\begin{multline} 
+    \STAB(G) = \chull (\{x : \\ x \quad \text{is a stable labelling of}\quad G \})
     \label{eq:stab}
-\end{equation}
-Using this definition the independence number becomes:
+\end{multline}
+\textcolor{blue}{
+If the stable labelling represents all the possible deterministic strategies respecting the 
+exclusivity relations between events, we can think of $\STAB(G)$ as defining all the possible 
+probability assignments compatible with the exclusivity relations.
+Now we can define the independence number as:
+}
 \begin{equation}
     \alpha(G,w) = \max\{w\cdot x: x \in \STAB(G)\}
     \label{eq:alphastab}
 \end{equation}
-From these definitions, we can see that $\alpha(G,w)$ corresponds to the classical bound of the inequality, since it is exactly the maximum over the convex set defined by all the deterministic strategies respecting the exclusivity constraints.
+From which, we can see that $\alpha(G,w)$ must corresponds to the
+classical bound of the inequality, since it is exactly the maximum over
+the convex set defined by all the deterministic strategies respecting
+the exclusivity constraints.
 
 We now call an \emph{orthonormal labelling} of dimension $d$ a map
 $a_v:V \rightarrow \Real^d$ such that $a_v \cdot a_u = 0$ for all $uv \in E$ and
@@ -304,10 +336,10 @@ estimate), to test this violation.
 \section{Exclusivity graph method applied to causal models}
 Next we show how the techniques presented in the previous section can be employed to analyze
 a broad class of causal models. Consider the DAG depicted in fig~\ref{fig:onelambda}, with
-$k$ observable variables $A_k$ with potential causal arrows among them, $l$
-instruments $X_l$ with no incoming edges, and a single unobservable latent
-variable $\Lambda$ acting as a potential common factor for all $A_k$ (but not to
-$X_l$).
+$k$ observable variables $A_1, \ldots, A_k$ with potential causal arrows among them, $l$
+instruments $X_1, \ldots, X_l$ with no incoming edges, and a single unobservable latent
+variable $\Lambda$ acting as a potential common factor for all $A_i$s (but not to
+the $X_j$s).
 
 \begin{figure}[h]
     \centering
@@ -637,87 +669,6 @@ graph-theoretical approach within causality.
 %Foundation). RC acknowledges the Brazilian ministries MEC and MCTIC, funding
 %agency CNPq (PQ grants No. 307172/2017-1 and No 406574/2018-9 and INCT-IQ) and
 %the Serrapilheira Institute (grant number Serra-1708-15763).
-
-\section*{Methods}
-\subsection*{Edge colored multigraph technique for approximating the quantum
-bound}
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=.7\columnwidth]{images/instrumental_multigraph.pdf}
-    \caption{Edge colored exclusivity graph representation of the Bonet
-        inequality. Exclusivity constraints for the party $A$ and $B$ are
-    represented by red lines and blue lines respectively.}
-    \label{fig:instrumental_multigraph}
-\end{figure}
-Applying the technique described above to this scenario yields a quantum
-bound of $2.2071$, reproducing the known value for the quantum bound of the Bonet inequality given by $(3+\sqrt{2})/2$.
-
-The Lovasz theta of a graph, despite being efficiently computable, only gives an upper bound to the maximal quantum bound, since it ignores the additional constraints arising from the presence of different parties. To obtain a better approximation for the quantum bound we follow the technique presented
-in \cite{rabelo2014}. This method consists in introducing an edge coloring in the exclusivity graph. It encodes the information of which of the parties is being employed to arrive at the exclusivity constraints under consideration. This effectively corresponds to constructing an exclusivity graph $G_i$ for each
-party, the resulting object is called a \emph{multigraph}. Having defined a multigraph $G = {G_1, \ldots, G_n}$ for a given scenario the
-quantum bound is defined by the quantity:
-\begin{equation}
-    \vartheta(G) = \max_{v} \sum_{i \in V} |v \cdot a^1_i \otimes \dots \otimes a^n_i|^2
-    \label{eq:multigraph_lovazs}
-\end{equation}
-where $\{a^j_i\}$ is an orthonormal labelling for $G_j$ and $V$ is the set of vertices of $G$. This quantity, which can be seen as a generalization of the Lov\'asz theta, is in general not efficiently computable, but can be arbitrarily approximated by a hierarchy of semi-definite programs as described in \cite{rabelo2014}.
-In the case of the pentagon in the instrumental scenario we have two colors, and thus two graph $G_A$ and $G_B$, corresponding to party $A$ and $B$ respectively, as shown in Fig.~\ref{fig:instrumental_multigraph}.
-
-\subsection*{There are no quantum violation for instrumental scenarios with $l=2$
-settings.}
-Here we prove that no quantum violation is possible for instrumental scenario
-with $l=2$ possible settings for the instrumental variable $X$.
-This reduces to proving that there are no odd $n$-cycles nor $n$-anticycles as induced
-subgraphs in the corresponding exclusivity graph, with $n\ge5$.
-To see this we can notice that any such graph is composed by two cliques (see
-for example Fig.~\ref{fig:2mn_nocycle_proof}), corresponding to the events with $x=0$ and
-$x=1$.
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=.7\columnwidth]{images/nocycles_proof.pdf}
-    \caption{Exclusivity graph for the instrumental scenario $233$, showing the
-        impossibility of having cycles with more than $5$ vertices. To simplify the figure cliques are
-    represented by bold lines between vertices.}
-    \label{fig:2mn_nocycle_proof}
-\end{figure}
-Any $n$-cycle with at least $5$ vertices must then have at least $3$ mutually
-connected vertices belonging to the same $x$, so they can never form a
-cycle-graph.
-Similarly we can show that there cannot be any induced odd anticycle with $5$ or more
-vertices.
-
-\subsection*{There are no cycles $C_n$ with $n \ge 7$ in the $l22$ instrumental scenario.}
-%\label{sec:c5only_proof}
-In the following we prove that there cannot be a odd anticycle with more than
-$5$ vertices in the exclusivity graph associated to an instrumental scenario of
-the type $l22$.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=.6\columnwidth]{images/cycle_proof.pdf}
-    \caption{Proof of the impossibility of having cycles with $7$ nodes or more
-    in the $d22$ scenario.}
-    \label{fig:cycle_graph_proof}
-\end{figure}
-
-From the exclusivity conditions \eqref{eq:non_exclusivity_condition},
-given two events $ab|x$ and $a'b'|x'$, they are connected by edge if one of these two conditions is true:
-\begin{enumerate}
-    \item $x=x'$.\label{en:rule1}
-    \item $a=a'$ and $b \neq b'$.\label{en:rule2}
-\end{enumerate}
-Suppose we have a cycle $C_n$ with $n \ge 7$, as in fig.~\ref{fig:cycle_graph_proof},
-and consider that node $2$ in this graph corresponds to an event which we can arbitrarily identify as $00|0$.
-Among its neighbors $1$ and $3$, one will necessarily need to satisfy rule
-\ref{en:rule2} (they cannot both satisfy rule \ref{en:rule1} or the three nodes
-would be a clique.
-%TODO: Explain what is a clique.
-So without loss of generality we can assign the event $01|1$ to $3$.
-Since nodes $5,6,7$ must not satisfy rule \ref{en:rule2} with both $2$ and $3$, then they must have $a = 1$.
-Moreover $7$ and $5$ must have the same $b$, different from $6$. In the same way $1$ must not satisfy rule \ref{en:rule2} with $6,5$ and $3$, so it
-needs to have $a=0$ and $b=1$. At this point, since we only have values
-$\{0,1\}$ for $a$, we cannot avoid node $4$ to be linked to one of the nodes
-$1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
 
 \begin{thebibliography}{}
     \bibitem{pearlbook} J. Pearl, 
