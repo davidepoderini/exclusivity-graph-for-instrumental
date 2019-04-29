@@ -32,19 +32,28 @@ bound}
     represented by red lines and blue lines respectively.}
     \label{fig:instrumental_multigraph}
 \end{figure}
-Applying the technique described above to this scenario yields a quantum
-bound of $2.2071$, reproducing the known value for the quantum bound of the Bonet inequality given by $(3+\sqrt{2})/2$.
 
-The Lovasz theta of a graph, despite being efficiently computable, only gives an upper bound to the maximal quantum bound, since it ignores the additional constraints arising from the presence of different parties. To obtain a better approximation for the quantum bound we follow the technique presented
-in \cite{rabelo2014}. This method consists in introducing an edge coloring in the exclusivity graph. It encodes the information of which of the parties is being employed to arrive at the exclusivity constraints under consideration. This effectively corresponds to constructing an exclusivity graph $G_i$ for each
-party, the resulting object is called a \emph{multigraph}. Having defined a multigraph $G = {G_1, \ldots, G_n}$ for a given scenario the
+The Lov\'asz theta of a graph, despite being efficiently computable, only gives an upper bound to the maximal quantum bound, since it ignores the additional constraints arising from the presence of different random variables $A_i$.
+Indeed the quantum bound is influenced not only by the exclusivity relations between the
+possible events in our scenario, but also on how those relations are derived from the
+variables $A_1,\ldots,A_N$.
+
+To obtain a better approximation for the quantum bound we follow the technique presented in \cite{rabelo2014}. 
+This method consists in introducing an edge coloring in the exclusivity graph. 
+This edge coloring encodes the information of which of the $A_i$s is involved in the exclusivity constraints under consideration.
+In practice this corresponds to constructing an exclusivity graph $G_i$ for each
+$A_i$, the resulting object is called a \emph{multigraph}. 
+Having defined a multigraph $G = {G_1, \ldots, G_N}$ for a given scenario the
 quantum bound is defined by the quantity:
 \begin{equation}
     \vartheta(G) = \max_{v} \sum_{i \in V} |v \cdot a^1_i \otimes \dots \otimes a^n_i|^2
     \label{eq:multigraph_lovazs}
 \end{equation}
-where $\{a^j_i\}$ is an orthonormal labelling for $G_j$ and $V$ is the set of vertices of $G$. This quantity, which can be seen as a generalization of the Lov\'asz theta, is in general not efficiently computable, but can be arbitrarily approximated by a hierarchy of semi-definite programs as described in \cite{rabelo2014}.
-In the case of the pentagon in the instrumental scenario we have two colors, and thus two graph $G_A$ and $G_B$, corresponding to party $A$ and $B$ respectively, as shown in Fig.~\ref{fig:instrumental_multigraph}.
+where $\{a^j_i\}$ is an orthonormal labelling for $G_j$ and $V$ is the set of vertices of $G$. This quantity, which can be seen as a generalization of the Lov\'asz theta, is in general not efficiently computable, but, as described in \cite{rabelo2014}, can be arbitrarily approximated by a hierarchy of semi-definite programs using the NPA method.
+
+For example, in the case of the pentagon in the instrumental scenario we have two colors, and thus two graph $G_A$ and $G_B$, corresponding to variables $A$ and $B$ respectively, as shown in Fig.~\ref{fig:instrumental_multigraph}.
+Applying the technique described above to this scenario yields a quantum
+bound of $2.2071$, reproducing the known value for the quantum bound of the Bonet inequality given by $(3+\sqrt{2})/2$.
 
 \section*{There are no quantum violation for instrumental scenarios with $l=2$
 settings.}

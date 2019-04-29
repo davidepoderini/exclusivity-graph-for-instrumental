@@ -65,7 +65,7 @@ and $B$ are due to a latent common factor, thus hindering any causal
 conclusions. To cope with that, instrumental variables (IV) have been introduced
 \cite{pearl1995, bonet2001}. Under the assumption that they are independent of
 any latent common factors $\Lambda$, IV can be used to put non-trivial bounds on the
-causal effect between $A$ and $B$.However, first, one has to guarantee that
+causal effect between $A$ and $B$. However, first, one has to guarantee that
 an appropriate instrument (fulfilling a set of causal constraints) has been
 employed, which is precisely the goal of the so-called instrumental tests
 \cite{pearl1995, bonet2001,Ramsahai2012,Kedagni2017}. Their violation, at least in classical physics, is
@@ -73,7 +73,7 @@ an unambiguous proof that some of the causal assumptions underlying the
 instrumental causal structure are not fulfilled, that is, one should identify
 and use another instrumental variable.
 
-\textcolor{red}{Instrumental tests have been introduced in econometrics \cite{Wooldridge2015}} and further explored by Pearl \cite{pearl1995}, in the form of inequalities providing a necessary condition for a given observed
+\textcolor{red}{Instrumental tests have firstly been introduced in econometrics \cite{Wooldridge2015}} and further explored by Pearl \cite{pearl1995}, in the form of inequalities providing a necessary condition for a given observed
 probability distribution to be compatible with the instrumental causal
 structure. Following that, Bonet \cite{bonet2001} introduced a general
 framework \textcolor{red}{also followed in \cite{Ramsahai2012}}, showing that the instrumental correlations define a polytope, a
@@ -142,20 +142,18 @@ compatible with the instrumental causal structure can be decomposed as
 \begin{equation}
 p(a,b \vert x) = \sum_{\lambda} p(a\vert x,\lambda) p(b\vert a,\lambda)p(\lambda).
 \end{equation}
-Two causal assumptions are employed to arrive to the above decomposition. First,
-the assumption that
+Two causal assumptions are employed to arrive to the above decomposition. i) The first assumption
 \textcolor{red}{
-\begin{equation}
+$
 p(x,\lambda)=p(x)p(\lambda), 
-\end{equation}}
-which implies the independence of
-the instrument and the common ancestor. Second, the assumption that, even though
+$} implies the independence of
+the instrument and the common ancestor. ii) The second assumption requests that, even though
 $X$ and $B$ can be correlated, all these correlations are mediated by $A$. In
-other terms, there is no direct causal influence between $X$ and $B$ and
+other terms, there is no direct causal influence between $X$ and $B$:
 \textcolor{red}{
-\begin{equation}
+$
 p(b\vert x,a,\lambda)=p(b\vert a,\lambda).
-\end{equation}}
+$}
 
 The instrumental variables have been originally introduced to estimate parameters
 in econometric models of supply and demand \cite{economic} and, since then, have found a
@@ -217,8 +215,8 @@ i) variable $A$ has no causal influence over $B$ and ii) $B$ has
 its own instrument $Y$ and thus the correlations are encoded in a
 probability distribution $p(ab \vert xy)$. This has motivated the
 question of whether many of the cornerstones in causal inference
-have to be reevaluated or reinterpreted in the presence of quantum
-effects \cite{ried2015,Costa2016,Wolfe2016}. Indeed, as recently
+have to be re-evaluated or reinterpreted in the presence of quantum
+effects \cite{ried2015,Costa2016,Wolfe2016,carvachoepl}. Indeed, as recently
 shown \cite{chaves2018}, violations of the instrumental tests are
 possible even though the causal constraints underlying the instrumental
 scenario are fulfilled. As shown in the experimental implementation
@@ -280,7 +278,7 @@ the $\left\{w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}\right\}$,
 E)$ and its weights:
 \begin{equation}
     I(G,w) = \sum_{v \in V}w_v p(v)
-    \label{eq:lincostG}
+    \label{eq:linconstG}
 \end{equation}
 }
 Nicely, as it will be discussed below, bounds for the maximum values for $I_w(p)$ achievable in classical and quantum
@@ -328,7 +326,7 @@ the exclusivity constraints.
 \textcolor{blue}{So we have, for classical models:
 \begin{equation}
     I(G,w) \le \alpha(G,w)
-    \label{eq:lincostG_alphabound}
+    \label{eq:linconstG_alphabound}
 \end{equation}
 Moreover the bound is tight since is saturated, for example, by
 any deterministic assignment corresponding to a maximal stable set.}
@@ -344,7 +342,7 @@ This assumption, called \emph{realism}, which is always true for
 classical systems, is not verified in general for quantum systems.
 In the following we briefly introduce the probabilistic framework used
 in quantum mechanics, the interested reader can refer to classic texts
-such as \cite{}.
+such as \cite{nielsen_chuang}.
 In quantum mechanics the \emph{state} of the system, which plays a
 similar role as the probability distribution for classical systems,
 is represented by a  vector $\Psi$ living in a given Hilbert space
@@ -353,12 +351,12 @@ Likewise, every measurement is associated to a set on orthonormal base
 $\{\Phi_1,\ldots,\Phi_d\}$ of the same Hilbert space $\mathcal{H}$, 
 or equivalently by a set of projector operators on those vectors 
 $E_i = \Phi_i (\Phi_i)^T$, each of which represents a possible outcome, 
-and such that $E_iE_j = 0 \forall i,j$ and $\sum_i E_i = I$.
+and such that $E_i E_j = 0 \, \forall i,j$ and $\sum_i E_i = I$.
 The probability associated to each outcome is then defined by the \emph{Born's rule}:
 \begin{equation}
     p_i = \Psi^T E_i \Psi = \abs{\Psi \cdot \Phi_i}^2
 \end{equation}
-It is known that such framewoks allows for a set of proabability distribution which
+It is known that such framework allows for a set of probability distribution which
 is in general a superset of the classical one.
 }
 \textcolor{blue}{
@@ -376,10 +374,9 @@ $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
     \TH(G) = \{x: x_v = (a_v)_1 \, \text{where $a_v$ is an} \\ \text{orthonormal labelling of $G$}\}
     \label{eq:thbody}
 \end{multline}
-It can be proved that this set includes all correlations permitted by quantum
-theory 
-\footnote{As proved in \cite{acin2015} this set corresponds to the level
-$1+AB$ of the NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, 
+It can be proved that this set includes all correlations permitted by quantum theory 
+%\footnote{As proved in \cite{acin2015} this set corresponds to the level
+%$1+AB$ of the NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, 
 but in general is larger as it contains correlations beyond those achievable by quantum
 mechanics \cite{almostquantum2015}.
 Maximizing over $\TH(G)$ gives the Lovász theta:
@@ -388,6 +385,9 @@ Maximizing over $\TH(G)$ gives the Lovász theta:
     \label{eq:lovasztheta}
 \end{equation}
 which upper-bounds the maximum quantum value of $I(G,w)$ in equation \eqref{eq:linconstG}.
+\textcolor{blue}{
+Despite not being a tight bound for quantum system in general, $\theta(G,w)$ is known to be efficiently computable, by a semi-definite optimization.
+}
 
 This approach provides a useful condition to check if a given graph $G$
 (or any of its subgraph) admits a quantum violation. Indeed it can be
@@ -487,11 +487,13 @@ If the graph is not perfect, then we must have found some odd cycle or
 anticycle $C_n$. These kind of induced subgraphs represent our minimal
 candidates for a quantum violation, cause we already know that for them
 $alpha(C_n) < \theta(C_n)$, in particular:
-\begin{align}
-    \alpha(C_n) &= \lfloor n/2 \rfloor \\
+\begin{equation}
+\begin{aligned}
+    \alpha(C_n) &= \lfloor n/2 \rfloor \\ 
     \theta(C_n) &= n\cos(\pi/n)/(1+\cos(\pi/n))
-    \label{eq:cycle_alpha_theta}
-\end{align}
+\end{aligned}
+\label{eq:cycle_alpha_theta}
+\end{equation}
 Any other candidate is an induced subgraph that contains one of those
 cycles/anticycles.
 }
@@ -575,30 +577,37 @@ take two possible values ($l=2$) and an arbitrary number of outputs for $A, B$.
     \label{fig:bonetexc}
 \end{figure}
 
-Going to $l\ge3$ we see that there might be a quantum violation, since
-the associated graph has as a $C_5$ cyclic graph as induced subgraph,
-i.e. the pentagon depicted in Fig.~\ref{fig:bonetexc}, which is exactly
-the Bonet's inequality \eqref{eq:bonet_ineq}.
-For $n=5$, it follows directly the
-gap between the classical and quantum theories, since the classical limit is
-given by $\alpha(C_5)=2$ and the quantum bound is given by $\theta(C_5)=\sqrt{5}$.
-
-In this framework, Eq. \eqref{eq:bonet_ineq} seems analogous to the KCBS
-contextual inequality \cite{kcbs2008} that refers to measurements on single
-quantum systems. The difference here is that we are in a bipartite scenario and
-the real quantum limit is not simply given by the quantity $\theta(C_5) =
-\sqrt{5}$, which constitutes only an upper bound for the maximum achievable
-quantum violation. To find a tighter bound we can apply the technique described in
-\cite{rabelo2014}, and summarized in the methods sections, based on the NPA
-(Navascues, Pironio, Acin) method \cite{npa2008}, in which one defines a hierarchy of
-semi-definite programs to progressively compute a better upper bound for the
-quantum value.
+\textcolor{blue}{
+Going to higher number of outcomes for the instrument $X$ we see that
+there might be a quantum violation, since the associated graph $G_l$
+has as a $C_5$ cyclic graph as induced subgraph for $l \ge 3$.
+The graph $C_5$, depicted in Fig.~\ref{fig:bonetexc},
+represents an instance of Bonet's inequality \eqref{eq:bonet_ineq}, and indeed from
+equation \eqref{eq:cycle_alpha_theta} we get the expected classical
+bound $\alpha(C_5)=2$.
+The quantum limit, as already mentioned, in general does not saturate the
+bound represented by $\theta(G)$, which in this case is (from \eqref{eq:cycle_alpha_theta})
+$\theta(C_n) = \sqrt(5)$.
+}
+To find a tighter bound we can apply the technique described in
+\cite{rabelo2014}, based on the \emph{NPA} (Navascues, Pironio, Acin) method \cite{npa2008}.
+\textcolor{blue}{
+This is a method commonly employed in quantum information to perform optimization constrained in the set of quantum correlations. Since in general there are no known methods to impose this exact constraint, the technique works by relaxing the problem to a, possibly infinite, hierarchy of semi-definite program of increasing dimension, which approximate better and better this constraint.
+}
 Applying it to Bonet inequality we are able obtain the known result for the
-maximum quantum bound, i.e $(3+\sqrt{2})/2 \approx 2.2071$.
+maximum quantum bound, i.e $(3+\sqrt{2})/2 \approx 2.2071$ \textcolor{blue}{(more
+details can be found in the supplemental materials)}.
+%In this framework, Eq. \eqref{eq:bonet_ineq} seems analogous to the KCBS
+%contextual inequality \cite{kcbs2008} that refers to measurements on single
+%quantum systems. The difference here is that we are in a bipartite scenario and
+%the real quantum limit is not simply given by the quantity $\theta(C_5) =
+%\sqrt{5}$, which constitutes only an upper bound for the maximum achievable
+%quantum violation. 
 
-As shown in the Methods section below, no other odd anticycle besides
+As shown in the supplemental material, no other odd anticycle besides
 $C_5$ is present for any $l$, that is, if we increase the cardinality of the
-instrumental variable. The first $7$-cycle appears as soon as we get to $n=m=3$ and $l=4$. This Bonet-like inequality for the instrumental scenario can be written as:
+instrumental variable. The first $7$-cycle appears as soon as we get to $n=m=3$ and $l=4$. 
+An instance of this Bonet-like inequality for the instrumental scenario can be written as:
 \begin{multline}
     P(00|2) + P(02|3) + P(00|0) + P(12|0) + \\
     + P(10|1) + P(21|1) + P(22|2) \le 3 
@@ -607,7 +616,7 @@ instrumental variable. The first $7$-cycle appears as soon as we get to $n=m=3$ 
 Applying the method cited above for this inequality gives a quantum upper bound
 of $q = 3.2990$ at the second order of the NPA hierarchy, which indicates the
 possibility of a quantum violation.
-Similarly, numerical analisys shows that odd cycle subgraphs with higher number
+Similarly, numerical analysis shows that odd cycle subgraphs with higher number
 of vertices appear only if we increase the number of possible settings $l$ while
 also increasing $m$, so for example $9$-cycles start to appear for $l=6, m=3$ 
 and $11$-cycles for $l=7, m=4$.
@@ -622,29 +631,15 @@ and $11$-cycles for $l=7, m=4$.
 \end{figure}
 
 While cycles are the simplest inequalities showing quantum violation, our method
-can also be employed for the analisys of different inequalities, that can be 
-devised by clever choices of vertices and weights. 
-For example in the instrumental scenario $(l,m,n) = (4,2,2)$ we can find by inspection the inequality 
-%\textcolor{red}{Why are we showing two %inequalities? Aren't they just symmetries of each other?}:
-
-% At first I was showing them because in the standard CHSH 16 probabilities
-% appear, 8 with plus and 8 with minus sign, and these probabilities in the
-% instrumental mimic the exclusivity relations of the CHSH ones, but you are
-% right, is a lot cleaner to just show 8 of them. (Davide)
-
+can also be employed for the analysis of different inequalities, that can be 
+devised by other choices of vertices. 
+For example in the instrumental scenario $(l,m,n) = (4,2,2)$ we can find by inspection the inequality: 
 \begin{multline}
     P(01\vert2) + P(11\vert2) + P(10\vert3) + P(01\vert3) + \\
      + P(00\vert0) + P(10\vert0) + P(11\vert1) + P(00\vert1) \le 3
     \label{eq:422_ineq}
 \end{multline}
-This inequality is interesting, since it is represented by the same exclusivity graph of the notorious CHSH inequality \cite{CHSH} for the Bell scenario (see Fig.~\ref{fig:422_exgraph}): 
-%\textcolor{red}{I'm very confused about these %inequalities... it seems like
-%Alice has four %measurement settings... the inequali should be %something like
-%$P(00\vert 00) + P(11 \vert 00) + %P(00\vert 01) + P(11 \vert 01) + P(01 \vert
-%10) + %P(10 \vert 10) + P(00 \vert 11) + P(11 \vert 11) %\leq 3$, no?}
-
-% Yes of course, sorry, I pasted the wrong one from my notebook... indeed the
-% figure shows the one you wrote. (Davide)
+This inequality is interesting, since it is represented by the same exclusivity graph of the CHSH inequality \cite{CHSH} for the Bell scenario (see Fig.~\ref{fig:422_exgraph}): 
 
 \begin{multline}
  P(00\vert 00) + P(11 \vert 00) + P(00\vert 01) + P(11 \vert 01) + \\
@@ -667,7 +662,7 @@ where the sums $a+k, a+k+1$ and $b+k$ are modulo $d$.
 Using the exclusivity graph method we can find that each of the $S^d_k$ is
 classically constrained by:
 \begin{itemize}
-    \item $\alpha(G^d_k) = 4$ if $k$ and $d$ satisfy $4k+1=nd$, for some
+    \item $\alpha(G^d_k) = 4$ if $k$ and $d$ satisfy $4k+1=n d$, for some
         integer $n$.
     \item $\alpha(G^d_k) = 3$ in the other cases.
 \end{itemize}
@@ -696,7 +691,7 @@ P(b'+k,b'|11), P(a,a+k|01), P(a',a;+k+1|01)\}$ must satisfy the conditions:
 where the sums are all modulo $d$.
 From this follows directly that $4k+1 = 0$. 
 
-To obtain the quantum bounds we can apply the NPA method as discussed above.
+To obtain the quantum bounds we can apply the same method discussed above.
 The results for some $S_k$ inequalities are shown in Table~\ref{tab:gclmps}.
 %\textcolor{red}{Complete the table or remove it...}
 \begin{table}
@@ -717,7 +712,7 @@ The results for some $S_k$ inequalities are shown in Table~\ref{tab:gclmps}.
     \caption{Considering the inequality $S^d_k$ for different values of $k$ and $d$, the table above shows the independence number $\alpha(G^d_k)$, the Lov\'asz theta $\theta(G^d_k)$ and the NPA bound computed up to the second order of the hierarchy.}
     \label{tab:gclmps}
 \end{table}
-        
+
 Interestingly, except for the case $(l,m,n) = (4,2,2)$, inequalities with the
 same structure do not seem to arise in the instrumental case, which suggests
 that the apparent similarity noticed in \cite{himbeeck2018} between the two scenarios, Bell and the
@@ -765,7 +760,7 @@ respectively.
 
 Apart from the fundamental relevance of bridging the fields of quantum
 information and causal inference, our approach is also shown to be of practical
-use. We not only rederived, in an easy manner, previous results in the literature,
+use. We not only re-derived, in an easy manner, previous results in the literature,
 we also manage to generalize them. For instance, we prove the inequalities
 associated with an instrument assuming only two possible values do not have a
 quantum violation (irrespectively of the number of outcomes), thus generalizing
@@ -848,6 +843,9 @@ graph-theoretical approach within causality.
      \bibitem{Costa2016}  F. Costa, and S. Shrapnel. {\em Quantum causal modelling}, New Journal of Physics 18, 063032 (2016).
      \bibitem{Wolfe2016} E. Wolfe, R. W. Spekkens, and T, Fritz. {\em The inflation technique for causal inference with latent variables}, arXiv:1609.00672 (2016). 
     \bibitem{acin2015} A. Acín, et al. {\em A combinatorial approach to nonlocality and contextuality}, Communications in Mathematical Physics 334, 533 (2015).
+    \bibitem{nielsen_chuang} M. A. Nielsen, Michael \& I. Chuang. 
+    {\em Quantum computation and quantum information.} (2002)
+    
      \bibitem{almostquantum2015} M. Navascués, Y. Guryanova, M. J. Hoban, \& A. Acín, {\em Almost quantum correlations.}
          Nature Communications 6, (2015).
      \bibitem{npa2008} M. Navascués, S. Pironio, \& A Acín, 
@@ -862,9 +860,14 @@ graph-theoretical approach within causality.
    \bibitem{kcbs2008} A. A. Klyachko, M. A. Can, S. Binicioğlu, A. S. Shumovsky. {\em Simple test for hidden variables in spin-1 systems.}
          Physical review letters, 101(2), 020403 (2008).
    \bibitem{cglmp} D. Collins, et al. {\em Bell inequalities for arbitrarily high-dimensional systems}, Physical review letters 88, 040404 (2002).
-     \bibitem{spgth} M. Chudnovsky, N. Robertson, P. Seymour, \& R. Thomas, 
+   
+   \bibitem{spgth} M. Chudnovsky, N. Robertson, P. Seymour, \& R. Thomas, 
          {\em The strong perfect graph theorem.} 
          Annals of mathematics, 51-229 (2006).
+         
+    \bibitem{carvachoepl} G. Carvacho, R. Chaves, \& F. Sciarrino, 
+        {\em Perspectives on experimental quantum causality.} 
+        EPL (Europhysics Letters), Volume 125, Number 3
      %\bibitem{tomita2006} E. Tomita, A. Tanaka, \& H. Takahashi,
      %    {\em The worst-case time complexity for generating all maximal cliques
      %    and computational experiments.} 
