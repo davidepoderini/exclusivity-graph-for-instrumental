@@ -177,11 +177,13 @@ certify that one has a valid instrument. This is achieved via instrumental
 inequalities, first introduced by Pearl \cite{pearl1995}. If we allow the variables $X$,
 $A$, $B$ to take the values in the range  $x=1,\dots,l$, $a=1,\dots,m$ and
 $b=1,\dots,n$ Pearl showed that the instrumental causal structure implies \textcolor{red}{(independently of any assumption about the functional dependence among the variables)} that 
+\textcolor{blue}{
 \begin{equation} 
-    \sum_{j=0}^{n} P(a_i b_j|x_{k(i,j)}) \le 1,
+    \sum_{j=0}^{n} P(ij|k(i,j)) \le 1,
     \label{eq:pearl_ineq}
 \end{equation}
-for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$ where $p(a=i,b=j\vert x=k)=p(a_i,b_j|x_k)$.
+for all $i \in {1,\ldots, m}$ and for all the possible functions $k(i,j)$ where $p(i,j|k) = p(a=i,b=j\vert x=k)$.
+}
 
 Extending these results, Bonet \cite{bonet2001} provided a 
 general geometric framework for the derivation of instrumental inequalities.
@@ -190,24 +192,51 @@ many extremal points, or alternatively by a finite number of facets, among which
 non-trivial are precisely the instrumental inequalities. In particular,
 considering the case $(l,m,n) = (3,2,2)$, it was proven that there are two
 inequivalent classes of instrumental inequalities (those not obtained from each
-other by permuting the labels of $a_i,b_j$ and $x_k$). One class corresponding
+other by permuting the labels of \textcolor{blue}{$i,j$ and $k$}). One class corresponding
 to Pearl's inequality \eqref{eq:pearl_ineq} and the other given by
+\textcolor{blue}{
 \begin{multline}
-    P(a_1 b_1 | x_1) + P(a_2 b_2 | x_1) + 
-    P(a_1 b_1 | x_2) +\\+ P(a_2 b_1 | x_2) + 
-    P(a_1 b_2 | x_3) \le 2.
+    P(0 0 | 0) + P(1 1 | 0) + 
+    P(0 0 | 1) +\\+ P(1 0 | 1) + 
+    P(0 1 | 2) \le 2.
     \label{eq:bonet_ineq}
 \end{multline}
+}
 
-All these conclusions and results, however, rely on a classical description of
-causal and effect relations \textcolor{red}{(implicitly) invoking the realism assumption: the probabilities of a given measurement have well defined values even if such measurements are not performed. However, since Bell's theorem \cite{bell1964} we know that this do not apply to the world governed by quantum mechanics, thus implying that standard causal models, even if augmented with latent variables, are not enough to explain quantum phenomena. Bell's theorem relies on the causal structure shown in Fig. \ref{fig:chshinstdag}, similar to the instrumental one with two crucial causal differences: i) variable $A$ has no causal influence over $B$ and ii) $B$ has its own instrument $Y$ and thus the correlations are encoded in a probability distribution $p(ab \vert xy)$. This has motivated the question of whether many of the cornerstones in causal inference have to be
-reevaluated or reinterpreted in the presence of quantum effects \cite{ried2015,Costa2016,Wolfe2016}. Indeed, as recently shown \cite{chaves2018}, violations of the instrumental tests are possible even though the causal constraints underlying the instrumental scenario are fulfilled. As shown in the experimental implementation of the instrumental
-test \cite{chaves2018}, this is possible due to the presence of quantum entanglement that precludes the explanation of the data via a latent common factor. Interestingly, every probability distribution violating the simplest possible Bell inequality, known as Clauser-Horne-Shimony-Holt (CHSH) inequality \cite{CHSH}, can after some post-processing also violate Bonet's inequality \cite{himbeeck2018}. As we will see, the graph-theoretical approach will allow us a more systematic understanding of the similarities and differences between the Bell and instrumental scenarios.} 
+All these conclusions and results, however, rely on a classical
+description of causal and effect relations \textcolor{red}{(implicitly)
+invoking the realism assumption: the probabilities of a given
+measurement have well defined values even if such measurements are not
+performed. However, since Bell's theorem \cite{bell1964} we know that
+this do not apply to the world governed by quantum mechanics, thus
+implying that standard causal models, even if augmented with latent
+variables, are not enough to explain quantum phenomena. Bell's theorem
+relies on the causal structure shown in Fig.~\ref{fig:chshinstdag}-b,
+similar to the instrumental one with two crucial causal differences:
+i) variable $A$ has no causal influence over $B$ and ii) $B$ has
+its own instrument $Y$ and thus the correlations are encoded in a
+probability distribution $p(ab \vert xy)$. This has motivated the
+question of whether many of the cornerstones in causal inference
+have to be reevaluated or reinterpreted in the presence of quantum
+effects \cite{ried2015,Costa2016,Wolfe2016}. Indeed, as recently
+shown \cite{chaves2018}, violations of the instrumental tests are
+possible even though the causal constraints underlying the instrumental
+scenario are fulfilled. As shown in the experimental implementation
+of the instrumental test \cite{chaves2018}, this is possible due to
+the presence of quantum entanglement that precludes the explanation of
+the data via a latent common factor. Interestingly, every probability
+distribution violating the simplest possible Bell inequality, known as
+Clauser-Horne-Shimony-Holt (CHSH) inequality \cite{CHSH}, can after some
+post-processing also violate Bonet's inequality \cite{himbeeck2018}. As we
+will see, the graph-theoretical approach will allow us a more systematic
+understanding of the similarities and differences between the Bell and
+instrumental scenarios.}
 
-Altogether, this shows the necessity of a new unifying framework, not only
-considering what are the classical instrumental correlations but as well the
-ones achievable if the underlying latent factor might have a quantum origin. In
-the following we will achieve that by proposing a graph-theoretical approach to analyze the instrumental inequalities.
+Altogether, this shows the necessity of a new unifying framework, not
+only considering what are the classical instrumental correlations but
+as well the ones achievable if the underlying latent factor might have
+a quantum origin. In the following we will achieve that by proposing a
+graph-theoretical approach to analyze the instrumental inequalities.
 
 \section{The exclusivity graph approach}
 The graph-theoretical approach we propose here, was initially developed for the
@@ -244,8 +273,16 @@ expressed defining a linear function
     I_w(p) = \sum_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}
 w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}} p(a_1,\ldots,a_n|x_1,\ldots,x_n)
 \end{equation}
-on the probabilities of possible events. 
-This linear function can be embedded in an exclusivity graph by weighting the vertices in $G$ with the $w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}$. 
+on the probabilities of possible events.  This linear function can be
+embedded in an exclusivity graph by weighting the vertices in $G$ with
+the $\left\{w_{\substack{a_1,\ldots,a_n\\x_1,\ldots,x_n}}\right\}$,
+\textcolor{blue}{so that it can be written as a function of $G = (V,
+E)$ and its weights:
+\begin{equation}
+    I(G,w) = \sum_{v \in V}w_v p(v)
+    \label{eq:lincostG}
+\end{equation}
+}
 Nicely, as it will be discussed below, bounds for the maximum values for $I_w(p)$ achievable in classical and quantum
 physical theories can be related to two well-known graph invariants \cite{cabello2014}: the
 independence number $\alpha(G, w)$ and the Lovász theta $\theta(G, w)$,
@@ -288,27 +325,51 @@ From which, we can immediately see that $\alpha(G,w)$ must corresponds to the
 classical bound of the inequality, since it is exactly the maximum over
 the convex set defined by all the deterministic strategies respecting
 the exclusivity constraints.
-\textcolor{blue}{Moreover the bound is tight since is saturated, for example, by
+\textcolor{blue}{So we have, for classical models:
+\begin{equation}
+    I(G,w) \le \alpha(G,w)
+    \label{eq:lincostG_alphabound}
+\end{equation}
+Moreover the bound is tight since is saturated, for example, by
 any deterministic assignment corresponding to a maximal stable set.}
 
 \textcolor{blue}{
-In associating the set $STAB(G)$ with the space of the possible probability distributions for our graph $G$,
-we have made the implicit assumption that there exists a joint probability distribution for all of our events, 
-i.e. that even when certain settings are not chosen by the experimenter, we can still assign (counterfactually) 
-a value to their probabilities.
-This assumption, called \emph{realism}, which is always true for classical systems, is not verified in general for quantum systems.
-In the following we briefly introduce the probabilistic framework used in quantum mechanics, the interested reader can refer to classical 
-texts such as \cite{}.
-In quantum mechanics the \emph{state} of the system, which plays a similar role as the probability distribution for classical systems,
-is represented by a normalized vector $\Psi$ living in a given Hilbert space $\mathcal{H}$.
-Every event is then associated with a vector $\Phi_i$ in the same Hilbert space $\mathcal{H}$, and the probability associated to that
-event is computed using the \emph{Born rule}:
+In associating the set $STAB(G)$ with the space of the possible
+probability distributions for our graph $G$, we have made the implicit
+assumption that there exists a joint probability distribution for all
+of our events, i.e. that even when certain settings are not chosen by
+the experimenter, we can still assign (counterfactually) a value to
+their probabilities.
+This assumption, called \emph{realism}, which is always true for
+classical systems, is not verified in general for quantum systems.
+In the following we briefly introduce the probabilistic framework used
+in quantum mechanics, the interested reader can refer to classic texts
+such as \cite{}.
+In quantum mechanics the \emph{state} of the system, which plays a
+similar role as the probability distribution for classical systems,
+is represented by a  vector $\Psi$ living in a given Hilbert space
+$\mathcal{H}$, normalized such that $\abs{\Psi}^2 = 1$.
+Likewise, every measurement is associated to a set on orthonormal base
+$\{\Phi_1,\ldots,\Phi_d\}$ of the same Hilbert space $\mathcal{H}$, 
+or equivalently by a set of projector operators on those vectors 
+$E_i = \Phi_i (\Phi_i)^T$, each of which represents a possible outcome, 
+and such that $E_iE_j = 0 \forall i,j$ and $\sum_i E_i = I$.
+The probability associated to each outcome is then defined by the \emph{Born's rule}:
 \begin{equation}
-    p_i = \abs{\Psi \cdot \Phi_i}^2 
+    p_i = \Psi^T E_i \Psi = \abs{\Psi \cdot \Phi_i}^2
 \end{equation}
+It is known that such framewoks allows for a set of proabability distribution which
+is in general a superset of the classical one.
 }
-
-We call an \emph{orthonormal labelling} of dimension $d$ a map
+\textcolor{blue}{
+Exclusivity relations between events (measurement outcomes) in this way
+readily translate into orthogonality between projectors.
+A quantum realization of an exclusivity graph $G(V,E)$ consists in 
+a set projectors $E_i$ for each vertex $i \in V$, such that $E_i$ and $E_j$ are
+orthogonal each time $i$ and $j$ are connected by an edge.
+This corresponds to what in graph theory is known as an \emph{orthonormal labelling} of $G$. 
+}
+An \emph{orthonormal labelling} of dimension $d$ a map
 $a_v:V \rightarrow \Real^d$ such that $a_v \cdot a_u = 0$ for all $uv \in E$ and
 $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
 \begin{multline}
@@ -316,37 +377,39 @@ $|a_v|^2 = 1$, and we define the set $\TH(G)$ as:
     \label{eq:thbody}
 \end{multline}
 It can be proved that this set includes all correlations permitted by quantum
-theory \footnote{As proved in \cite{acin2015} this set corresponds to the level
+theory 
+\footnote{As proved in \cite{acin2015} this set corresponds to the level
 $1+AB$ of the NPA (Navascués-Pironio-Acín) hierarchy \cite{npa2008}.}, 
-but in general is larger as it contains correlations beyond those achieved by quantum
+but in general is larger as it contains correlations beyond those achievable by quantum
 mechanics \cite{almostquantum2015}.
 Maximizing over $\TH(G)$ gives the Lovász theta:
 \begin{equation}
     \theta(G,w) = \max \{w\cdot x : x \in \TH(G)\}
     \label{eq:lovasztheta}
 \end{equation}
-which upper-bounds the maximum quantum value.
-This approach provides a useful condition to check if a given graph $G$ admits a
-quantum violation. Indeed it can be proven that $\TH(G) = \STAB(G)$ if and only
-if $G$ does not contain a cycle $C_n$ with $n \ge 5$ and odd, or its complement
-as an induced subgraph. 
-This follows directly from the notorious ``sandwich theorem''\cite{knuth,lovasz} and the ``strong
-perfect graph theorem'' \cite{spgth}.
-The first one states that the number $\theta(G)$ is always ``sandwiched''
-between the independence number of the graph $\alpha(G)$ and another quantity
-called the \emph{chromatic number} $\chi(G)$, i.e. the smaller number of colors needed
-to label the vertices such that vertices connected by and edge always have
-different colors.
+which upper-bounds the maximum quantum value of $I(G,w)$ in equation \eqref{eq:linconstG}.
+
+This approach provides a useful condition to check if a given graph $G$
+(or any of its subgraph) admits a quantum violation. Indeed it can be
+proven that $\TH(G) = \STAB(G)$ if and only if $G$ does not contain
+a cycle $C_n$ with $n \ge 5$ and odd, or its complement as an induced
+subgraph.
+This follows directly from two graph theoretical results: the so called
+``sandwich theorem''\cite{knuth,lovasz} and the ``strong perfect graph
+theorem'' \cite{spgth}.
+\textcolor{blue}{
+The first one states that the number $\theta(G)$ is always greater or equal
+the independence number of the graph $\alpha(G)$.}
 \begin{equation}
-    \alpha(G) \le \theta(G) \le \chi(G)
+    \alpha(G) \le \theta(G)
     \label{eq:sandwich_th}
 \end{equation}
 When equality holds in equation \eqref{eq:sandwich_th} for a graph $G$ and all its
 induced subgraphs, $G$ is called \emph{perfect}.
-For perfect graphs, we can definitely exclude the existence of a quantum
+For perfect graphs, we can exclude the existence of a quantum
 violation, since $\alpha(G) = \theta(G)$.
 The second theorem then gives a useful condition to check if a graph is perfect
-or not.  In particular it affirms that a graph $G$ is perfect if and only if it
+or not. In particular it affirms that a graph $G$ is perfect if and only if it
 does not contain a $n$-cycle graph with $n\ge5$ and odd or its complement as an
 induced subgraph.
 
@@ -356,11 +419,11 @@ they give the simplest inequalities (in terms of number of probabilities to
 estimate), to test this violation.
 
 \section{Exclusivity graph method applied to causal models}
-Next we show how the techniques presented in the previous section can be employed to analyze
-a broad class of causal models. Consider the DAG depicted in fig~\ref{fig:onelambda}, with
-$k$ observable variables $A_1, \ldots, A_k$ with potential causal arrows among them, $l$
-instruments $X_1, \ldots, X_l$ with no incoming edges, and a single unobservable latent
-variable $\Lambda$ acting as a potential common factor for all $A_i$s (but not to
+In this section we show how the techniques presented in the previous section can be employed to analyze
+a broad class of causal models. Consider the DAG depicted in Fig~\ref{fig:onelambda}, with
+$N$ observable variables $A_1, \ldots, A_N$ with potential causal arrows among them, $M$
+instruments $X_1, \ldots, X_M$ with no incoming edges, and a single unobservable latent
+variable $\Lambda$ acting as a potential common factor for all $A_i$s (but not for
 the $X_j$s).
 
 \begin{figure}[h]
@@ -372,27 +435,66 @@ the $X_j$s).
     \label{fig:onelambda}
 \end{figure}
 
-A \emph{non-exclusivity} graph can be associated with such a DAG
-%(also called a \emph{confusability} graph) 
+\textcolor{blue}{
+An \emph{exclusivity} graph can be associated with such a DAG
 as follows:
 \begin{itemize}
-    \item Nodes are associated to events like $a | x$, where $a = (a_1,\ldots,a_k)$ and  $x = (x_1,\ldots,x_l)$.
-    \item Two nodes $a | x $, and $a' | x'$ are linked by an edge if and only if 
+    \item Nodes are associated to events like $a | x$, where $a = (a_1,\ldots,a_N)$ and  $x = (x_1,\ldots,x_M)$.
+    \item Two nodes $a | x $, and $a' | x'$ are linked by an edge only if one of these two condition is true:
         \begin{enumerate}
-            \item for all $i,j \in \{1 ,\ldots,k\}$ if $A_i\,
-                \rightarrow\, A_j$ then $\exists g_{ij} : g_{ij}(a_i) = a_j
+            \item for all $i,j \in \{1 ,\ldots,N\}$ if $A_i\,
+                \rightarrow\, A_j$ it \emph{does not} exists any function $g_{ij} : g_{ij}(a_i) = a_j
                 \et g_{ij}(a'_i) = a'_j$.
-            \item for all $i\in \{1,\ldots,l\}$ and $j\in \{1,\ldots,k\}$ if
-                $X_i\,\rightarrow\,A_j$ then $\exists f_{ij} : f_{ij}(x_i) = a_j
+            \item for all $i\in \{1,\ldots,M\}$ and $j\in \{1,\ldots,N\}$ if
+                $X_i\,\rightarrow\,A_j$ it \emph{does not} exists any function $f_{ij} : f_{ij}(x_i) = a_j
                 \et f_{ij}(x'_i) = a'_j$.
         \end{enumerate}
 \end{itemize}
-
+}
+%\begin{itemize}
+%    \item Nodes are associated to events like $a | x$, where $a = (a_1,\ldots,a_k)$ and  $x = (x_1,\ldots,x_l)$.
+%    \item Two nodes $a | x $, and $a' | x'$ are linked by an edge if and only if 
+%        \begin{enumerate}
+%            \item for all $i,j \in \{1 ,\ldots,k\}$ if $A_i\,
+%                \rightarrow\, A_j$ then $\exists g_{ij} : g_{ij}(a_i) = a_j
+%                \et g_{ij}(a'_i) = a'_j$.
+%            \item for all $i\in \{1,\ldots,l\}$ and $j\in \{1,\ldots,k\}$ if
+%                $X_i\,\rightarrow\,A_j$ then $\exists f_{ij} : f_{ij}(x_i) = a_j
+%                \et f_{ij}(x'_i) = a'_j$.
+%        \end{enumerate}
+%\end{itemize}
+\textcolor{blue}{
+For example, referring to the Bell scenario of
+Fig.~\ref{fig:chshinstdag}-b any two events $a,b,x,y$ and $a',b',x',y'$
+where $x = x'$ and $a\neq a'$ (or $y = y'$ and $b \neq b'$) are exclusive,
+since we would need $f(x) \neq f(x')$ even if $x = x'$ (or similarly $g(y)
+\neq g(y')$ when $y = y'$).
+}
 As we will show next, considering the particular case of the instrumental
-scenario \cite{pearl1995, bonet2001}, one can apply the graph-theoretical methods delineated before
-to the complement of this graph, $G=\bar{G}$, and its subgraphs. This allows to
-obtain instrumental inequalities and their respective quantum and
-classical bounds.
+scenario \cite{pearl1995, bonet2001}, one can apply the graph-theoretical
+methods delineated before to its corresponding exclusivity graph, $G$,
+and its subgraphs. This allows to obtain instrumental inequalities and
+their respective quantum and classical bounds.
+\textcolor{blue}{
+To do that, we proceed as follows:
+First we try to determine if the graph is perfect using the \emph{strong
+perfect graph theorem}, i.e. looking for odd cycles and anticycles with
+more than $5$ vertices among the induced subgraphs of $G$.
+If the graph is perfect then we know immediately that no quantum violation
+is possible, since the sandwich theorem tells us that $\alpha(G) =
+\theta(G)$ (and the same is true for any other induced subgraph).
+If the graph is not perfect, then we must have found some odd cycle or
+anticycle $C_n$. These kind of induced subgraphs represent our minimal
+candidates for a quantum violation, cause we already know that for them
+$alpha(C_n) < \theta(C_n)$, in particular:
+\begin{align}
+    \alpha(C_n) &= \lfloor n/2 \rfloor \\
+    \theta(C_n) &= n\cos(\pi/n)/(1+\cos(\pi/n))
+    \label{eq:cycle_alpha_theta}
+\end{align}
+Any other candidate is an induced subgraph that contains one of those
+cycles/anticycles.
+}
 
 \subsection{The Instrumental exclusivity graph}
 \begin{figure}[t]
@@ -406,62 +508,78 @@ classical bounds.
     \label{fig:instrumental_exgraphs}
 \end{figure}
 
-As a first application we will restrict our attention to the case of
-dichotomic observables ($n = m = 2$), considering $p(ab|x)$ with $a, b \in
-\mathcal{A} = \mathcal{B} = \{0,1\}$ and $x \in
-\mathcal{X} = \{0,\ldots,l\}$, the probability of having outcomes $a$ and $b$
-with the instrument assuming the value $x$. As detailed above, the
-non-exclusivity graph for the instrumental scenario is obtained by linking two
-events $ab|x$ and $a'b'|x'$ if there exist two functions $f:\mathcal{X}
-\rightarrow \mathcal{A}$ and $g:\mathcal{A} \rightarrow
-\mathcal{B}$ such that:
-\begin{eqnarray}
-   & &  a = f(x) \quad\text{and}\quad a'=f(x')\\ \nonumber
-   & & b = g(a) \quad\text{and}\quad b'=g(a')
+As a first application we will restrict our attention to the instrumental
+scenario in the case of dichotomic \textcolor{blue}{measurements ($n = m = 2$).
+We denote the probability of having outcomes $a$ and $b$ with the
+instrument assuming the value $x$ as $p(ab|x)$ with $a, b \in \mathcal{A}
+= \mathcal{B} = \{0,1\}$ and $x \in \mathcal{X} = \{0,\ldots,l\}$.}
+As explained above, the 
+\textcolor{blue}{exclusivity graph for the instrumental scenario is obtained by
+connecting two events $a,b,x$ and $a',b',x'$ with an edge if we cannot find a function
+$f:\mathcal{X} \rightarrow \mathcal{A}$ such that:
+}
+\begin{equation}
+    a = f(x) \quad\text{and}\quad a'=f(x')
+\end{equation}
+\textcolor{blue}{
+or a function $g:\mathcal{A} \rightarrow \mathcal{B}$ such that:
+}
+\begin{equation}
+     b = g(a) \quad\text{and}\quad b'=g(a')
     \label{eq:non_exclusivity_condition}
-\end{eqnarray}
-As shown in Fig.~\ref{fig:instrumental_exgraphs}, we construct the exclusivity
-graphs for various $l$ and use the methods described earlier to
-obtain the classical and quantum bounds for several inequalities in the
-instrumental scenario. 
+\end{equation}
+\textcolor{blue}{Using these rules we construct the exclusivity
+graphs $G_l = (V_l, E_l)$ for various $l$, some of which are shown in
+Fig.~\ref{fig:instrumental_exgraphs}, and use the methods described
+earlier to obtain the classical and quantum bounds for several
+inequalities in the instrumental scenario.
+}
 
-First, consider the case $l=2$, for which Pearl's inequality
-\eqref{eq:pearl_ineq} defines the only instrumental inequality. It has been
-shown that this inequality does not have a quantum violation \cite{henson2014}.
+First, consider the case $l=2$, depicted in
+Fig.~\ref{fig:instrumental_exgraphs} top-left, for which Pearl's
+inequality \eqref{eq:pearl_ineq} defines the only instrumental inequality.
+It has been shown that this inequality does not have a quantum violation
+\cite{henson2014}.
 For that, general probabilistic Bayesian networks, including classical and
 quantum causal models as particular cases, had to be introduced.
 In contrast, in our method it is straightforward not only to derive the
 classical bound to Pearl's inequality but also show that there is no quantum
-violation of the inequality. 
-Indeed in the case of $l=2$ inequalities \eqref{eq:pearl_ineq} becomes:
+violation of the inequality.
+In the case of $l=2$ inequalities \eqref{eq:pearl_ineq} becomes:
 \begin{equation}
-    P(a0|x_1) + P(a1|x_2) \le 1 
+    P(a0|x) + P(a1|x') \le 1 \forall a,x,x' \in \{0,1\} 
     \label{eq:pearl_ineq_222}
 \end{equation}
-which are just the classical constraint given by the exclusivity conditions,
+which are just the classical constraint given by the exclusivity conditions
 represented by the edges of the graph (see Fig.~\ref{fig:instrumental_exgraphs}).
+\textcolor{blue}{
+Indeed considering the trivial induced subgraphs $S_e$ formed by only two vertices
+$e = (v_1, v_2) \in E_2$, we simply have $\alpha(S_e) = 1$ from which using equation
+\eqref{eq:linconstG_alphabound}, we obtain contraints in \eqref{eq:pearl_ineq_222}.
+}
 The fact that no quantum violation is allowed follows immediately from the fact
 that the corresponding  exclusivity graph (and its complement) does not contain
 any odd cycle or anticycle with more than $5$ vertices, which makes it a perfect
-graph, i.e. $TH(G) = STAB(G)$. This can be easily generalized to any number of
-outputs $n,m$ as shown in the methods section. In this way we can exclude the
+graph, i.e. $TH(G) = STAB(G)$. This can be easily proved in the case $l=2$ for any number of
+outputs $n,m$ as shown in the supplemental materials. In this way we can exclude the
 presence of any quantum violation for any scenario where the instrument can only
-take two possible values ($l=2$) and an arbitrary number of outputs.
+take two possible values ($l=2$) and an arbitrary number of outputs for $A, B$.
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=.6\columnwidth]{images/instrumental_c5.pdf}
-    \caption{The exclusivity graph of the bonet inequality as an induced subgraph of complete one of the $(l,m,n)=(3,2,2)$ instrumental scenario. To simplify the representation, cliques are represented with the bold
-    lines in the figure.}
+    \caption{The exclusivity graph of the bonet inequality as an induced
+    subgraph of complete one of the $(l,m,n)=(3,2,2)$ instrumental
+    scenario. To simplify the representation, cliques are represented
+    with the bold lines in the figure.}
     \label{fig:bonetexc}
 \end{figure}
 
-Going to $l\ge3$ we see that there might be a quantum violation, since the
-associated graph has as a subset a $C_5$ cyclic graph, i.e. the pentagon
-depicted in
-fig.~\ref{fig:bonetexc} that is exactly the Bonet's inequality \eqref{eq:bonet_ineq}.
-For cyclic graphs it is known that $\alpha(C_n) = \lfloor n/2 \rfloor$ and
-$\theta(C_n) = n\cos(\pi/n)/(1+\cos(\pi/n))$. For $n=5$, it follows directly the
+Going to $l\ge3$ we see that there might be a quantum violation, since
+the associated graph has as a $C_5$ cyclic graph as induced subgraph,
+i.e. the pentagon depicted in Fig.~\ref{fig:bonetexc}, which is exactly
+the Bonet's inequality \eqref{eq:bonet_ineq}.
+For $n=5$, it follows directly the
 gap between the classical and quantum theories, since the classical limit is
 given by $\alpha(C_5)=2$ and the quantum bound is given by $\theta(C_5)=\sqrt{5}$.
 
