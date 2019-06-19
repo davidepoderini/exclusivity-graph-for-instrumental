@@ -21,7 +21,14 @@
 \begin{document}
 \title{Supplemental Materials}
 \maketitle
-%\section*{Detailed description of the method}
+\section*{Building the exclusivity graph from DAG}
+In the following we describe in more details how to get from the DAG
+(Directed Acyclic Graph) representation of a causal model to the one
+for exclusivity graph.
+Starting from a generic causal model with $N$ random variables
+$A_1,\ldots,A_N$ and $M$ instrument $X_1,\ldots,X_M$, represented by a
+DAG $D=(V_D, E_D)$, the exclusivity graph $G = (V, E)$ can be constructed with the following algorithm:
+
 \section*{Edge colored multigraph technique for approximating the quantum
 bound}
 \begin{figure}[t]
@@ -33,7 +40,10 @@ bound}
     \label{fig:instrumental_multigraph}
 \end{figure}
 
-The Lov\'asz theta of a graph, despite being efficiently computable, only gives an upper bound to the maximal quantum bound, since it ignores the additional constraints arising from the presence of different random variables $A_i$.
+The Lov\'asz theta of a graph, despite being efficiently computable,
+only gives an upper bound to the maximal quantum bound, since it ignores
+the additional constraints arising from the presence of different random
+variables $A_i$.
 Indeed the quantum bound is influenced not only by the exclusivity relations between the
 possible events in our scenario, but also on how those relations are derived from the
 variables $A_1,\ldots,A_N$.
@@ -103,11 +113,82 @@ and consider that node $2$ in this graph corresponds to an event which we can ar
 Among its neighbors $1$ and $3$, one will necessarily need to satisfy rule
 \ref{en:rule2} (they cannot both satisfy rule \ref{en:rule1} or the three nodes
 would be a clique.
-%TODO: Explain what is a clique.
 So without loss of generality we can assign the event $01|1$ to $3$.
 Since nodes $5,6,7$ must not satisfy rule \ref{en:rule2} with both $2$ and $3$, then they must have $a = 1$.
 Moreover $7$ and $5$ must have the same $b$, different from $6$. In the same way $1$ must not satisfy rule \ref{en:rule2} with $6,5$ and $3$, so it
 needs to have $a=0$ and $b=1$. At this point, since we only have values
 $\{0,1\}$ for $a$, we cannot avoid node $4$ to be linked to one of the nodes
 $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
+
+\begin{thebibliography}{}
+%    \bibitem{pearlbook} J. Pearl, 
+%        {\em Causality: models, reasoning, and inference.}
+%        Cambridge University Press, (2000).
+%    \bibitem{pearl1995} J. Pearl, 
+%        {\em On the testability of causal models with latent and instrumental variables}, 
+%        Proceedings of the Eleventh conference on Uncertainty in artificial
+%        intelligence. Morgan Kaufmann Publishers Inc. (1995).
+%    \bibitem{bonet2001} B. Bonet, {\em Instrumentality tests revisited},
+%        Proceedings of the Seventeenth conference on Uncertainty in artificial
+%        intelligence. Morgan Kaufmann Publishers Inc. (2001).
+%            \bibitem{Wooldridge2015} J. M. Wooldridge, {\em Introductory econometrics: A modern approach}. Nelson Education, 2015.
+%       \bibitem{Ramsahai2012} R. R. Ramsahai, {\em Causal bounds and observable constraints for non-deterministic models},
+%        Journal of Machine Learning Research 13, 829 (2012).
+%        \bibitem{Kedagni2017}  D. Kédagni, I. Mourifie, {\em Generalized instrumental inequalities: Testing the IV independence assumption}, available at SSRN (2017).
+%    \bibitem{chaves2018} R. Chaves, G. Carvacho, I. Agresti, V. Di Giulio, L. Aolita,
+%        S. Giacomini, F. Sciarrino, 
+%        {\em Quantum violation of an instrumental test}, 
+%        Nature Physics 14.3 291 (2018).
+%     \bibitem{himbeeck2018} T. Van Himbeeck, J. B. Brask, S. Pironio, R. Ramanathan, A. B. Sainz, E. Wolfe, 
+%        {\em Quantum violations in the Instrumental scenario and their relations to the Bell scenario},
+%     \bibitem{cabello2014} A. Cabello, S. Severini, A. Winter,
+%         {\em Graph-theoretic approach to quantum correlations}, 
+%         Physical review letters, 112, 040401 (2014).
+     \bibitem{rabelo2014} R. Rabelo, C. Duarte, A. J.  López-Tarrida, M. T. Cunha, A. Cabello, 
+         {\em Multigraph approach to quantum non-locality.}
+         Journal of Physics A: Mathematical and Theoretical, 47, 424021 (2014).
+%       \bibitem{CHSH}J.F. Clauser; M.A. Horne; A. Shimony; R.A. Holt, {\em Proposed experiment to test local hidden-variable theories}, Phys. Rev. Lett. 23, 880 (1969).
+%    \bibitem{economic} P. G. Wright, \emph{The tariff on animal and vegetable oils}, The Macmillan Company, (1928).
+%    \bibitem{economic2} C. W. J. Granger, \emph{Investigating causal relations by econometric models and cross-spectral methods}, Econometrica, 424 (1969).
+%    \bibitem{economic3} N. Cartwright, \emph{Causal Structures in Econometrics:On the Reliability of Economic Models},Recent Economic Thought Series \textbf{42}, pp 63-89 (1995).
+%         \bibitem{Janzing2013} D. Janzing, et al. {\em Quantifying causal influences}, The Annals of Statistics 41, 2324 (2013).
+%     \bibitem{bell1964} J. S.Bell, {\em On the Einstein Podolsky Rosen Paradox}, Physics 1, 195 (1964).
+%    \bibitem{ried2015} K. Ried, et al. {\em A quantum advantage for inferring causal structure}, Nature Physics 11, 414 (2015).
+%     \bibitem{Costa2016}  F. Costa, and S. Shrapnel. {\em Quantum causal modelling}, New Journal of Physics 18, 063032 (2016).
+%     \bibitem{Wolfe2016} E. Wolfe, R. W. Spekkens, and T, Fritz. {\em The inflation technique for causal inference with latent variables}, arXiv:1609.00672 (2016). 
+%    \bibitem{acin2015} A. Acín, et al. {\em A combinatorial approach to nonlocality and contextuality}, Communications in Mathematical Physics 334, 533 (2015).
+%    \bibitem{nielsen_chuang} M. A. Nielsen, Michael \& I. Chuang. 
+%    {\em Quantum computation and quantum information.} (2002)
+    
+%     \bibitem{almostquantum2015} M. Navascués, Y. Guryanova, M. J. Hoban, \& A. Acín, {\em Almost quantum correlations.}
+%         Nature Communications 6, (2015).
+%     \bibitem{npa2008} M. Navascués, S. Pironio, \& A Acín, 
+%         {\em A convergent hierarchy of semidefinite programs characterizing the
+%         set of quantum correlations.}
+%         New Journal of Physics 10, 073013 (2008).
+%   \bibitem{knuth} D. Knuth, {\em The sandwich theorem}, The Electronic Journal of Combinatorics 1, 1 (1994).
+%     \bibitem{lovasz} L. Lovász, 
+%         {\em An Algorithmic Theory of Numbers, Graphs, and Convexity.}
+%         CBMS Regional Conference Series in Applied Mathematics (1986), §3.2.
+% \bibitem{henson2014} J. Henson, R. Lal, M. F. Pusey. {\em Theory-independent limits on correlations from generalized Bayesian networks}, New Journal of Physics 16, 113043 (2014).
+%   \bibitem{kcbs2008} A. A. Klyachko, M. A. Can, S. Binicioğlu, A. S. Shumovsky. {\em Simple test for hidden variables in spin-1 systems.}
+%         Physical review letters, 101(2), 020403 (2008).
+%   \bibitem{cglmp} D. Collins, et al. {\em Bell inequalities for arbitrarily high-dimensional systems}, Physical review letters 88, 040404 (2002).
+   
+%   \bibitem{spgth} M. Chudnovsky, N. Robertson, P. Seymour, \& R. Thomas, 
+%         {\em The strong perfect graph theorem.} 
+%         Annals of mathematics, 51-229 (2006).
+         
+%    \bibitem{carvachoepl} G. Carvacho, R. Chaves, \& F. Sciarrino, 
+%        {\em Perspectives on experimental quantum causality.} 
+%        EPL (Europhysics Letters), Volume 125, Number 3
+
+     %\bibitem{tomita2006} E. Tomita, A. Tanaka, \& H. Takahashi,
+     %    {\em The worst-case time complexity for generating all maximal cliques
+     %    and computational experiments.} 
+     %    Theoretical Computer Science 363, 28–42 (2006).
+         
+\end{thebibliography}
+
+
 \end{document}
