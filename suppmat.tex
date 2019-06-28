@@ -8,6 +8,8 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \usepackage[colorlinks=true,citecolor=blue,urlcolor=blue]{hyperref}
 
 \newcommand{\mean}[1]{\left\langle #1 \right\rangle}
@@ -17,7 +19,7 @@
 \newcommand{\STAB}{\mathrm{STAB}}
 \renewcommand{\TH}{\mathrm{TH}}
 \newcommand{\chull}{\mathrm{Conv}}
-
+\DeclareMathOperator*{\PA}{PA}
 \begin{document}
 \title{Supplemental Materials}
 \maketitle
@@ -25,9 +27,54 @@
 In the following we describe in more details how to get from the DAG
 (Directed Acyclic Graph) representation of a causal model to the one
 for exclusivity graph.
-Starting from a generic causal model with $N$ random variables
-$A_1,\ldots,A_N$ and $M$ instrument $X_1,\ldots,X_M$, represented by a
-DAG $D=(V_D, E_D)$, the exclusivity graph $G = (V, E)$ can be constructed with the following algorithm:
+Starting from a generic causal model described by a DAG $D$, with
+$N$ random variables $O_D = \{A_1,\ldots,A_N\}$ and $M$ instruments
+$I_D = \{X_1,\ldots,X_M\}$, the exclusivity graph $G = (V, E)$ can be
+constructed, for example, using a simple breadth-first graph exploring
+algorithm.
+The procedure, described in algorithm \ref{alg:bfgb}, requires the DAG $D$
+and the list $V$ of vertices to be explored, since we can be interested
+in building the graph only for a subset of events.
+
+\begin{algorithm*}
+\caption{Breadth-first graph exploration}
+\label{alg:bfgb}
+\begin{algorithmic}[1]
+\Function{build graph}{$V, D$} 
+\State $E \gets \emptyset$
+\While{$V \neq \emptyset$}
+    \State $\Call{insert}{Q, V_1}$ \Comment{Initialize the queue with the first element of $V$}
+    \State $\Call{delete}{V, V_1}$
+    \While{$Q \neq \emptyset$}
+        \State $v \gets Q_1$ 
+        \State $\Call{delete}{Q, Q_1}$
+        \For{$u \in V$}
+            \If{\Call{exclusive}{$u$, $v$}}
+                \State \Call{insert}{$E, (v, u)$}
+                \State \Call{insert}{$Q, u$}
+                \State \Call{delete}{$V, u$} \Comment{Visited nodes are removed from $V$}
+        \EndIf
+        \EndFor
+    \EndWhile
+\EndWhile
+\State \Return E
+\EndFunction
+\end{algorithmic}
+\vspace{1em}
+As in the main text, here $a, a'$ stand for the value of the outcome of the
+variable $A$ in the events $v, v'$, while $p_a, p_{a'}$ stand for the values
+of the parent nodes of $A$ in $D$, $\PA (A)$.
+
+\begin{algorithmic}[1]
+\Function{exclusive}{$v, v', D$} 
+    \State $n \gets \text{true}$
+    \For{$A \in O_D$} 
+        \State $n \gets n \land \left(p_a \neq p_{a'} \lor (p_a = p_{a'} \land a = a') \right)$
+    \EndFor
+    \State \Return $\neg n$
+\EndFunction
+\end{algorithmic}
+\end{algorithm*}
 
 \section*{Edge colored multigraph technique for approximating the quantum
 bound}
@@ -48,18 +95,23 @@ Indeed the quantum bound is influenced not only by the exclusivity relations bet
 possible events in our scenario, but also on how those relations are derived from the
 variables $A_1,\ldots,A_N$.
 
-To obtain a better approximation for the quantum bound we follow the technique presented in \cite{rabelo2014}. 
+To obtain a better approximation for the quantum bound we can follow
+the technique presented in \cite{rabelo2014}.
 This method consists in introducing an edge coloring in the exclusivity graph. 
 This edge coloring encodes the information of which of the $A_i$s is involved in the exclusivity constraints under consideration.
 In practice this corresponds to constructing an exclusivity graph $G_i$ for each
-$A_i$, the resulting object is called a \emph{multigraph}. 
+$A_i$. The resulting object is called a \emph{multigraph}. 
 Having defined a multigraph $G = {G_1, \ldots, G_N}$ for a given scenario the
 quantum bound is defined by the quantity:
 \begin{equation}
     \vartheta(G) = \max_{v} \sum_{i \in V} |v \cdot a^1_i \otimes \dots \otimes a^n_i|^2
     \label{eq:multigraph_lovazs}
 \end{equation}
-where $\{a^j_i\}$ is an orthonormal labelling for $G_j$ and $V$ is the set of vertices of $G$. This quantity, which can be seen as a generalization of the Lov\'asz theta, is in general not efficiently computable, but, as described in \cite{rabelo2014}, can be arbitrarily approximated by a hierarchy of semi-definite programs using the NPA method.
+where $\{a^j_i\}$ is an orthonormal labelling for $G_j$ and $V$ is the set
+of vertices of $G$. This quantity, which can be seen as a generalization
+of the Lov\'asz theta, is in general not efficiently computable, but,
+as described in \cite{rabelo2014}, can be arbitrarily approximated by
+a hierarchy of semi-definite programs\cite{npa2008}.
 
 For example, in the case of the pentagon in the instrumental scenario we have two colors, and thus two graph $G_A$ and $G_B$, corresponding to variables $A$ and $B$ respectively, as shown in Fig.~\ref{fig:instrumental_multigraph}.
 Applying the technique described above to this scenario yields a quantum
@@ -67,7 +119,7 @@ bound of $2.2071$, reproducing the known value for the quantum bound of the Bone
 
 \section*{There are no quantum violation for instrumental scenarios with $l=2$
 settings.}
-Here we prove that no quantum violation is possible for instrumental scenario
+It is easy to see that no quantum violation is possible for instrumental scenario
 with $l=2$ possible settings for the instrumental variable $X$.
 This reduces to proving that there are no odd $n$-cycles nor $n$-anticycles as induced
 subgraphs in the corresponding exclusivity graph, with $n\ge5$.
@@ -102,8 +154,7 @@ the type $l22$.
     \label{fig:cycle_graph_proof}
 \end{figure}
 
-From the exclusivity conditions \eqref{eq:non_exclusivity_condition},
-given two events $ab|x$ and $a'b'|x'$, they are connected by edge if one of these two conditions is true:
+Two different events $ab|x$ and $a'b'|x'$, are exclusive if one of these two conditions is true:
 \begin{enumerate}
     \item $x=x'$.\label{en:rule1}
     \item $a=a'$ and $b \neq b'$.\label{en:rule2}
@@ -162,10 +213,10 @@ $1,2,6,7$. Thus, the corresponding graph cannot be a cycle.
     
 %     \bibitem{almostquantum2015} M. Navascués, Y. Guryanova, M. J. Hoban, \& A. Acín, {\em Almost quantum correlations.}
 %         Nature Communications 6, (2015).
-%     \bibitem{npa2008} M. Navascués, S. Pironio, \& A Acín, 
-%         {\em A convergent hierarchy of semidefinite programs characterizing the
-%         set of quantum correlations.}
-%         New Journal of Physics 10, 073013 (2008).
+\bibitem{npa2008} M. Navascués, S. Pironio, \& A Acín, 
+         {\em A convergent hierarchy of semidefinite programs characterizing the
+         set of quantum correlations.}
+         New Journal of Physics 10, 073013 (2008).
 %   \bibitem{knuth} D. Knuth, {\em The sandwich theorem}, The Electronic Journal of Combinatorics 1, 1 (1994).
 %     \bibitem{lovasz} L. Lovász, 
 %         {\em An Algorithmic Theory of Numbers, Graphs, and Convexity.}
